@@ -1,19 +1,16 @@
-require('dotenv').config();
+const path = require('path');
 const express = require('express');
 const compression = require('compression');
+const signale = require('signale');
 
-const app = express();
-const getTasks = require('./tasks');
+require('dotenv').config();
 
 const { PORT } = process.env;
+const app = express();
 
 app.use(compression());
-app.use('/', express.static(`${__dirname}/static`));
-app.get('/tasks', async (req, res) => {
-  const tasks = await getTasks();
-  res.send(JSON.stringify(tasks));
-});
+app.use('/', express.static(path.join(__dirname, 'static')));
 
-app.listen(PORT, () => {
-  console.log(`blargf server started on port ${PORT}`);
-});
+app.use('/tasks', require('./controllers/tasks-controller'));
+
+app.listen(PORT, () => signale.start(`blargf server started on port ${PORT}`));

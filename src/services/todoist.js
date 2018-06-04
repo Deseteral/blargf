@@ -1,19 +1,26 @@
 const fetch = require('node-fetch');
+const signale = require('signale');
 
+const TASKS_URL = 'https://beta.todoist.com/API/v8/tasks';
 const { TODOIST_TOKEN } = process.env;
 
-function getTasksDueToday() {
-  return fetch('https://beta.todoist.com/API/v8/tasks', {
-    headers: {
-      Authorization: `Bearer ${TODOIST_TOKEN}`,
-    },
-  })
-    .then(data => data.json())
-    .then((tasks) => {
-      const date = new Date().toISOString().split('T')[0];
-      return tasks.filter(task => task.due && task.due.date === date);
-    })
-    .catch(console.error);
+const fetchOptions = {
+  headers: {
+    Authorization: `Bearer ${TODOIST_TOKEN}`,
+  },
+};
+
+async function getTasksDueToday() {
+  const currentDate = new Date().toISOString().split('T')[0];
+
+  try {
+    const tasks = await (await fetch(TASKS_URL, fetchOptions)).json();
+    return tasks.filter(task => task.due && task.due.date === currentDate);
+  } catch (exception) {
+    signale.error(exception);
+  }
+
+  return [];
 }
 
-module.exports = getTasksDueToday;
+module.exports = { getTasksDueToday };

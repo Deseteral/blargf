@@ -1,8 +1,7 @@
 function fetchTasks() {
   return fetch('/tasks')
     .then(data => data.json())
-    .then(data => data.tasks)
-    .catch(err => alert(err));
+    .catch(console.error);
 }
 
 function renderTasks(tasks) {
@@ -11,7 +10,7 @@ function renderTasks(tasks) {
 
   tasks.forEach((task) => {
     const li = document.createElement('li');
-    li.innerText = task.name;
+    li.innerText = task.content;
     list.appendChild(li);
   });
 
