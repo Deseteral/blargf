@@ -9,11 +9,11 @@ function renderTasks(tasks) {
   const container = document.querySelector('#app');
   const list = document.createElement('ul');
 
-  for (const task of tasks) {
+  tasks.forEach((task) => {
     const li = document.createElement('li');
     li.innerText = task.name;
     list.appendChild(li);
-  }
+  });
 
   container.appendChild(list);
 }
