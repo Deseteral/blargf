@@ -10,7 +10,7 @@ const todaysTasksCache = [
 
 function getTodaysTasks() {
   return {
-    todaysTasks: todaysTasksCache
+    tasks: todaysTasksCache
   };
 }
 
