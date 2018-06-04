@@ -1,11 +1,15 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const getTasks = require('./tasks');
 
-const PORT = 3456;
+const { PORT } = process.env;
 
 app.use('/', express.static(`${__dirname}/static`));
-app.get('/tasks', (req, res) => res.send(JSON.stringify(getTasks())));
+app.get('/tasks', async (req, res) => {
+  const tasks = await getTasks();
+  res.send(JSON.stringify(tasks))
+});
 
 app.listen(PORT, () => {
   console.log(`blargf server started on port ${PORT}`);

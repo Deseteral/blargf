@@ -1,17 +1,10 @@
-const todaysTasksCache = [
-  {
-    name: 'Some test task'
-  }, {
-    name: 'Some other task'
-  }, {
-    name: 'Even better one'
-  }
-];
+const getTasksDueToday = require('./services/todoist');
 
-function getTodaysTasks() {
+async function getTasks() {
+  const tasks = await getTasksDueToday();
   return {
-    tasks: todaysTasksCache
+    tasks: tasks.map(t => ({ name: t.content }))
   };
 }
 
-module.exports = getTodaysTasks;
+module.exports = getTasks;
