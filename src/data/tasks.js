@@ -16,8 +16,10 @@ function getTasks() {
 }
 
 (function initializeTasksModule() {
+  signale.info(`TASKS_REFRESH_INTERVAL_MINS=${TASKS_REFRESH_INTERVAL_MINS}`);
+
   setInterval(refreshCache, TASKS_REFRESH_INTERVAL_MINS * 60 * 1000);
-  refreshCache();
+  setImmediate(refreshCache);
 }());
 
 module.exports = getTasks;
