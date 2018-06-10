@@ -13,14 +13,8 @@ const fetchOptions = {
 async function getTasksDueToday() {
   const currentDate = new Date().toISOString().split('T')[0];
 
-  try {
-    const tasks = await (await fetch(TASKS_URL, fetchOptions)).json();
-    return tasks.filter(task => task.due && task.due.date === currentDate);
-  } catch (exception) {
-    signale.error(exception);
-  }
-
-  return [];
+  const tasks = await (await fetch(TASKS_URL, fetchOptions)).json();
+  return tasks.filter(task => task.due && task.due.date === currentDate);
 }
 
 module.exports = { getTasksDueToday };

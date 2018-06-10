@@ -7,7 +7,15 @@ const { TASKS_REFRESH_INTERVAL_MINS } = process.env;
 
 async function refreshCache() {
   signale.pending('Updating tasks cache...');
-  cache = await Todoist.getTasksDueToday();
+
+  try {
+    cache = await Todoist.getTasksDueToday();
+  } catch (exception) {
+    signale.fatal('Could not update task cache');
+    signale.fatal(exception);
+    return;
+  }
+
   signale.success('Updated tasks cache');
 }
 
