@@ -13,7 +13,7 @@ function render() {
       <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
       <link href="styles.css" rel="stylesheet">
     </head>
-    <body>
+    <body class="hidden">
       <h1 class="title">New tab</h1>
       <div class="container">
         <div class="grid-container">

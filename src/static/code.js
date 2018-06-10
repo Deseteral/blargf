@@ -6,6 +6,15 @@ function updateTime() {
   timeElement.textContent = formatedTime;
 }
 
-(function main() {
+function unhide() {
+  document.body.classList.remove('hidden');
+}
+
+window.addEventListener('load', () => {
   setInterval(updateTime, 1000);
-}());
+  unhide();
+});
+// (function main() {
+//   setInterval(updateTime, 1000);
+//   unhide();
+// }());
