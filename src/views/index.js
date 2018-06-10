@@ -25,9 +25,9 @@ function render() {
           </div>
           <div class="column">
             <section class="card">
-              <h2>Tasks</h2>
-              <ul>
-                ${tasks.map(task => html`<li>${task.content}</li>`)}
+              <h1 class="card-header">Tasks</h1>
+              <ul class="list">
+                ${tasks.map(task => html`<li class="list-element">${task.content}</li>`)}
               </ul>
             </section>
           </div>
