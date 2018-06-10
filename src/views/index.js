@@ -14,12 +14,18 @@ function render() {
     </head>
     <body>
       <h1 class="title">New tab</h1>
-      <section>
-        <h2>Tasks</h2>
-        <ul>
-          ${tasks.map(task => html`<li>${task.content}</li>`)}
-        </ul>
-      </section>
+      <div class="container">
+        <div class="column">
+        </div>
+        <div class="column">
+          <section class="card tasks-section">
+            <h2>Tasks</h2>
+            <ul>
+              ${tasks.map(task => html`<li>${task.content}</li>`)}
+            </ul>
+          </section>
+        </div>
+      </div>
     </body>
     </html>
   `;
