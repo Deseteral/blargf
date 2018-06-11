@@ -11,6 +11,7 @@ function render() {
     <head>
       <title>New tab</title>
       <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link href="styles.css" rel="stylesheet">
     </head>
     <body class="hidden">
@@ -28,7 +29,7 @@ function render() {
             <section class="card">
               <h1 class="card-header">Tasks</h1>
               <ul class="list">
-                ${tasks.map(task => html`<li class="list-element">${task.content}</li>`)}
+                ${tasks.map(task => html`<li class="list-element"><i class="material-icons">chevron_right</i>${task.content}</li>`)}
               </ul>
             </section>
           </div>
