@@ -14,6 +14,7 @@ function render() {
       <link href="styles.css" rel="stylesheet">
     </head>
     <body class="hidden">
+      <div class="background-image"></div>
       <h1 class="title">New tab</h1>
       <div class="container">
         <div class="grid-container">
