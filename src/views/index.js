@@ -1,11 +1,12 @@
-const html = require('html-template-tag');
 const getTasks = require('../data/tasks');
+const getBackgroundImage = require('../data/reddit-images');
 const { getFormattedDate, getFormattedTime } = require('../data/date-time');
 
 function render() {
   const tasks = getTasks();
+  const backgroundImage = getBackgroundImage();
 
-  return html`
+  return `
     <!doctype html>
     <html>
     <head>
@@ -16,6 +17,7 @@ function render() {
     </head>
     <body class="hidden">
       <div class="background-image"></div>
+      <script>window.backgroundImage=${JSON.stringify(backgroundImage)}</script>
       <h1 class="title">New tab</h1>
       <div class="container">
         <div class="grid-container">
@@ -29,7 +31,7 @@ function render() {
             <section class="card">
               <h1 class="card-header">Tasks</h1>
               <ul class="list">
-                ${tasks.map(task => html`<li class="list-element"><i class="material-icons">chevron_right</i>${task.content}</li>`)}
+                ${tasks.map(task => `<li class="list-element"><i class="material-icons">chevron_right</i>${task.content}</li>`).join('\n')}
               </ul>
             </section>
           </div>
