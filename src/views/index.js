@@ -31,7 +31,7 @@ function render() {
             <section class="card">
               <h1 class="card-header">Tasks</h1>
               <ul class="list">
-                ${tasks.map(task => `<li class="list-element"><i class="material-icons">chevron_right</i>${task.content}</li>`).join('\n')}
+                ${tasks.map(task => `<li class="list-element"><i class="material-icons list-element-icon">radio_button_unchecked</i>${task.content}</li>`).join('\n')}
               </ul>
             </section>
           </div>

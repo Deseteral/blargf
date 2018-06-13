@@ -112,3 +112,7 @@ body {
 .list-element:last-of-type {
   border-bottom: none;
 }
+
+.list-element-icon {
+  margin-right: 8px;
+}
