@@ -73,6 +73,23 @@ body {
   margin-right: 16px;
 }
 
+.tray {
+  position: fixed;
+  right: 8px;
+  bottom: 8px;
+  margin-bottom: -4px;
+}
+
+.tray-icon {
+  color: white;
+  opacity: 0.56;
+  transition: opacity 0.5s ease;
+}
+
+.tray-icon:hover {
+  opacity: 0.87;
+}
+
 .title {
   margin: 0 0 16px 0;
   color: #FAFAFA;
@@ -116,4 +133,16 @@ body {
 
 .list-element-icon {
   margin-right: 8px;
+}
+
+.no-tasks-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.no-tasks-flag {
+  margin-bottom: 8px;
+  font-size: 48px;
+  opacity: 0.56;
 }

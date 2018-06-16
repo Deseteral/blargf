@@ -1,10 +1,28 @@
-const getTasks = require('../data/tasks');
+const backgroundImage = require('./background-image');
+const dateTimeSection = require('./date-time-section');
+const tasksSection = require('./tasks-section');
+const imageSourceButton = require('./tray/image-source-button');
+
 const getBackgroundImage = require('../data/reddit-images');
-const { getFormattedDate, getFormattedTime } = require('../data/date-time');
+const getTasks = require('../data/tasks');
+
+const LEFT_COLUMN = [
+  dateTimeSection,
+];
+
+const RIGHT_COLUMN = [
+  tasksSection,
+];
+
+function buildColumnMarkup(column, context) {
+  return column.map(fn => fn(context)).join('\n');
+}
 
 function render() {
-  const tasks = getTasks();
-  const backgroundImage = getBackgroundImage();
+  const context = {
+    imageData: getBackgroundImage(),
+    tasks: getTasks(),
+  };
 
   return `
     <!doctype html>
@@ -14,28 +32,23 @@ function render() {
       <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link href="styles.css" rel="stylesheet">
+      <base target="_parent">
     </head>
     <body class="hidden">
-      <div class="background-image"></div>
-      <script>window.backgroundImage=${JSON.stringify(backgroundImage)}</script>
+      ${backgroundImage(context)}
       <h1 class="title">New tab</h1>
       <div class="container">
         <div class="grid-container">
           <div class="column">
-            <section class="date-time-section card">
-              <div class="time">${getFormattedTime()}</div>
-              <div class="date">${getFormattedDate()}</div>
-            </section>
+            ${buildColumnMarkup(LEFT_COLUMN, context)}
           </div>
           <div class="column">
-            <section class="card">
-              <h1 class="card-header">Tasks</h1>
-              <ul class="list">
-                ${tasks.map(task => `<li class="list-element"><i class="material-icons list-element-icon">radio_button_unchecked</i>${task.content}</li>`).join('\n')}
-              </ul>
-            </section>
+            ${buildColumnMarkup(RIGHT_COLUMN, context)}
           </div>
         </div>
+      </div>
+      <div class="tray">
+        ${imageSourceButton(context)}
       </div>
       <script src="code.js"></script>
     </body>
