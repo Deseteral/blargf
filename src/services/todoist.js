@@ -1,5 +1,4 @@
 const fetch = require('node-fetch');
-const signale = require('signale');
 
 const TASKS_URL = 'https://beta.todoist.com/API/v8/tasks';
 const { TODOIST_TOKEN } = process.env;
