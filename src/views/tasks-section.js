@@ -1,3 +1,5 @@
+const numberToWords = require('number-to-words');
+
 const NO_TASKS_MARKUP = `
 <section class="card">
   <h1 class="card-header">Tasks</h1>
@@ -26,12 +28,13 @@ function tasksSection(context) {
     return NO_TASKS_MARKUP;
   }
 
+  const taskNumberForm = numberToWords.toWords(cache.length);
   const tasksAmountForm = cache.length === 1 ? 'task' : 'tasks';
 
   return `
     <section class="card">
       <h1 class="card-header">Tasks</h1>
-      <div class="caption">You have ${cache.length} ${tasksAmountForm} due today.</div>
+      <div class="caption">You have ${taskNumberForm} ${tasksAmountForm} due today.</div>
       ${lastUpdateFailed ? FAILED_UPDATE_MARKUP : ''}
       <ul class="list">
         ${cache.map(mapTaskToListElement).join('\n')}
