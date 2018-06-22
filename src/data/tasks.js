@@ -2,6 +2,7 @@ const signale = require('signale');
 const Todoist = require('../services/todoist');
 
 let cache = [];
+let lastUpdateFailed = false;
 
 const { TASKS_REFRESH_INTERVAL_SEC } = process.env;
 
@@ -10,7 +11,9 @@ async function refreshCache() {
 
   try {
     cache = await Todoist.getTasksDueToday();
+    lastUpdateFailed = false;
   } catch (exception) {
+    lastUpdateFailed = true;
     signale.fatal('Could not update task cache');
     signale.fatal(exception);
     return;
@@ -20,7 +23,7 @@ async function refreshCache() {
 }
 
 function getTasks() {
-  return cache;
+  return { cache, lastUpdateFailed };
 }
 
 (function initializeTasksModule() {

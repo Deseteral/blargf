@@ -8,6 +8,8 @@ const NO_TASKS_MARKUP = `
 </section>
 `;
 
+const FAILED_UPDATE_MARKUP = '<div class="caption">List might be outdated because of failed update.</div>';
+
 function mapTaskToListElement(task) {
   return `
     <li class="list-element">
@@ -18,20 +20,21 @@ function mapTaskToListElement(task) {
 }
 
 function tasksSection(context) {
-  const { tasks } = context;
+  const { tasks: { cache, lastUpdateFailed } } = context;
 
-  if (tasks.length === 0) {
+  if (cache.length === 0) {
     return NO_TASKS_MARKUP;
   }
 
-  const tasksAmountForm = tasks.length === 1 ? 'task' : 'tasks';
+  const tasksAmountForm = cache.length === 1 ? 'task' : 'tasks';
 
   return `
     <section class="card">
       <h1 class="card-header">Tasks</h1>
-      <div class="caption">You have ${tasks.length} ${tasksAmountForm} due today.</div>
+      <div class="caption">You have ${cache.length} ${tasksAmountForm} due today.</div>
+      ${lastUpdateFailed ? FAILED_UPDATE_MARKUP : ''}
       <ul class="list">
-        ${tasks.map(mapTaskToListElement).join('\n')}
+        ${cache.map(mapTaskToListElement).join('\n')}
       </ul>
     </section>
   `;
