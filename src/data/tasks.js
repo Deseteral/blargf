@@ -3,7 +3,7 @@ const Todoist = require('../services/todoist');
 
 let cache = [];
 
-const { TASKS_REFRESH_INTERVAL_MINS } = process.env;
+const { TASKS_REFRESH_INTERVAL_SEC } = process.env;
 
 async function refreshCache() {
   signale.pending('Updating tasks cache...');
@@ -24,9 +24,9 @@ function getTasks() {
 }
 
 (function initializeTasksModule() {
-  signale.info(`TASKS_REFRESH_INTERVAL_MINS=${TASKS_REFRESH_INTERVAL_MINS}`);
+  signale.info(`TASKS_REFRESH_INTERVAL_SEC=${TASKS_REFRESH_INTERVAL_SEC}`);
 
-  setInterval(refreshCache, TASKS_REFRESH_INTERVAL_MINS * 60 * 1000);
+  setInterval(refreshCache, TASKS_REFRESH_INTERVAL_SEC * 1000);
   setImmediate(refreshCache);
 }());
 
