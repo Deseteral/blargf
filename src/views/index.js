@@ -29,7 +29,7 @@ function render() {
     <html>
     <head>
       <title>New tab</title>
-      <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400|Crimson+Text:400i" rel="stylesheet">
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <link href="styles.css" rel="stylesheet">
       <base target="_parent">

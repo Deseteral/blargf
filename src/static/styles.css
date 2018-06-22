@@ -35,6 +35,13 @@ body {
   letter-spacing: 0.25px;
 }
 
+.caption {
+  font-family: 'Crimson Text', serif;
+  opacity: 0.56;
+  font-size: 19px;
+  font-style: italic;
+}
+
 .background-image {
   height: 100vh;
   width: 100vw;
