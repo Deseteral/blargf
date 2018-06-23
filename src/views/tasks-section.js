@@ -1,16 +1,17 @@
 const numberToWords = require('number-to-words');
 
 const NO_TASKS_MARKUP = `
-<section class="card">
-  <h1 class="card-header">Tasks</h1>
-  <div class="no-tasks-container">
-    <i class="no-tasks-flag material-icons">outlined_flag</i>
-    <div class="caption">There are no tasks planned for today.</div>
-  </div>
-</section>
+<div class="no-tasks-container">
+  <i class="no-tasks-flag material-icons">outlined_flag</i>
+  <div class="caption">There are no tasks planned for today.</div>
+</div>
 `;
 
-const FAILED_UPDATE_MARKUP = '<div class="caption">List might be outdated because of failed update.</div>';
+const FAILED_UPDATE_MARKUP = `
+<div class="tasks-error-message caption caption--small">
+  List might be outdated because of failed update.
+</div>
+`;
 
 function mapTaskToListElement(task) {
   return `
@@ -21,24 +22,41 @@ function mapTaskToListElement(task) {
   `;
 }
 
+function renderTaskCountLabel(count) {
+  const taskNumberForm = numberToWords.toWords(count);
+  const tasksAmountForm = count === 1 ? 'task' : 'tasks';
+
+  return `
+    <div class="caption">
+      You have ${taskNumberForm} ${tasksAmountForm} due today.
+    </div>
+  `;
+}
+
+function renderTaskList(list) {
+  return `
+    <ul class="list">
+      ${list.map(mapTaskToListElement).join('\n')}
+    </ul>
+  `;
+}
+
 function tasksSection(context) {
-  const { tasks: { cache, lastUpdateFailed } } = context;
+  const { tasks: { list, lastUpdateFailed } } = context;
 
-  if (cache.length === 0) {
-    return NO_TASKS_MARKUP;
-  }
+  const isEmpty = list.length === 0;
 
-  const taskNumberForm = numberToWords.toWords(cache.length);
-  const tasksAmountForm = cache.length === 1 ? 'task' : 'tasks';
+  const tasksListMarkup = `
+    ${renderTaskCountLabel(list.length)}
+    ${renderTaskList(list)}
+  `;
 
   return `
     <section class="card">
       <h1 class="card-header">Tasks</h1>
-      <div class="caption">You have ${taskNumberForm} ${tasksAmountForm} due today.</div>
+      ${isEmpty ? NO_TASKS_MARKUP : ''}
+      ${!isEmpty ? tasksListMarkup : ''}
       ${lastUpdateFailed ? FAILED_UPDATE_MARKUP : ''}
-      <ul class="list">
-        ${cache.map(mapTaskToListElement).join('\n')}
-      </ul>
     </section>
   `;
 }

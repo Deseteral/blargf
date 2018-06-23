@@ -3,6 +3,8 @@ body {
   background-color: #03A9F4;
   font-family: 'Roboto', sans-serif;
   user-select: none;
+
+  --color-error: #B71C1C;
 }
 
 .card {
@@ -40,6 +42,10 @@ body {
   opacity: 0.56;
   font-size: 19px;
   font-style: italic;
+}
+
+.caption--small {
+  font-size: 16px;
 }
 
 .background-image {
@@ -152,4 +158,9 @@ body {
   margin-bottom: 8px;
   font-size: 48px;
   opacity: 0.56;
+}
+
+.tasks-error-message {
+  color: var(--color-error);
+  margin-top: 8px;
 }
