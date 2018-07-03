@@ -2,6 +2,7 @@ const backgroundImage = require('./background-image');
 const dateTimeSection = require('./date-time-section');
 const tasksSection = require('./tasks-section');
 const imageSourceButton = require('./tray/image-source-button');
+const processUptime = require('./tray/process-uptime');
 
 const getBackgroundImage = require('../data/reddit-images');
 const getTasks = require('../data/tasks');
@@ -48,6 +49,7 @@ function render() {
         </div>
       </div>
       <div class="tray">
+        <div class="caption">${processUptime()}</div>
         ${imageSourceButton(context)}
       </div>
       <script src="code.js"></script>

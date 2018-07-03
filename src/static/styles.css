@@ -87,14 +87,19 @@ body {
 }
 
 .tray {
+  display: flex;
   position: fixed;
   right: 8px;
   bottom: 8px;
   margin-bottom: -4px;
 }
 
-.tray-icon {
+.tray > * {
+  margin-left: 8px;
   color: white;
+}
+
+.tray-icon {
   opacity: 0.56;
   transition: opacity 0.5s ease;
 }
