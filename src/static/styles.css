@@ -140,8 +140,7 @@ body {
 .list-element {
   display: flex;
   align-items: center;
-  height: 48px;
-  line-height: 48px;
+  min-height: 48px;
   list-style: none;
 }
 
