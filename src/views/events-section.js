@@ -1,40 +1,57 @@
+function renderEventsList(eventList) {
+  return `
+    <ul class="events-list">
+    ${!eventList.length ? `
+      <li class="events-list-element">
+        <div class="caption">No events.</div>
+      </li>
+    ` : ''}
+    ${(eventList.length > 0) ? eventList.map(e => `
+      <li class="events-list-element">
+        <div>${e.title}</div>
+        <div class="caption">${e.date}</div>
+      </li>
+    `).join('\n') : ''}
+    </ul>
+  `;
+}
+
 function dateTimeSection() {
+  const events = [
+    {
+      name: 'Today',
+      eventList: [],
+    }, {
+      name: 'This week',
+      eventList: [
+        {
+          title: 'Urodziny godziny',
+          date: 'September 17',
+        },
+      ],
+    }, {
+      name: 'Later',
+      eventList: [
+        {
+          title: 'Olabanagaga',
+          date: 'October 11',
+        }, {
+          title: 'Hacktoberfest',
+          date: 'October 21',
+        },
+      ],
+    },
+  ];
+
   return `
     <section class="card">
       <h1>Upcoming events</h1>
-
-      <div class="events-subsection">
-        <h2>Today</h2>
-        <ul class="events-list">
-          <li class="events-list-element">
-            <div class="caption">No events today.</div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="events-subsection">
-        <h2>This week</h2>
-        <ul class="events-list">
-          <li class="events-list-element">
-            <div>Urodziny godziny</div>
-            <div class="caption">September 17</div>
-          </li>
-        </ul>
-      </div>
-
-      <div class="events-subsection">
-        <h2>Later</h2>
-        <ul class="events-list">
-          <li class="events-list-element">
-            <div>Olabanagaga</div>
-            <div class="caption">October 11</div>
-          </li>
-          <li class="events-list-element">
-            <div>Hacktoberfest</div>
-            <div class="caption">October 21</div>
-          </li>
-        </ul>
-      </div>
+      ${events.map(eventSection => `
+        <div class="events-subsection">
+          <h2>${eventSection.name}</h2>
+          ${renderEventsList(eventSection.eventList)}
+        </div>
+      `).join('\n')}
     </section>
   `;
 }
