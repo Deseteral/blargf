@@ -1,6 +1,7 @@
 const backgroundImage = require('./background-image');
 const dateTimeSection = require('./date-time-section');
 const tasksSection = require('./tasks-section');
+const eventsSection = require('./events-section');
 const imageSourceButton = require('./tray/image-source-button');
 const processUptime = require('./tray/process-uptime');
 
@@ -9,6 +10,7 @@ const getTasks = require('../data/tasks');
 
 const LEFT_COLUMN = [
   dateTimeSection,
+  eventsSection,
 ];
 
 const RIGHT_COLUMN = [

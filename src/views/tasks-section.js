@@ -53,7 +53,7 @@ function tasksSection(context) {
 
   return `
     <section class="card">
-      <h1 class="card-header">Tasks</h1>
+      <h1>Tasks</h1>
       ${isEmpty ? NO_TASKS_MARKUP : ''}
       ${!isEmpty ? tasksListMarkup : ''}
       ${lastUpdateFailed ? FAILED_UPDATE_MARKUP : ''}
