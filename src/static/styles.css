@@ -5,6 +5,7 @@ body {
   user-select: none;
 
   --color-error: #B71C1C;
+  --color-accent: #689F38;
 }
 
 .card {
@@ -56,8 +57,20 @@ body {
   font-style: italic;
 }
 
+p.caption {
+  margin: 8px 0;
+}
+
 .caption--small {
   font-size: 16px;
+}
+
+.caption a, .caption a:visited, .caption a:active {
+  color: var(--color-accent);
+}
+
+.caption--error {
+  color: var(--color-error);
 }
 
 .background-image {
@@ -174,11 +187,6 @@ body {
   margin-bottom: 8px;
   font-size: 48px;
   opacity: 0.56;
-}
-
-.tasks-error-message {
-  color: var(--color-error);
-  margin-top: 8px;
 }
 
 .events-subsection {

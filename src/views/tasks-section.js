@@ -8,7 +8,7 @@ const NO_TASKS_MARKUP = `
 `;
 
 const FAILED_UPDATE_MARKUP = `
-<div class="tasks-error-message caption caption--small">
+<div class="caption caption--small caption--error">
   List might be outdated because of failed update.
 </div>
 `;
@@ -57,6 +57,9 @@ function tasksSection(context) {
       ${isEmpty ? NO_TASKS_MARKUP : ''}
       ${!isEmpty ? tasksListMarkup : ''}
       ${lastUpdateFailed ? FAILED_UPDATE_MARKUP : ''}
+      <p class="caption">
+        Manage your tasks in <a href="https://todoist.com">Todoist</a>.
+      </p>
     </section>
   `;
 }

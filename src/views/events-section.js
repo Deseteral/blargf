@@ -1,3 +1,9 @@
+const FAILED_UPDATE_MARKUP = `
+<div class="caption caption--small caption--error">
+  List might be outdated because of failed update.
+</div>
+`;
+
 function renderEventsList(eventList) {
   return `
     <ul class="events-list">
@@ -23,12 +29,16 @@ function renderEventSection(eventSection) {
 }
 
 function dateTimeSection(context) {
-  const { events } = context.upcomingEvents;
+  const { events, lastUpdateFailed } = context.upcomingEvents;
 
   return `
     <section class="card">
       <h1>Upcoming events</h1>
       ${events.map(renderEventSection).join('\n')}
+      ${lastUpdateFailed ? FAILED_UPDATE_MARKUP : ''}
+      <p class="caption">
+        Plan your events in <a href="https://calendar.google.com/calendar/">Google Calendar</a>.
+      </p>
     </section>
   `;
 }
