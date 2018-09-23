@@ -16,32 +16,8 @@ function renderEventsList(eventList) {
   `;
 }
 
-function dateTimeSection() {
-  const events = [
-    {
-      name: 'Today',
-      eventList: [],
-    }, {
-      name: 'This week',
-      eventList: [
-        {
-          title: 'Urodziny godziny',
-          date: 'September 17',
-        },
-      ],
-    }, {
-      name: 'Later',
-      eventList: [
-        {
-          title: 'Olabanagaga',
-          date: 'October 11',
-        }, {
-          title: 'Hacktoberfest',
-          date: 'October 21',
-        },
-      ],
-    },
-  ];
+function dateTimeSection(context) {
+  const { events } = context.upcomingEvents;
 
   return `
     <section class="card">

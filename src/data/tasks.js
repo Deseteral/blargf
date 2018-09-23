@@ -14,15 +14,14 @@ async function refreshCache() {
   try {
     cache.list = await Todoist.getTasksDueToday();
     cache.lastUpdateFailed = false;
+
+    signale.success('Updated tasks cache');
   } catch (exception) {
     cache.lastUpdateFailed = true;
 
     signale.fatal('Could not update task cache');
     signale.fatal(exception);
-    return;
   }
-
-  signale.success('Updated tasks cache');
 }
 
 function getTasks() {
