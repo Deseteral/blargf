@@ -5,7 +5,7 @@ const isFuture = require('date-fns/is_future');
 const isSameWeek = require('date-fns/is_same_week');
 const differenceInDays = require('date-fns/difference_in_days');
 const startOfToday = require('date-fns/start_of_today');
-const isSameDay = require('date-fns/is_same_day');
+const differenceInHours = require('date-fns/difference_in_hours');
 const { fetchICalEvents } = require('../services/ical');
 
 const { EVENTS_REFRESH_INTERVAL_SEC } = process.env;
@@ -16,9 +16,15 @@ const cache = {
 };
 
 function shortDurationFormat(dateA, dateB) {
-  const formatDate = date => date.toLocaleDateString('en-US', { month: 'long', day: 'numeric' });
+  const isHourEvent = differenceInHours(dateB, dateA) % 24 !== 0;
+  const isSingleFullDayEvent = differenceInHours(dateB, dateA) === 24;
 
-  return isSameDay(dateA, dateB)
+  const dateFormattingOptions = isHourEvent
+    ? { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false } // eslint-disable-line object-curly-newline
+    : { month: 'long', day: 'numeric' };
+  const formatDate = date => date.toLocaleDateString('en-US', dateFormattingOptions);
+
+  return (isSingleFullDayEvent || isHourEvent)
     ? formatDate(dateA)
     : `${formatDate(dateA)} - ${formatDate(dateB)}`;
 }
