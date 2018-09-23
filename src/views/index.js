@@ -1,14 +1,17 @@
 const backgroundImage = require('./background-image');
 const dateTimeSection = require('./date-time-section');
 const tasksSection = require('./tasks-section');
+const eventsSection = require('./events-section');
 const imageSourceButton = require('./tray/image-source-button');
 const processUptime = require('./tray/process-uptime');
 
 const getBackgroundImage = require('../data/reddit-images');
 const getTasks = require('../data/tasks');
+const getUpcomingEvents = require('../data/upcoming-events');
 
 const LEFT_COLUMN = [
   dateTimeSection,
+  eventsSection,
 ];
 
 const RIGHT_COLUMN = [
@@ -23,6 +26,7 @@ function render() {
   const context = {
     imageData: getBackgroundImage(),
     tasks: getTasks(),
+    upcomingEvents: getUpcomingEvents(),
   };
 
   return `

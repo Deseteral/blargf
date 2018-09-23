@@ -12,11 +12,14 @@
   "author": "Deseteral <github.com/deseteral>",
   "license": "MIT",
   "dependencies": {
+    "array-flatten": "2.1.1",
     "compression": "1.7.2",
+    "date-fns": "1.29.0",
     "dotenv": "6.0.0",
     "duration": "0.2.0",
     "express": "4.16.3",
     "node-fetch": "2.1.2",
+    "node-ical": "0.7.0",
     "number-to-words": "1.2.3",
     "shuffle-array": "1.0.1",
     "signale": "1.1.0"
