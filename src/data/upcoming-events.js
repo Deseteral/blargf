@@ -45,7 +45,7 @@ function isEventToday(e) {
 }
 
 function isEventThisWeek(e) {
-  return isSameWeek(e.startDate) && !isEventToday(e);
+  return isSameWeek(e.startDate, startOfToday(), { weekStartsOn: 1 }) && !isEventToday(e);
 }
 
 function isEventLater(e) {
