@@ -21,3 +21,7 @@ gulp.task('default', gulp.series(
   'clean',
   gulp.parallel('js', 'css'),
 ));
+
+gulp.task('dev', () => (
+  gulp.watch('src/**/*', gulp.series('default'))
+));
