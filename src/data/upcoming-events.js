@@ -45,11 +45,13 @@ function isEventToday(e) {
 }
 
 function isEventThisWeek(e) {
-  return isSameWeek(e.startDate, startOfToday(), { weekStartsOn: 1 }) && !isEventToday(e);
+  const isInPreviousCategory = isEventToday(e);
+  return isSameWeek(e.startDate, startOfToday(), { weekStartsOn: 1 }) && !isInPreviousCategory;
 }
 
 function isEventLater(e) {
-  return differenceInDays(e.startDate, startOfToday()) <= 30 && !isEventThisWeek(e);
+  const isInPreviousCategory = isEventThisWeek(e) || isEventToday(e);
+  return differenceInDays(e.startDate, startOfToday()) <= 30 && !isInPreviousCategory;
 }
 
 async function refreshCache() {
