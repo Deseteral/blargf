@@ -5,6 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "start": "node src/main.js",
+    "build": "gulp",
     "test": "npm run lint",
     "lint": "eslint src"
   },
@@ -25,10 +26,17 @@
     "signale": "1.1.0"
   },
   "devDependencies": {
+    "@babel/core": "7.1.2",
+    "@babel/preset-react": "7.0.0",
+    "del": "3.0.0",
     "eslint": "4.19.1",
     "eslint-config-airbnb": "16.1.0",
     "eslint-plugin-import": "2.12.0",
     "eslint-plugin-jsx-a11y": "6.0.3",
-    "eslint-plugin-react": "7.9.1"
+    "eslint-plugin-react": "7.9.1",
+    "gulp": "4.0.0",
+    "gulp-babel": "8.0.0-beta.2",
+    "react": "16.5.2",
+    "react-dom": "16.5.2"
   }
 }
