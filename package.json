@@ -2,9 +2,9 @@
   "name": "blargf",
   "version": "1.0.0",
   "description": "My personal new tab page",
-  "main": "src/main.js",
+  "main": "build/main.js",
   "scripts": {
-    "start": "node src/main.js",
+    "start": "node build/main.js",
     "build": "gulp",
     "test": "npm run lint",
     "lint": "eslint src"
@@ -22,11 +22,14 @@
     "node-fetch": "2.1.2",
     "node-ical": "0.7.0",
     "number-to-words": "1.2.3",
+    "react": "16.5.2",
+    "react-dom": "16.5.2",
     "shuffle-array": "1.0.1",
     "signale": "1.1.0"
   },
   "devDependencies": {
     "@babel/core": "7.1.2",
+    "@babel/preset-env": "7.1.0",
     "@babel/preset-react": "7.0.0",
     "del": "3.0.0",
     "eslint": "4.19.1",
@@ -36,7 +39,6 @@
     "eslint-plugin-react": "7.9.1",
     "gulp": "4.0.0",
     "gulp-babel": "8.0.0-beta.2",
-    "react": "16.5.2",
-    "react-dom": "16.5.2"
+    "gulp-extname": "0.2.2"
   }
 }
