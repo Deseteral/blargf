@@ -12,7 +12,12 @@ gulp.task('js', () => (
     .pipe(gulp.dest('build'))
 ));
 
+gulp.task('css', () => (
+  gulp.src('src/**/*.css')
+    .pipe(gulp.dest('build'))
+));
+
 gulp.task('default', gulp.series(
   'clean',
-  gulp.parallel('js'),
+  gulp.parallel('js', 'css'),
 ));
