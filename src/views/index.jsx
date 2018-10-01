@@ -7,6 +7,7 @@ import TasksSection from '../components/TasksSection';
 import getBackgroundImage from '../data/reddit-images';
 import getTasks from '../data/tasks';
 import getUpcomingEvents from '../data/upcoming-events';
+import ImageSourceButton from '../components/ImageSourceButton';
 
 function render() {
   const context = {
@@ -37,6 +38,9 @@ function render() {
               <TasksSection tasks={context.tasks} />
             </div>
           </div>
+        </div>
+        <div className="tray">
+          <ImageSourceButton imageData={context.imageData} />
         </div>
         <script src="code.js" />
       </body>
