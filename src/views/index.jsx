@@ -4,11 +4,9 @@ import BackgroundImage from '../components/BackgroundImage';
 import DateTimeSection from '../components/DateTimeSection';
 import EventsSection from '../components/EventsSection';
 import TasksSection from '../components/TasksSection';
-
-
-const getBackgroundImage = require('../data/reddit-images');
-const getTasks = require('../data/tasks');
-const getUpcomingEvents = require('../data/upcoming-events');
+import getBackgroundImage from '../data/reddit-images';
+import getTasks from '../data/tasks';
+import getUpcomingEvents from '../data/upcoming-events';
 
 function render() {
   const context = {

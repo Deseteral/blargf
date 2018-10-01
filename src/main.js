@@ -1,10 +1,11 @@
+/* eslint-disable import/first */
 require('dotenv').config();
 
-const path = require('path');
-const { performance } = require('perf_hooks');
-const express = require('express');
-const compression = require('compression');
-const signale = require('signale');
+import path from 'path';
+import { performance } from 'perf_hooks';
+import express from 'express';
+import compression from 'compression';
+import signale from 'signale';
 
 signale.config({
   displayTimestamp: true,
