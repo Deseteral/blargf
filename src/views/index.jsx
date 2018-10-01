@@ -3,6 +3,7 @@ import ReactDOMServer from 'react-dom/server';
 import BackgroundImage from '../components/BackgroundImage';
 import DateTimeSection from '../components/DateTimeSection';
 import EventsSection from '../components/EventsSection';
+import TasksSection from '../components/TasksSection';
 
 
 const getBackgroundImage = require('../data/reddit-images');
@@ -36,6 +37,9 @@ function render() {
               <div className="column">
                 <DateTimeSection />
                 <EventsSection upcomingEvents={context.upcomingEvents} />
+              </div>
+              <div className="column">
+                <TasksSection tasks={context.tasks} />
               </div>
             </div>
           </div>
