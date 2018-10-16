@@ -7,7 +7,7 @@ import differenceInDays from 'date-fns/difference_in_days';
 import startOfToday from 'date-fns/start_of_today';
 import differenceInHours from 'date-fns/difference_in_hours';
 import config from '../application/config';
-import { fetchICalEvents } from '../services/ical';
+import * as iCalClient from '../clients/ical-client';
 
 const cache = {
   events: [],
@@ -57,7 +57,7 @@ async function refreshCache() {
   signale.pending('Updating upcoming events cache...');
 
   try {
-    const events = (await fetchICalEvents())
+    const events = (await iCalClient.fetchEvents())
       .map(mapICalEvent)
       .sort((e1, e2) => compareDates(e1.startDate, e2.startDate))
       .filter(e => isToday(e.startDate) || isFuture(e.startDate));

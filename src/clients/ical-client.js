@@ -19,9 +19,9 @@ function fetchICalFromUrl(url) {
   });
 }
 
-async function fetchICalEvents() {
+async function fetchEvents() {
   const iCalSourceUrls = config.events.ical_urls;
   return flatten(await Promise.all(iCalSourceUrls.map(fetchICalFromUrl)));
 }
 
-module.exports = { fetchICalEvents };
+export { fetchEvents };
