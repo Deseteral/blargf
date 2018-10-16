@@ -1,12 +1,11 @@
-const signale = require('signale');
-const Todoist = require('../services/todoist');
+import signale from 'signale';
+import config from '../application/config';
+import Todoist from '../services/todoist';
 
 const cache = {
   list: [],
   lastUpdateFailed: false,
 };
-
-const { TASKS_REFRESH_INTERVAL_SEC } = process.env;
 
 async function refreshCache() {
   signale.pending('Updating tasks cache...');
@@ -29,9 +28,7 @@ function getTasks() {
 }
 
 (function initializeTasksModule() {
-  signale.info(`TASKS_REFRESH_INTERVAL_SEC=${TASKS_REFRESH_INTERVAL_SEC}`);
-
-  setInterval(refreshCache, TASKS_REFRESH_INTERVAL_SEC * 1000);
+  setInterval(refreshCache, config.tasks.refresh_interval_seconds * 1000);
   setImmediate(refreshCache);
 }());
 

@@ -1,7 +1,6 @@
-const ical = require('node-ical');
-const flatten = require('array-flatten');
-
-const ICAL_SOURCE_URLS = JSON.parse(process.env.EVENTS_ICAL_URLS);
+import ical from 'node-ical';
+import flatten from 'array-flatten';
+import config from '../application/config';
 
 function fetchICalFromUrl(url) {
   return new Promise((resolve, reject) => {
@@ -21,7 +20,8 @@ function fetchICalFromUrl(url) {
 }
 
 async function fetchICalEvents() {
-  return flatten(await Promise.all(ICAL_SOURCE_URLS.map(fetchICalFromUrl)));
+  const iCalSourceUrls = config.events.ical_urls;
+  return flatten(await Promise.all(iCalSourceUrls.map(fetchICalFromUrl)));
 }
 
 module.exports = { fetchICalEvents };
