@@ -1,5 +1,6 @@
 import React from 'react';
 import Card from './Card';
+import CardHeader from './CardHeader';
 import Caption from './Caption';
 import EventList from './EventList';
 
@@ -7,7 +8,8 @@ function EventsSection({ upcomingEvents }) {
   const { events, lastUpdateFailed } = upcomingEvents;
 
   return (
-    <Card title="Upcoming events">
+    <Card>
+      <CardHeader>Upcoming events</CardHeader>
       {events.map(event => (
         <EventList name={event.name} list={event.eventList} />
       ))}

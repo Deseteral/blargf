@@ -1,4 +1,5 @@
 import React from 'react';
+import CardHeader from './CardHeader';
 import Caption from './Caption';
 
 function EventList({ name, list }) {
@@ -6,7 +7,7 @@ function EventList({ name, list }) {
 
   return (
     <div className="events-subsection">
-      <h2>{name}</h2>
+      <CardHeader subheader>{name}</CardHeader>
       <ul className="events-list">
         {list.map(e => (
           <li className="events-list-element">

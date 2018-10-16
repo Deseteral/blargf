@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import Card from './Card';
+import CardHeader from './CardHeader';
 import Caption from './Caption';
 import Icon from './Icon';
 import TaskCountLabel from './TaskCountLabel';
@@ -10,7 +11,8 @@ function TasksSection({ tasks }) {
   const isEmpty = list.length === 0;
 
   return (
-    <Card title="Tasks">
+    <Card>
+      <CardHeader>Tasks</CardHeader>
       {isEmpty && (
         <div className="no-tasks-container">
           <Icon type="outlined_flag" className="no-tasks-flag" />
