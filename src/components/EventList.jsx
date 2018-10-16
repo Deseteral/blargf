@@ -1,6 +1,6 @@
 import React from 'react';
-import CardHeader from './CardHeader';
-import Caption from './Caption';
+import CardHeader from './atomic/CardHeader';
+import Caption from './atomic/Caption';
 
 function EventList({ name, list }) {
   if (list.length === 0) return null;

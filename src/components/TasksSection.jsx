@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react';
-import Card from './Card';
-import CardHeader from './CardHeader';
-import Caption from './Caption';
-import Icon from './Icon';
+import Card from './atomic/Card';
+import CardHeader from './atomic/CardHeader';
+import Caption from './atomic/Caption';
+import Icon from './atomic/Icon';
 import TaskCountLabel from './TaskCountLabel';
 import TaskListElement from './TaskListElement';
 

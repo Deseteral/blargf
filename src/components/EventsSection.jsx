@@ -1,7 +1,7 @@
 import React from 'react';
-import Card from './Card';
-import CardHeader from './CardHeader';
-import Caption from './Caption';
+import Card from './atomic/Card';
+import CardHeader from './atomic/CardHeader';
+import Caption from './atomic/Caption';
 import EventList from './EventList';
 
 function EventsSection({ upcomingEvents }) {
