@@ -18,9 +18,6 @@ function EventsSection({ upcomingEvents }) {
           List might be outdated because of failed update.
         </Caption>
       )}
-      <Caption>
-        Plan your events in <a href="https://calendar.google.com/calendar/">Google Calendar</a>.
-      </Caption>
     </Card>
   );
 }

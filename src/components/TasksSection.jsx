@@ -32,9 +32,6 @@ function TasksSection({ tasks }) {
           List might be outdated because of failed update.
         </Caption>
       )}
-      <Caption>
-        Manage your tasks in <a href="https://todoist.com">Todoist</a>.
-      </Caption>
     </Card>
   );
 }
