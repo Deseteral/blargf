@@ -1,14 +1,15 @@
 import React from 'react';
 import numberToWords from 'number-to-words';
+import Caption from './Caption';
 
 function TaskCountLabel({ count }) {
   const taskNumberForm = numberToWords.toWords(count);
   const tasksAmountForm = count === 1 ? 'task' : 'tasks';
 
   return (
-    <div className="caption">
+    <Caption>
       You have {taskNumberForm} {tasksAmountForm} due today.
-    </div>
+    </Caption>
   );
 }
 

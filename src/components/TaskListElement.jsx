@@ -1,9 +1,10 @@
 import React from 'react';
+import Icon from './Icon';
 
 function TaskListElement({ content }) {
   return (
     <li className="list-element">
-      <i className="material-icons list-element-icon">radio_button_unchecked</i>
+      <Icon type="radio_button_unchecked" className="list-element-icon" />
       {content}
     </li>
   );
