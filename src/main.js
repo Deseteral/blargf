@@ -1,6 +1,3 @@
-/* eslint-disable import/first */
-require('dotenv').config();
-
 import path from 'path';
 import express from 'express';
 import compression from 'compression';
