@@ -1,22 +1,24 @@
 import React from 'react';
-import EventSection from './EventSection';
+import Card from './Card';
+import CardHeader from './CardHeader';
+import Caption from './Caption';
+import EventList from './EventList';
 
 function EventsSection({ upcomingEvents }) {
   const { events, lastUpdateFailed } = upcomingEvents;
 
   return (
-    <section className="card">
-      <h1>Upcoming events</h1>
-      {events.map(event => <EventSection name={event.name} eventList={event.eventList} />)}
+    <Card>
+      <CardHeader>Upcoming events</CardHeader>
+      {events.map(event => (
+        <EventList name={event.name} list={event.eventList} />
+      ))}
       {lastUpdateFailed && (
-        <div className="caption caption--small caption--error">
+        <Caption error>
           List might be outdated because of failed update.
-        </div>
+        </Caption>
       )}
-      <p className="caption">
-        Plan your events in <a href="https://calendar.google.com/calendar/">Google Calendar</a>.
-      </p>
-    </section>
+    </Card>
   );
 }
 

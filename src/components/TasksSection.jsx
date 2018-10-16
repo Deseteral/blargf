@@ -1,4 +1,8 @@
 import React, { Fragment } from 'react';
+import Card from './Card';
+import CardHeader from './CardHeader';
+import Caption from './Caption';
+import Icon from './Icon';
 import TaskCountLabel from './TaskCountLabel';
 import TaskListElement from './TaskListElement';
 
@@ -7,12 +11,12 @@ function TasksSection({ tasks }) {
   const isEmpty = list.length === 0;
 
   return (
-    <section className="card">
-      <h1>Tasks</h1>
+    <Card>
+      <CardHeader>Tasks</CardHeader>
       {isEmpty && (
         <div className="no-tasks-container">
-          <i className="no-tasks-flag material-icons">outlined_flag</i>
-          <div className="caption">There are no tasks planned for today.</div>
+          <Icon type="outlined_flag" className="no-tasks-flag" />
+          <Caption>There are no tasks planned for today.</Caption>
         </div>
       )}
       {!isEmpty && (
@@ -24,14 +28,11 @@ function TasksSection({ tasks }) {
         </Fragment>
       )}
       {lastUpdateFailed && (
-        <div className="caption caption--small caption--error">
+        <Caption error>
           List might be outdated because of failed update.
-        </div>
+        </Caption>
       )}
-      <p className="caption">
-        Manage your tasks in <a href="https://todoist.com">Todoist</a>.
-      </p>
-    </section>
+    </Card>
   );
 }
 

@@ -27,7 +27,6 @@ function render() {
       </head>
       <body className="hidden">
         <BackgroundImage imageData={context.imageData} />
-        <h1 className="title">New tab</h1>
         <div className="container">
           <div className="grid-container">
             <div className="column">

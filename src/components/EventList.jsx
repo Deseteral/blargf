@@ -1,15 +1,22 @@
 import React from 'react';
+import CardHeader from './CardHeader';
+import Caption from './Caption';
 
-function EventList({ eventList }) {
+function EventList({ name, list }) {
+  if (list.length === 0) return null;
+
   return (
-    <ul className="events-list">
-      {eventList.map(e => (
-        <li className="events-list-element">
-          <div>{e.title}</div>
-          <div className="caption">{e.date}</div>
-        </li>
-    ))}
-    </ul>
+    <div className="events-subsection">
+      <CardHeader subheader>{name}</CardHeader>
+      <ul className="events-list">
+        {list.map(e => (
+          <li className="events-list-element">
+            <div>{e.title}</div>
+            <Caption>{e.date}</Caption>
+          </li>
+      ))}
+      </ul>
+    </div>
   );
 }
 

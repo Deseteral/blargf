@@ -1,9 +1,10 @@
 import React from 'react';
+import Icon from './Icon';
 
 function ImageSourceButton({ imageData }) {
   return (
     <a className="tray-icon" href={imageData.link}>
-      <i className="material-icons">photo_camera</i>
+      <Icon type="photo_camera" />
     </a>
   );
 }
