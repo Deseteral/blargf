@@ -1,22 +1,12 @@
 import React from 'react';
-import ReactDOMServer from 'react-dom/server';
 import BackgroundImage from '../components/BackgroundImage';
 import DateTimeSection from '../components/DateTimeSection';
 import EventsSection from '../components/EventsSection';
 import TasksSection from '../components/TasksSection';
-import getBackgroundImage from '../data/reddit-images';
-import getTasks from '../data/tasks';
-import getUpcomingEvents from '../data/upcoming-events';
 import ImageSourceButton from '../components/ImageSourceButton';
 
-function render() {
-  const context = {
-    imageData: getBackgroundImage(),
-    tasks: getTasks(),
-    upcomingEvents: getUpcomingEvents(),
-  };
-
-  return ReactDOMServer.renderToStaticMarkup((
+function Index({ context }) {
+  return (
     <html lang="en">
       <head>
         <title>New tab</title>
@@ -44,7 +34,7 @@ function render() {
         <script src="code.js" />
       </body>
     </html>
-  ));
+  );
 }
 
-module.exports = render;
+export default Index;
