@@ -1,6 +1,6 @@
 import signale from 'signale';
 import config from '../application/config';
-import Todoist from '../services/todoist';
+import * as TodoistClient from '../clients/todoist-client';
 
 const cache = {
   list: [],
@@ -11,7 +11,7 @@ async function refreshCache() {
   signale.pending('Updating tasks cache...');
 
   try {
-    cache.list = await Todoist.getTasksDueToday();
+    cache.list = await TodoistClient.getTasksDueToday();
     cache.lastUpdateFailed = false;
 
     signale.success('Updated tasks cache');

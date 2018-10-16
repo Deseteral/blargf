@@ -17,4 +17,4 @@ async function getTasksDueToday() {
   return tasks.filter(task => task.due && task.due.date === currentDate);
 }
 
-module.exports = { getTasksDueToday };
+export { getTasksDueToday };
