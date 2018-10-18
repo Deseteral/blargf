@@ -23,7 +23,7 @@ function TasksSection({ tasks }) {
         <Fragment>
           <TaskCountLabel count={list.length} />
           <ul className="list">
-            {list.map(t => <TaskListElement content={t.content} />)}
+            {list.map((t, idx) => <TaskListElement content={t.content} key={idx} />)}
           </ul>
         </Fragment>
       )}

@@ -9,8 +9,8 @@ function EventList({ name, list }) {
     <div className="events-subsection">
       <CardHeader subheader>{name}</CardHeader>
       <ul className="events-list">
-        {list.map(e => (
-          <li className="events-list-element">
+        {list.map((e, idx) => (
+          <li className="events-list-element" key={idx}>
             <div>{e.title}</div>
             <Caption>{e.date}</Caption>
           </li>

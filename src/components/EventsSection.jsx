@@ -10,8 +10,8 @@ function EventsSection({ upcomingEvents }) {
   return (
     <Card>
       <CardHeader>Upcoming events</CardHeader>
-      {events.map(event => (
-        <EventList name={event.name} list={event.eventList} />
+      {events.map((event, idx) => (
+        <EventList name={event.name} list={event.eventList} key={idx} />
       ))}
       {lastUpdateFailed && (
         <Caption error>
