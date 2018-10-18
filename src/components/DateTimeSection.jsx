@@ -1,6 +1,6 @@
 import React from 'react';
 import Card from './atomic/Card';
-import { getFormattedDate, getFormattedTime } from '../data/date-time';
+import { getFormattedDate, getFormattedTime } from '../services/date-time';
 
 function DateTimeSection() {
   return (

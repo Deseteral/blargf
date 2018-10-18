@@ -4,9 +4,9 @@ import { performance } from 'perf_hooks';
 import signale from 'signale';
 import ReactDOMServer from 'react-dom/server';
 import Index from '../components/Index';
-import getBackgroundImage from '../data/reddit-images';
-import getTasks from '../data/tasks';
-import getUpcomingEvents from '../data/upcoming-events';
+import getBackgroundImage from '../services/reddit-images';
+import getTasks from '../services/tasks';
+import getUpcomingEvents from '../services/upcoming-events';
 
 function render() {
   const context = {
