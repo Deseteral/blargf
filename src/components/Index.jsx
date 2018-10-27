@@ -1,4 +1,5 @@
 import React from 'react';
+import { injectGlobal } from 'emotion';
 import Column from '../components/atomic/Column';
 import BackgroundImage from '../components/BackgroundImage';
 import DateTimeSection from '../components/DateTimeSection';
@@ -7,6 +8,16 @@ import TasksSection from '../components/TasksSection';
 import ImageSourceButton from '../components/ImageSourceButton';
 
 function Index({ context }) {
+  // eslint-disable-next-line no-unused-expressions
+  injectGlobal`
+    body {
+      margin: 64px 16px 16px 16px;
+      background-color: #03A9F4;
+      font-family: 'Roboto', sans-serif;
+      user-select: none;
+    }
+  `;
+
   return (
     <html lang="en">
       <head>
