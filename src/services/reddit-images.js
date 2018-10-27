@@ -1,12 +1,7 @@
-const signale = require('signale');
-const fetch = require('node-fetch');
-const shuffle = require('shuffle-array');
-
-const SUBREDDITS = [ // TODO: Make this be a part of configuration
-  'SkyPorn',
-  'EarthPorn',
-  'ExposurePorn',
-];
+import signale from 'signale';
+import fetch from 'node-fetch';
+import shuffle from 'shuffle-array';
+import config from '../application/config';
 
 let cache = [];
 
@@ -23,7 +18,7 @@ function mapListingData(listing) {
 async function refreshCache() {
   signale.pending('Updating reddit image cache...');
 
-  const urls = SUBREDDITS
+  const urls = config.backgrounds.subreddits
     .map(subreddit => `https://www.reddit.com/r/${subreddit}.json`);
 
   Promise

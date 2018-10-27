@@ -1,14 +1,13 @@
-const signale = require('signale');
-const compareDates = require('date-fns/compare_asc');
-const isToday = require('date-fns/is_today');
-const isFuture = require('date-fns/is_future');
-const isSameWeek = require('date-fns/is_same_week');
-const differenceInDays = require('date-fns/difference_in_days');
-const startOfToday = require('date-fns/start_of_today');
-const differenceInHours = require('date-fns/difference_in_hours');
-const { fetchICalEvents } = require('../services/ical');
-
-const { EVENTS_REFRESH_INTERVAL_SEC } = process.env;
+import signale from 'signale';
+import compareDates from 'date-fns/compare_asc';
+import isToday from 'date-fns/is_today';
+import isFuture from 'date-fns/is_future';
+import isSameWeek from 'date-fns/is_same_week';
+import differenceInDays from 'date-fns/difference_in_days';
+import startOfToday from 'date-fns/start_of_today';
+import differenceInHours from 'date-fns/difference_in_hours';
+import config from '../application/config';
+import * as iCalClient from '../clients/ical-client';
 
 const cache = {
   events: [],
@@ -58,7 +57,7 @@ async function refreshCache() {
   signale.pending('Updating upcoming events cache...');
 
   try {
-    const events = (await fetchICalEvents())
+    const events = (await iCalClient.fetchEvents())
       .map(mapICalEvent)
       .sort((e1, e2) => compareDates(e1.startDate, e2.startDate))
       .filter(e => isToday(e.startDate) || isFuture(e.startDate));
@@ -92,9 +91,7 @@ function getUpcomingEvents() {
 }
 
 (function initializeUpcomingEventsModule() {
-  signale.info(`EVENTS_REFRESH_INTERVAL_SEC=${EVENTS_REFRESH_INTERVAL_SEC}`);
-
-  setInterval(refreshCache, EVENTS_REFRESH_INTERVAL_SEC * 1000);
+  setInterval(refreshCache, config.events.refresh_interval_seconds * 1000);
   setImmediate(refreshCache);
 }());
 

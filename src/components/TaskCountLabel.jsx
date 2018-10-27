@@ -1,6 +1,6 @@
 import React from 'react';
 import numberToWords from 'number-to-words';
-import Caption from './Caption';
+import Caption from './atomic/Caption';
 
 function TaskCountLabel({ count }) {
   const taskNumberForm = numberToWords.toWords(count);

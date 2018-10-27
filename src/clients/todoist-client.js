@@ -1,11 +1,12 @@
-const fetch = require('node-fetch');
+import fetch from 'node-fetch';
+import config from '../application/config';
 
 const TASKS_URL = 'https://beta.todoist.com/API/v8/tasks';
-const { TODOIST_TOKEN } = process.env;
 
+const token = config.tasks.todoist_token;
 const fetchOptions = {
   headers: {
-    Authorization: `Bearer ${TODOIST_TOKEN}`,
+    Authorization: `Bearer ${token}`,
   },
 };
 
@@ -16,4 +17,4 @@ async function getTasksDueToday() {
   return tasks.filter(task => task.due && task.due.date === currentDate);
 }
 
-module.exports = { getTasksDueToday };
+export { getTasksDueToday };

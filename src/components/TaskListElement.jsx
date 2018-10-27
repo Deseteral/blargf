@@ -1,5 +1,5 @@
 import React from 'react';
-import Icon from './Icon';
+import Icon from './atomic/Icon';
 
 function TaskListElement({ content }) {
   return (
