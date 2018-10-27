@@ -1,5 +1,6 @@
 import styled from 'react-emotion';
 import { css } from 'emotion';
+import Column from './Column';
 
 const Card = styled.section`
   display: flex;
@@ -15,6 +16,18 @@ const Card = styled.section`
 
   &:first-of-type {
     margin-top: 0;
+  }
+
+  .hidden & {
+    opacity: 0;
+  }
+
+  .hidden ${Column}:first-of-type & {
+    transform: translateY(100px);
+  }
+
+  .hidden ${Column}:last-of-type & {
+    transform: translateY(180px);
   }
 `;
 

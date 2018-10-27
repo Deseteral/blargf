@@ -1,4 +1,5 @@
 import React from 'react';
+import Column from '../components/atomic/Column';
 import BackgroundImage from '../components/BackgroundImage';
 import DateTimeSection from '../components/DateTimeSection';
 import EventsSection from '../components/EventsSection';
@@ -19,13 +20,13 @@ function Index({ context }) {
         <BackgroundImage imageData={context.imageData} />
         <div className="container">
           <div className="grid-container">
-            <div className="column">
+            <Column>
               <DateTimeSection />
               <EventsSection upcomingEvents={context.upcomingEvents} />
-            </div>
-            <div className="column">
+            </Column>
+            <Column>
               <TasksSection tasks={context.tasks} />
-            </div>
+            </Column>
           </div>
         </div>
         <div className="tray">

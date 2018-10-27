@@ -5,17 +5,7 @@ body {
   user-select: none;
 }
 
-.hidden .card {
-  opacity: 0;
-}
 
-.hidden .column:first-of-type .card {
-  transform: translateY(100px);
-}
-
-.hidden .column:last-of-type .card {
-  transform: translateY(180px);
-}
 
 // .card h1, .card h2 {
 //   margin: 0 0 8px 0;
@@ -82,14 +72,6 @@ p.caption {
   display: flex;
   max-width: 880px;
   width: 100%;
-}
-
-.column {
-  width: 50%;
-}
-
-.column:first-of-type {
-  margin-right: 16px;
 }
 
 .tray {
