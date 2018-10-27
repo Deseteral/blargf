@@ -4,7 +4,7 @@ import { getFormattedDate, getFormattedTime } from '../services/date-time';
 
 function DateTimeSection() {
   return (
-    <Card className="date-time-section">
+    <Card height="170px">
       <div className="time">{getFormattedTime()}</div>
       <div className="date">{getFormattedDate()}</div>
     </Card>
