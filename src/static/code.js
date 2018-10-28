@@ -1,4 +1,4 @@
-const timeElement = document.querySelector('.time');
+const timeElement = document.querySelector('#time');
 
 function updateTime() {
   const date = new Date();
