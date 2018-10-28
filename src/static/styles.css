@@ -1,35 +1,3 @@
-.list {
-  margin: 0;
-  padding: 0;
-}
-
-.list-element {
-  display: flex;
-  align-items: center;
-  min-height: 48px;
-  list-style: none;
-}
-
-.list-element:last-of-type {
-  border-bottom: none;
-}
-
-.list-element-icon {
-  margin-right: 8px;
-}
-
-.no-tasks-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.no-tasks-flag {
-  margin-bottom: 8px;
-  font-size: 48px;
-  opacity: 0.56;
-}
-
 .events-subsection {
   margin-bottom: 8px;
 }
