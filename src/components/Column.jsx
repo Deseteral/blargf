@@ -1,5 +1,4 @@
 import styled from 'react-emotion';
-import { css } from 'emotion';
 
 const Column = styled.section`
   width: 50%;
