@@ -1,5 +1,5 @@
 import React from 'react';
-import { injectGlobal } from 'emotion';
+import { css, injectGlobal } from 'emotion';
 import Column from '../components/atomic/Column';
 import BackgroundImage from '../components/BackgroundImage';
 import DateTimeSection from '../components/DateTimeSection';
@@ -18,6 +18,17 @@ function Index({ context }) {
     }
   `;
 
+  const containerClassName = css`
+    display: flex;
+    justify-content: center;
+  `;
+
+  const gridContainerClassName = css`
+    display: flex;
+    max-width: 880px;
+    width: 100%;
+  `;
+
   return (
     <html lang="en">
       <head>
@@ -29,8 +40,8 @@ function Index({ context }) {
       </head>
       <body className="hidden">
         <BackgroundImage imageData={context.imageData} />
-        <div className="container">
-          <div className="grid-container">
+        <div className={containerClassName}>
+          <div className={gridContainerClassName}>
             <Column>
               <DateTimeSection />
               <EventsSection upcomingEvents={context.upcomingEvents} />
