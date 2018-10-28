@@ -1,11 +1,12 @@
 import React from 'react';
 import { css, injectGlobal } from 'emotion';
 import Column from '../components/atomic/Column';
+import Tray from './atomic/Tray';
 import BackgroundImage from '../components/BackgroundImage';
 import DateTimeSection from '../components/DateTimeSection';
 import EventsSection from '../components/EventsSection';
 import TasksSection from '../components/TasksSection';
-import ImageSourceButton from '../components/ImageSourceButton';
+import TrayIconLink from './atomic/TrayIconLink';
 
 function Index({ context }) {
   // eslint-disable-next-line no-unused-expressions
@@ -51,9 +52,9 @@ function Index({ context }) {
             </Column>
           </div>
         </div>
-        <div className="tray">
-          <ImageSourceButton imageData={context.imageData} />
-        </div>
+        <Tray>
+          <TrayIconLink href={context.imageData.link} icon="photo_camera" />
+        </Tray>
         <script src="code.js" />
       </body>
     </html>
