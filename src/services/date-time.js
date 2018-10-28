@@ -11,4 +11,4 @@ function getFormattedDate() {
   return date.toLocaleDateString('en-US', localeOptions);
 }
 
-module.exports = { getFormattedDate, getFormattedTime };
+export { getFormattedDate, getFormattedTime };

@@ -43,4 +43,4 @@ function getBackgroundImage() {
   setImmediate(refreshCache);
 }());
 
-module.exports = getBackgroundImage;
+export { getBackgroundImage };
