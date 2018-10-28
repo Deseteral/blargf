@@ -1,6 +1,6 @@
 import styled from 'react-emotion';
 import { css } from 'emotion';
-import Column from './Column';
+import Column from '../Column';
 
 const Card = styled.section`
   display: flex;
