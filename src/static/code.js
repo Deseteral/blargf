@@ -24,7 +24,7 @@ async function setBackgroundImage() {
   if (imageUrl) {
     await preloadImage(imageUrl);
 
-    const element = document.querySelector('.background-image');
+    const element = document.querySelector('#background-image');
     element.style.backgroundImage = `url("${imageUrl}")`;
     element.classList.add('show');
   }

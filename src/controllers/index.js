@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
+import { renderStylesToString } from 'emotion-server';
 import { performance } from 'perf_hooks';
 import signale from 'signale';
 import ReactDOMServer from 'react-dom/server';
@@ -15,7 +16,7 @@ function render() {
     upcomingEvents: getUpcomingEvents(),
   };
 
-  return ReactDOMServer.renderToStaticMarkup(<Index context={context} />);
+  return renderStylesToString(ReactDOMServer.renderToStaticMarkup(<Index context={context} />));
 }
 
 function indexController(req, res) {

@@ -1,9 +1,10 @@
-import React from 'react';
+import styled from 'react-emotion';
 
-function CardHeader({ children, subheader }) {
-  return !subheader
-    ? <h1>{children}</h1>
-    : <h2>{children}</h2>;
-}
+const CardHeader = styled.div`
+  margin: 0 0 8px 0;
+  font-weight: 500;
+  letter-spacing: 0.25px;
+  font-size: ${props => (props.subheader ? '18px' : '22px')};
+`;
 
 export default CardHeader;
