@@ -8,6 +8,7 @@ import BackgroundImage from './BackgroundImage';
 import DateTimeSection from './DateTimeSection';
 import EventsSection from './EventsSection';
 import TasksSection from './TasksSection';
+import PudeukoSection from './PudeukoSection';
 
 function Index({ context }) {
   return (
@@ -20,6 +21,7 @@ function Index({ context }) {
         </Column>
         <Column>
           <TasksSection tasks={context.tasks} />
+          <PudeukoSection data={context.pudeuko} />
         </Column>
       </ColumnWrapper>
       <Tray>
