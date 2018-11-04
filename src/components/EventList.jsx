@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 import CardHeader from './atomic/CardHeader';
+import Text from './atomic/Text';
 import Caption from './atomic/Caption';
 
 const Container = styled.div`
@@ -30,7 +31,7 @@ function EventList({ name, list }) {
       <List>
         {list.map((e, idx) => (
           <ListElement key={idx}>
-            <div>{e.title}</div>
+            <Text>{e.title}</Text>
             <Caption>{e.date}</Caption>
           </ListElement>
       ))}

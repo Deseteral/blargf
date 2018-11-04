@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'react-emotion';
+import Text from './atomic/Text';
 
 const Link = styled.a`
   display: flex;
@@ -31,7 +32,7 @@ function PudeukoItem({ item }) {
   return (
     <Link href={url}>
       {imageUrl && <Image src={imageUrl} />}
-      {text && (<div>{text}</div>)}
+      {text && (<Text>{text}</Text>)}
     </Link>
   );
 }
