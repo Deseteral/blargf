@@ -32,4 +32,4 @@ function getTasks() {
   setImmediate(refreshCache);
 }());
 
-module.exports = getTasks;
+export { getTasks };

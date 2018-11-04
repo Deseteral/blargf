@@ -95,4 +95,4 @@ function getUpcomingEvents() {
   setImmediate(refreshCache);
 }());
 
-module.exports = getUpcomingEvents;
+export { getUpcomingEvents };

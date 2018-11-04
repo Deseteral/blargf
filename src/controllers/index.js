@@ -5,15 +5,17 @@ import { performance } from 'perf_hooks';
 import signale from 'signale';
 import ReactDOMServer from 'react-dom/server';
 import Index from '../components/Index';
-import getBackgroundImage from '../services/reddit-images';
-import getTasks from '../services/tasks';
-import getUpcomingEvents from '../services/upcoming-events';
+import { getBackgroundImage } from '../services/reddit-images';
+import { getTasks } from '../services/tasks';
+import { getUpcomingEvents } from '../services/upcoming-events';
+import { getPudeukoData } from '../services/pudeuko';
 
 function render() {
   const context = {
     imageData: getBackgroundImage(),
     tasks: getTasks(),
     upcomingEvents: getUpcomingEvents(),
+    pudeuko: getPudeukoData(),
   };
 
   return renderStylesToString(ReactDOMServer.renderToStaticMarkup(<Index context={context} />));
