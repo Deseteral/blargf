@@ -13,11 +13,13 @@ const TimerContainer = styled.div`
 `;
 
 function Countdown({ title, date }) {
+  const duration = formatAsDuration(new Date(date));
+
   return (
     <TimerContainer>
       <Text>{title}</Text>
       <Caption data-countdown data-countdown-date={date}>
-        {formatAsDuration(new Date(date))}
+        {duration}
       </Caption>
     </TimerContainer>
   );
