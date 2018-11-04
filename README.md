@@ -4,7 +4,7 @@
 Personal new tab page for Chrome.
 
 ## Cool features
-- Time and date widget
+- Current time and date
 - List of tasks due today from Todoist
 - Upcoming events from iCal files (for example from Google Calendar)
 - List of links in `pudeuko` format
