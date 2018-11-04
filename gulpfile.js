@@ -3,19 +3,28 @@ const babel = require('gulp-babel');
 const del = require('del');
 const extname = require('gulp-extname');
 const { spawn } = require('child_process');
+const webpack = require('webpack');
+const webpackStream = require('webpack-stream');
+const webpackConfig = require('./webpack.config.js');
 
 gulp.task('clean', () => del(['build']));
 
 gulp.task('js', () => (
-  gulp.src('src/**/*.+(js|jsx)')
+  gulp.src(['src/**/*.+(js|jsx)', '!src/static/**/*'])
     .pipe(babel())
     .pipe(extname('.js'))
     .pipe(gulp.dest('build'))
 ));
 
+gulp.task('static-js', () => (
+  gulp.src('src/static/code.js')
+    .pipe(webpackStream(webpackConfig), webpack)
+    .pipe(gulp.dest('./build/static'))
+));
+
 gulp.task('default', gulp.series(
   'clean',
-  gulp.parallel('js'),
+  gulp.parallel('js', 'static-js'),
 ));
 
 let node = null;

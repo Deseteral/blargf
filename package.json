@@ -36,6 +36,7 @@
     "@babel/core": "7.1.2",
     "@babel/preset-env": "7.1.0",
     "@babel/preset-react": "7.0.0",
+    "babel-loader": "8.0.4",
     "babel-plugin-emotion": "9.2.11",
     "del": "3.0.0",
     "eslint": "4.19.1",
@@ -45,6 +46,8 @@
     "eslint-plugin-react": "7.9.1",
     "gulp": "4.0.0",
     "gulp-babel": "8.0.0-beta.2",
-    "gulp-extname": "0.2.2"
+    "gulp-extname": "0.2.2",
+    "webpack": "4.24.0",
+    "webpack-stream": "5.1.1"
   }
 }

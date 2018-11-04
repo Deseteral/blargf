@@ -20,7 +20,7 @@ function fetchICalFromUrl(url) {
 }
 
 async function fetchEvents() {
-  const iCalSourceUrls = config.events.ical_urls;
+  const iCalSourceUrls = config().events.ical_urls;
   return flatten(await Promise.all(iCalSourceUrls.map(fetchICalFromUrl)));
 }
 

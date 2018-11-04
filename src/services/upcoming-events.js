@@ -91,7 +91,7 @@ function getUpcomingEvents() {
 }
 
 (function initializeUpcomingEventsModule() {
-  setInterval(refreshCache, config.events.refresh_interval_seconds * 1000);
+  setInterval(refreshCache, config().events.refresh_interval_seconds * 1000);
   setImmediate(refreshCache);
 }());
 

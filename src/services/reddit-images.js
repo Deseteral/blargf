@@ -18,7 +18,7 @@ function mapListingData(listing) {
 async function refreshCache() {
   signale.pending('Updating reddit image cache...');
 
-  const urls = config.backgrounds.subreddits
+  const urls = config().backgrounds.subreddits
     .map(subreddit => `https://www.reddit.com/r/${subreddit}.json`);
 
   Promise

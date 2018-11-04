@@ -3,7 +3,7 @@ import config from '../application/config';
 
 const TASKS_URL = 'https://beta.todoist.com/API/v8/tasks';
 
-const token = config.tasks.todoist_token;
+const token = config().tasks.todoist_token;
 const fetchOptions = {
   headers: {
     Authorization: `Bearer ${token}`,

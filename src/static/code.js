@@ -1,4 +1,7 @@
+import formatAsDuration from '../helpers/format-as-duration';
+
 const timeElement = document.querySelector('#time');
+const countdownElements = [...document.querySelectorAll('[data-countdown]')];
 
 function updateTime() {
   const date = new Date();
@@ -30,8 +33,16 @@ async function setBackgroundImage() {
   }
 }
 
+function updateCountdowns() {
+  countdownElements.forEach((el) => {
+    const date = new Date(el.dataset.countdownDate);
+    el.textContent = formatAsDuration(date); // eslint-disable-line no-param-reassign
+  });
+}
+
 window.addEventListener('load', () => {
   setInterval(updateTime, 1000);
+  setInterval(updateCountdowns, 1000);
   unhide();
   setBackgroundImage();
 });
