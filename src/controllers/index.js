@@ -9,6 +9,7 @@ import { getBackgroundImage } from '../services/reddit-images';
 import { getTasks } from '../services/tasks';
 import { getUpcomingEvents } from '../services/upcoming-events';
 import { getPudeukoData } from '../services/pudeuko';
+import { getCountdownsData } from '../services/countdowns';
 
 function render() {
   const context = {
@@ -16,6 +17,7 @@ function render() {
     tasks: getTasks(),
     upcomingEvents: getUpcomingEvents(),
     pudeuko: getPudeukoData(),
+    countdowns: getCountdownsData(),
   };
 
   return renderStylesToString(ReactDOMServer.renderToStaticMarkup(<Index context={context} />));

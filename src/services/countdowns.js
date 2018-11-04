@@ -9,7 +9,7 @@ function refreshCache() {
   cache.list = config().countdowns.list;
 }
 
-function getCountdowns() {
+function getCountdownsData() {
   return cache;
 }
 
@@ -18,4 +18,4 @@ function getCountdowns() {
   setImmediate(refreshCache);
 }());
 
-export { getCountdowns };
+export { getCountdownsData };
