@@ -1,4 +1,4 @@
-import config, { reloadConfiguration } from '../application/config';
+import config from '../application/config';
 
 const cache = {
   list: [],
@@ -6,7 +6,6 @@ const cache = {
 };
 
 function refreshCache() {
-  reloadConfiguration();
   cache.list = config().countdowns.list;
 }
 
