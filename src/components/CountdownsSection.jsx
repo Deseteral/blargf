@@ -11,7 +11,7 @@ function CountdownsSection({ data }) {
   return (
     <Card>
       <CardHeader>Countdowns</CardHeader>
-      {list.map(countdown => (<Countdown {...countdown} />))}
+      {list.map(countdown => (<Countdown {...countdown} key={countdown.title} />))}
     </Card>
   );
 }
