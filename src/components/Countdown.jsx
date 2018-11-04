@@ -5,11 +5,18 @@ import Text from './atomic/Text';
 import Caption from './atomic/Caption';
 
 const TimerContainer = styled.div`
+  display: flex;
+  flex-direction: row;
   margin-bottom: 8px;
+  align-items: baseline;
 
   &:last-of-type {
     margin-bottom: 0;
   }
+`;
+
+const Title = styled(Text)`
+  margin-right: 4px;
 `;
 
 function Countdown({ title, date }) {
@@ -17,7 +24,7 @@ function Countdown({ title, date }) {
 
   return (
     <TimerContainer>
-      <Text>{title}</Text>
+      <Title>{title}</Title>
       <Caption data-countdown data-countdown-date={date}>
         {duration}
       </Caption>
