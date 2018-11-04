@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'react-emotion';
+import formatAsDuration from '../helpers/format-as-duration';
 import Text from './atomic/Text';
 import Caption from './atomic/Caption';
 
@@ -15,7 +16,9 @@ function Countdown({ title, date }) {
   return (
     <TimerContainer>
       <Text>{title}</Text>
-      <Caption data-countdown data-countdown-date={date} />
+      <Caption data-countdown data-countdown-date={date}>
+        {formatAsDuration(new Date(date))}
+      </Caption>
     </TimerContainer>
   );
 }
