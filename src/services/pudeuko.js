@@ -28,7 +28,7 @@ function getPudeukoData() {
 }
 
 (function initializePudeukoModule() {
-  setInterval(refreshCache, config.pudeuko.refresh_interval_seconds * 1000);
+  setInterval(refreshCache, config().pudeuko.refresh_interval_seconds * 1000);
   setImmediate(refreshCache);
 }());
 

@@ -15,4 +15,4 @@ app.use(compression());
 app.use('/', express.static(path.join(__dirname, 'static')));
 app.get('/', indexController);
 
-app.listen(config.server.port, () => signale.start(`blargf server started on port ${config.server.port}`));
+app.listen(config().server.port, () => signale.start(`blargf server started on port ${config().server.port}`));

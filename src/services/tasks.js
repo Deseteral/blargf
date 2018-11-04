@@ -28,7 +28,7 @@ function getTasks() {
 }
 
 (function initializeTasksModule() {
-  setInterval(refreshCache, config.tasks.refresh_interval_seconds * 1000);
+  setInterval(refreshCache, config().tasks.refresh_interval_seconds * 1000);
   setImmediate(refreshCache);
 }());
 
