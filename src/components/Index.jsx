@@ -9,6 +9,7 @@ import DateTimeSection from './DateTimeSection';
 import EventsSection from './EventsSection';
 import TasksSection from './TasksSection';
 import PudeukoSection from './PudeukoSection';
+import CountdownsSection from './CountdownsSection';
 
 function Index({ context }) {
   return (
@@ -22,6 +23,7 @@ function Index({ context }) {
         <Column>
           <TasksSection tasks={context.tasks} />
           <PudeukoSection data={context.pudeuko} />
+          <CountdownsSection data={context.countdowns} />
         </Column>
       </ColumnWrapper>
       <Tray>
