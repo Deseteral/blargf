@@ -1,4 +1,5 @@
 const timeElement = document.querySelector('#time');
+const countdownElements = [...document.querySelectorAll('[data-countdown]')];
 
 function updateTime() {
   const date = new Date();
@@ -30,8 +31,20 @@ async function setBackgroundImage() {
   }
 }
 
+function updateCountdowns() {
+  const calculateDuration = date => +date - Date.now();
+  const formatDuration = duration => `blath ${duration}`;
+
+  countdownElements.forEach((el) => {
+    const date = new Date(el.dataset.countdownDate);
+    const duration = calculateDuration(date);
+    el.textContent = formatDuration(duration); // eslint-disable-line no-param-reassign
+  });
+}
+
 window.addEventListener('load', () => {
   setInterval(updateTime, 1000);
+  setInterval(updateCountdowns, 1000);
   unhide();
   setBackgroundImage();
 });

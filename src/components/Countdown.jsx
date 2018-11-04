@@ -15,9 +15,7 @@ function Countdown({ title, date }) {
   return (
     <TimerContainer>
       <Text>{title}</Text>
-      <Caption data-countdown data-countdown-date={date}>
-        1d 23h 12m 18s
-      </Caption>
+      <Caption data-countdown data-countdown-date={date} />
     </TimerContainer>
   );
 }
