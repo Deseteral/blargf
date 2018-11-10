@@ -1,3 +1,4 @@
+import signale from 'signale';
 import config from '../application/config';
 
 const cache = {
@@ -7,13 +8,14 @@ const cache = {
 
 function refreshCache() {
   cache.list = config().countdowns.list;
+  signale.success('Updated countdowns cache');
 }
 
 function getCountdownsData() {
   return cache;
 }
 
-(function initializePudeukoModule() {
+(function initializeCountdownsModule() {
   setInterval(refreshCache, config().countdowns.refresh_interval_seconds * 1000);
   setImmediate(refreshCache);
 }());
