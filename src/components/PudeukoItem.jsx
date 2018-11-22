@@ -5,12 +5,14 @@ import Text from './atomic/Text';
 const Link = styled.a`
   display: flex;
   flex-direction: row;
-  height: 64px;
   align-items: center;
-  border-bottom: 1px solid #717171;
-  text-decoration: none;
-  color: #000000;
   padding: 4px 0;
+  height: 48px;
+  color: #000000;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.56);
+  text-decoration: none;
+  white-space: nowrap;
+  overflow: hidden;
 
   &:last-of-type {
     border: none;

@@ -6,6 +6,7 @@ const Body = styled.body`
   background-color: #03A9F4;
   font-family: 'Roboto', sans-serif;
   user-select: none;
+  box-sizing: border-box;
 `;
 
 function ApplicationWrapper({ title, children }) {

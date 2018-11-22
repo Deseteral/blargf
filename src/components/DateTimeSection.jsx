@@ -17,7 +17,7 @@ const Date = styled.div`
 
 function DateTimeSection() {
   return (
-    <Card height="170px">
+    <Card>
       <Time id="time">{getFormattedTime()}</Time>
       <Date>{getFormattedDate()}</Date>
     </Card>
