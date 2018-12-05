@@ -8,6 +8,7 @@ import startOfToday from 'date-fns/start_of_today';
 import differenceInHours from 'date-fns/difference_in_hours';
 import config from '../application/config';
 import * as iCalClient from '../clients/ical-client';
+import formatAsDuration from '../helpers/format-as-duration';
 
 const cache = {
   events: [],
@@ -24,8 +25,8 @@ function shortDurationFormat(dateA, dateB) {
   const formatDate = date => date.toLocaleDateString('en-US', dateFormattingOptions);
 
   return (isSingleFullDayEvent || isHourEvent)
-    ? formatDate(dateA)
-    : `${formatDate(dateA)} - ${formatDate(dateB)}`;
+    ? `${formatDate(dateA)}, ${formatAsDuration(dateA)}`
+    : `${formatDate(dateA)} - ${formatDate(dateB)}, ${formatAsDuration(dateA)}`;
 }
 
 function mapICalEvent(event) {
