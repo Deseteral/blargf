@@ -34,7 +34,7 @@ function EventList({ name, list }) {
             <Text>{e.title}</Text>
             <Caption>{e.date}</Caption>
           </ListElement>
-      ))}
+        ))}
       </List>
     </Container>
   );

@@ -12,7 +12,7 @@ function PudeukoSection({ data }) {
   return (
     <Card>
       <CardHeader>pudeuko</CardHeader>
-      {list.map(item => (<PudeukoItem item={item} />))}
+      {list.map(item => (<PudeukoItem item={item} key={item.link.url} />))}
       {lastUpdateFailed && (
         <Caption error>
           List might be outdated because of failed update.
