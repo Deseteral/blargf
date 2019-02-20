@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styled from 'react-emotion';
+import styled from 'styled-components';
 import Card from './atomic/Card';
 import CardHeader from './atomic/CardHeader';
 import Caption from './atomic/Caption';

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from 'styled-components';
 import Text from './atomic/Text';
 
 const Link = styled.a`

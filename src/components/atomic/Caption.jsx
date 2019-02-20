@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from 'styled-components';
 
 const Caption = styled.div`
   font-family: 'Crimson Text', serif;

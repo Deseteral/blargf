@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from 'styled-components';
 
 const Body = styled.body`
   margin: 64px 16px 16px 16px;

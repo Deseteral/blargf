@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-filename-extension */
 import React from 'react';
-import { renderStylesToString } from 'emotion-server';
+import { ServerStyleSheet } from 'styled-components'
 import { performance } from 'perf_hooks';
 import signale from 'signale';
 import ReactDOMServer from 'react-dom/server';
@@ -20,7 +20,12 @@ function render() {
     countdowns: getCountdownsData(),
   };
 
-  return renderStylesToString(ReactDOMServer.renderToStaticMarkup(<Index context={context} />));
+  const sheet = new ServerStyleSheet();
+  const html = ReactDOMServer.renderToStaticMarkup(
+    sheet.collectStyles(<Index context={context} />),
+  );
+
+  return sheet.getStyleTags() + html;
 }
 
 function indexController(req, res) {

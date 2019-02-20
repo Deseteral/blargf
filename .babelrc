@@ -3,5 +3,5 @@
     "@babel/preset-react",
     ["@babel/preset-env", { "targets": { "node": true } }]
   ],
-  "plugins": ["emotion"]
+  "plugins": ["babel-plugin-styled-components"]
 }
