@@ -18,7 +18,6 @@
     "classnames": "2.2.6",
     "compression": "1.7.2",
     "date-fns": "1.29.0",
-    "dropbox": "4.0.12",
     "duration": "0.2.0",
     "emotion": "9.2.12",
     "emotion-server": "9.2.12",
