@@ -1,11 +1,14 @@
 import React from 'react';
 import css from 'classnames';
 
-function Icon({ className, type }) {
-  const iconClassName = css('material-icons', className);
+function Icon({ className, size, type }) {
+  const iconClassName = css(className, 'material-icons');
+  const style = size ? { fontSize: size } : {};
 
   return (
-    <i className={iconClassName}>{type}</i>
+    <i className={iconClassName} style={style}>
+      {type}
+    </i>
   );
 }
 
