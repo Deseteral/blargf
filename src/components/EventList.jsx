@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from 'styled-components';
 import CardHeader from './atomic/CardHeader';
 import Text from './atomic/Text';
 import Caption from './atomic/Caption';

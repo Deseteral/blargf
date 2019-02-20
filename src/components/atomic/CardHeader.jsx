@@ -1,4 +1,4 @@
-import styled from 'react-emotion';
+import styled from 'styled-components';
 
 const CardHeader = styled.div`
   margin: 0 0 8px 0;

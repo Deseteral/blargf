@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from 'styled-components';
 import Card from './atomic/Card';
 import { getFormattedDate, getFormattedTime } from '../services/date-time';
 

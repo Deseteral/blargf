@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styled from 'react-emotion';
+import styled from 'styled-components';
 import Card from './atomic/Card';
 import CardHeader from './atomic/CardHeader';
 import Caption from './atomic/Caption';
@@ -17,12 +17,13 @@ const EmptyTaskListContainer = styled.div`
   align-items: center;
 `;
 
-const EmptyTaskListFlag = styled(Icon)`
+const EmptyTaskListFlag = styled(Icon).attrs({
+  type: 'outlined_flag',
+  size: '48px',
+})`
   margin-bottom: 8px;
-  font-size: 48px;
   opacity: 0.56;
 `;
-EmptyTaskListFlag.defaultProps = { type: 'outlined_flag' };
 
 const TaskListElement = styled.li`
   display: flex;
@@ -35,10 +36,11 @@ const TaskListElement = styled.li`
   }
 `;
 
-const IncompleteTaskIcon = styled(Icon)`
+const IncompleteTaskIcon = styled(Icon).attrs({
+  type: 'radio_button_unchecked',
+})`
   margin-right: 8px;
 `;
-IncompleteTaskIcon.defaultProps = { type: 'radio_button_unchecked' };
 
 function TasksSection({ tasks }) {
   const { list, lastUpdateFailed } = tasks;

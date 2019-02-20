@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import styled from 'react-emotion';
+import styled from 'styled-components';
 
 const BackgroundImageCanvas = styled.div`
   height: 100vh;
