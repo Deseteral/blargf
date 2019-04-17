@@ -12,7 +12,7 @@ import { getPudeukoData } from '../services/pudeuko';
 import { getCountdownsData } from '../services/countdowns';
 
 function render() {
-  const context = {
+  const data = {
     imageData: getBackgroundImage(),
     tasks: getTasks(),
     upcomingEvents: getUpcomingEvents(),
@@ -22,7 +22,7 @@ function render() {
 
   const sheet = new ServerStyleSheet();
   const html = ReactDOMServer.renderToStaticMarkup(
-    sheet.collectStyles(<Index context={context} />),
+    sheet.collectStyles(<Index data={data} />),
   );
 
   return sheet.getStyleTags() + html;
