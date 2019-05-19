@@ -12,6 +12,7 @@ import PudeukoSection from './PudeukoSection';
 import CountdownsSection from './CountdownsSection';
 
 function Index({ data }) {
+  console.log(data);
   return (
     <ApplicationWrapper title="New Tab">
       <BackgroundImage imageData={data.imageData} />

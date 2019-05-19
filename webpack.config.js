@@ -2,6 +2,10 @@ module.exports = {
   mode: 'production',
   output: {
     filename: 'code.js',
+    chunkFilename: '[name].bundle.js',
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
   },
   module: {
     rules: [

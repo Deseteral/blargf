@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import styled from 'styled-components';
 
 const Body = styled.body`
@@ -10,6 +10,8 @@ const Body = styled.body`
 `;
 
 function ApplicationWrapper({ title, children }) {
+  if (typeof window !== 'undefined') return <Fragment>{children}</Fragment>;
+
   return (
     <html lang="en">
       <head>
@@ -19,7 +21,9 @@ function ApplicationWrapper({ title, children }) {
         <base target="_parent" />
       </head>
       <Body className="hidden">
-        {children}
+        <div id="app">
+          {children}
+        </div>
         <script src="code.js" />
       </Body>
     </html>
