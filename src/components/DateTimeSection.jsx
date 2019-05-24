@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Card from './atomic/Card';
 import { getFormattedDate, getFormattedTime } from '../services/date-time';
@@ -16,9 +16,14 @@ const Date = styled.div`
 `;
 
 function DateTimeSection() {
+  const [formattedTime, setFormattedTime] = useState(getFormattedTime());
+  useEffect(() => {
+    setInterval(() => setFormattedTime(getFormattedTime()), 1000);
+  }, []);
+
   return (
     <Card>
-      <Time id="time">{getFormattedTime()}</Time>
+      <Time id="time">{formattedTime}</Time>
       <Date>{getFormattedDate()}</Date>
     </Card>
   );

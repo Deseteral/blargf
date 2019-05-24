@@ -3,5 +3,8 @@
     "@babel/preset-react",
     ["@babel/preset-env", { "targets": { "node": true } }]
   ],
-  "plugins": ["babel-plugin-styled-components"]
+  "plugins": [
+    "babel-plugin-styled-components",
+    "@babel/plugin-syntax-dynamic-import"
+  ]
 }
