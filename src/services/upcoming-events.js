@@ -5,10 +5,32 @@ import isSameWeek from 'date-fns/is_same_week';
 import differenceInDays from 'date-fns/difference_in_days';
 import startOfToday from 'date-fns/start_of_today';
 import differenceInHours from 'date-fns/difference_in_hours';
+import ical from 'node-ical';
 import registerService from './register-service';
 import config from '../application/config';
-import * as iCalClient from '../clients/ical-client';
 import { formatAsDuration } from '../helpers/date-time-formatter';
+
+function fetchICalFromUrl(url) {
+  return new Promise((resolve, reject) => {
+    ical.fromURL(url, {}, (err, data) => {
+      if (err) {
+        reject(err);
+        return;
+      }
+
+      const events = Object.keys(data)
+        .map(key => data[key])
+        .filter(event => !!event.summary);
+
+      resolve(events);
+    });
+  });
+}
+
+async function fetchEvents() {
+  const iCalSourceUrls = config().events.ical_urls;
+  return (await Promise.all(iCalSourceUrls.map(fetchICalFromUrl))).flat();
+}
 
 function shortDurationFormat(dateA, dateB) {
   const isHourEvent = differenceInHours(dateB, dateA) % 24 !== 0;
@@ -50,7 +72,7 @@ function isEventLater(e) {
 }
 
 async function dataProvider() {
-  const events = (await iCalClient.fetchEvents())
+  const events = (await fetchEvents())
     .map(mapICalEvent)
     .sort((e1, e2) => compareDates(e1.startDate, e2.startDate))
     .filter(e => isToday(e.startDate) || isFuture(e.startDate));

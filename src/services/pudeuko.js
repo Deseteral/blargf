@@ -1,6 +1,11 @@
+import fetch from 'node-fetch';
 import registerService from './register-service';
 import config from '../application/config';
-import * as PudeukoClient from '../clients/pudeuko-client';
+
+async function fetchPudeukoData() {
+  const response = await fetch(`${config().pudeuko.service_url}/items`);
+  return response.json();
+}
 
 const getPudeukoData = registerService({
   refreshInterval: config().pudeuko.refresh_interval_seconds,
@@ -9,7 +14,7 @@ const getPudeukoData = registerService({
     onSuccess: 'Updated pudeuko cache',
     onError: 'Could not update pudeuko cache',
   },
-  dataProvider: async () => PudeukoClient.getPudeukoData(),
+  dataProvider: fetchPudeukoData,
   initialData: [],
   fieldName: 'list',
 });
