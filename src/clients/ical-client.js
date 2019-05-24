@@ -1,5 +1,4 @@
 import ical from 'node-ical';
-import flatten from 'array-flatten';
 import config from '../application/config';
 
 function fetchICalFromUrl(url) {
@@ -21,7 +20,7 @@ function fetchICalFromUrl(url) {
 
 async function fetchEvents() {
   const iCalSourceUrls = config().events.ical_urls;
-  return flatten(await Promise.all(iCalSourceUrls.map(fetchICalFromUrl)));
+  return (await Promise.all(iCalSourceUrls.map(fetchICalFromUrl))).flat();
 }
 
 export { fetchEvents };
