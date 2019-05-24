@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import Card from './atomic/Card';
-import { getFormattedDate, getFormattedTime } from '../services/date-time';
+import { getFormattedDate, getFormattedTime } from '../helpers/date-time-formatter';
 
 const Time = styled.div`
   align-self: center;

@@ -8,7 +8,7 @@ import differenceInHours from 'date-fns/difference_in_hours';
 import registerService from './register-service';
 import config from '../application/config';
 import * as iCalClient from '../clients/ical-client';
-import formatAsDuration from '../helpers/format-as-duration';
+import { formatAsDuration } from '../helpers/date-time-formatter';
 
 function shortDurationFormat(dateA, dateB) {
   const isHourEvent = differenceInHours(dateB, dateA) % 24 !== 0;

@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import formatAsDuration from '../helpers/format-as-duration';
+import { formatAsDuration } from '../helpers/date-time-formatter';
 import Text from './atomic/Text';
 import Caption from './atomic/Caption';
 
