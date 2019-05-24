@@ -1,9 +1,7 @@
-import signale from 'signale';
 import fetch from 'node-fetch';
 import shuffle from 'shuffle-array';
+import registerService from './register-service';
 import config from '../application/config';
-
-let cache = [];
 
 function mapListingData(listing) {
   return listing.data.children
@@ -15,32 +13,31 @@ function mapListingData(listing) {
     .filter(image => image.imageUrl.endsWith('.jpg') || image.imageUrl.endsWith('.jpeg'));
 }
 
-async function refreshCache() {
-  signale.pending('Updating reddit image cache...');
-
+async function dataProvider() {
   const urls = config().backgrounds.subreddits
     .map(subreddit => `https://www.reddit.com/r/${subreddit}.json`);
 
-  Promise
-    .all(urls.map(fetch))
+  return Promise.all(urls.map(fetch))
     .then(res => Promise.all(res.map(data => data.json())))
     .then(listings => listings.map(mapListingData))
     .then(nestedImages => nestedImages.reduce((acc, val) => acc.concat(val), []))
-    .then(images => shuffle(images))
-    .then((images) => {
-      cache = images;
-      signale.success('Updated reddit image cache');
-    });
+    .then(images => shuffle(images));
 }
 
-function getBackgroundImage() {
-  const image = cache.pop();
-  if (cache.length === 0) refreshCache();
-  return image;
-}
-
-(function initializeRedditImagesModule() {
-  setImmediate(refreshCache);
-}());
+const getBackgroundImage = registerService({
+  loggerMessages: {
+    onPending: 'Updating reddit image cache...',
+    onSuccess: 'Updated reddit image cache',
+    onError: 'Could not update reddit image cache',
+  },
+  dataProvider,
+  initialData: [],
+  fieldName: 'list',
+  getter: (cache, refresh) => {
+    const image = cache.list.pop();
+    if (cache.length === 0) refresh();
+    return image;
+  },
+});
 
 export { getBackgroundImage };

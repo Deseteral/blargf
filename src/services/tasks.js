@@ -1,35 +1,17 @@
-import signale from 'signale';
+import registerService from './register-service';
 import config from '../application/config';
 import * as TodoistClient from '../clients/todoist-client';
 
-const cache = {
-  list: [],
-  lastUpdateFailed: false,
-};
-
-async function refreshCache() {
-  signale.pending('Updating tasks cache...');
-
-  try {
-    cache.list = await TodoistClient.getTasksDueToday();
-    cache.lastUpdateFailed = false;
-
-    signale.success('Updated tasks cache');
-  } catch (exception) {
-    cache.lastUpdateFailed = true;
-
-    signale.fatal('Could not update task cache');
-    signale.fatal(exception);
-  }
-}
-
-function getTasks() {
-  return cache;
-}
-
-(function initializeTasksModule() {
-  setInterval(refreshCache, config().tasks.refresh_interval_seconds * 1000);
-  setImmediate(refreshCache);
-}());
+const getTasks = registerService({
+  refreshInterval: config().tasks.refresh_interval_seconds,
+  loggerMessages: {
+    onPending: 'Updating tasks cache...',
+    onSuccess: 'Updated tasks cache',
+    onError: 'Could not update tasks cache',
+  },
+  dataProvider: async () => TodoistClient.getTasksDueToday(),
+  initialData: [],
+  fieldName: 'list',
+});
 
 export { getTasks };
