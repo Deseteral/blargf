@@ -7,7 +7,7 @@ async function hydrate() {
 
   ReactDOM.hydrate(
     <Index data={data} />, // eslint-disable-line react/jsx-filename-extension
-    document.querySelector('#app'),
+    document.getElementById('app'),
   );
 }
 
