@@ -43,8 +43,8 @@ const IncompleteTaskIcon = styled(Icon).attrs({
 `;
 
 function TasksSection({ tasks }) {
-  const { list, lastUpdateFailed } = tasks;
-  const isEmpty = list.length === 0;
+  const { data, lastUpdateFailed } = tasks;
+  const isEmpty = data.length === 0;
 
   return (
     <Card>
@@ -57,9 +57,9 @@ function TasksSection({ tasks }) {
       )}
       {!isEmpty && (
         <Fragment>
-          <TaskCountLabel count={list.length} />
+          <TaskCountLabel count={data.length} />
           <TaskList>
-            {list.map((t, idx) => (
+            {data.map((t, idx) => (
               <TaskListElement key={idx}>
                 <IncompleteTaskIcon /> {t.content}
               </TaskListElement>

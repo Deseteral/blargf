@@ -1,35 +1,17 @@
-import signale from 'signale';
+import fetch from 'node-fetch';
+import registerService from './register-service';
 import config from '../application/config';
-import * as PudeukoClient from '../clients/pudeuko-client';
 
-const cache = {
-  list: [],
-  lastUpdateFailed: false,
-};
-
-async function refreshCache() {
-  signale.pending('Updating pudeuko cache...');
-
-  try {
-    cache.list = await PudeukoClient.getPudeukoData();
-    cache.lastUpdateFailed = false;
-
-    signale.success('Updated pudeuko cache');
-  } catch (exception) {
-    cache.lastUpdateFailed = true;
-
-    signale.fatal('Could not update pudeuko cache');
-    signale.fatal(exception);
-  }
+async function fetchPudeukoData() {
+  const response = await fetch(`${config().pudeuko.service_url}/items`);
+  return response.json();
 }
 
-function getPudeukoData() {
-  return cache;
-}
-
-(function initializePudeukoModule() {
-  setInterval(refreshCache, config().pudeuko.refresh_interval_seconds * 1000);
-  setImmediate(refreshCache);
-}());
+const getPudeukoData = registerService({
+  name: 'pudeuko',
+  refreshInterval: config().pudeuko.refresh_interval_seconds,
+  dataProvider: fetchPudeukoData,
+  initialData: [],
+});
 
 export { getPudeukoData };

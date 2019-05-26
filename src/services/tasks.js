@@ -1,35 +1,27 @@
-import signale from 'signale';
+import fetch from 'node-fetch';
+import registerService from './register-service';
 import config from '../application/config';
-import * as TodoistClient from '../clients/todoist-client';
 
-const cache = {
-  list: [],
-  lastUpdateFailed: false,
-};
+const TASKS_URL = 'https://beta.todoist.com/API/v8/tasks';
 
-async function refreshCache() {
-  signale.pending('Updating tasks cache...');
+async function fetchTasksDueToday() {
+  const currentDate = new Date().toISOString().split('T')[0];
+  const token = config().tasks.todoist_token;
+  const fetchOptions = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
 
-  try {
-    cache.list = await TodoistClient.getTasksDueToday();
-    cache.lastUpdateFailed = false;
-
-    signale.success('Updated tasks cache');
-  } catch (exception) {
-    cache.lastUpdateFailed = true;
-
-    signale.fatal('Could not update task cache');
-    signale.fatal(exception);
-  }
+  const tasks = await (await fetch(TASKS_URL, fetchOptions)).json();
+  return tasks.filter(task => task.due && task.due.date === currentDate);
 }
 
-function getTasks() {
-  return cache;
-}
-
-(function initializeTasksModule() {
-  setInterval(refreshCache, config().tasks.refresh_interval_seconds * 1000);
-  setImmediate(refreshCache);
-}());
+const getTasks = registerService({
+  name: 'tasks',
+  refreshInterval: config().tasks.refresh_interval_seconds,
+  dataProvider: fetchTasksDueToday,
+  initialData: [],
+});
 
 export { getTasks };

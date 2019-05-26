@@ -14,7 +14,6 @@
   "author": "Deseteral <github.com/deseteral>",
   "license": "MIT",
   "dependencies": {
-    "array-flatten": "2.1.2",
     "classnames": "2.2.6",
     "compression": "1.7.4",
     "date-fns": "1.30.1",

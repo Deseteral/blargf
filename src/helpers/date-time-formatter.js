@@ -1,3 +1,5 @@
+import distanceInWordsStrict from 'date-fns/distance_in_words_strict';
+
 function getFormattedTime() {
   const date = new Date();
   return date.toTimeString().slice(0, 5);
@@ -11,4 +13,8 @@ function getFormattedDate() {
   return date.toLocaleDateString('en-US', localeOptions);
 }
 
-export { getFormattedDate, getFormattedTime };
+function formatAsDuration(date) {
+  return distanceInWordsStrict(new Date(), date, { addSuffix: true });
+}
+
+export { formatAsDuration, getFormattedTime, getFormattedDate };

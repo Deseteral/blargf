@@ -3,15 +3,15 @@ import Card from './atomic/Card';
 import CardHeader from './atomic/CardHeader';
 import Countdown from './Countdown';
 
-function CountdownsSection({ data }) {
-  const { list } = data;
+function CountdownsSection({ countdowns }) {
+  const { data } = countdowns;
 
-  if (list.length === 0) return null;
+  if (data.length === 0) return null;
 
   return (
     <Card>
       <CardHeader>Countdowns</CardHeader>
-      {list.map(countdown => (<Countdown {...countdown} key={countdown.title} />))}
+      {data.map(countdown => (<Countdown {...countdown} key={countdown.title} />))}
     </Card>
   );
 }

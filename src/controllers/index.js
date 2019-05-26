@@ -5,24 +5,14 @@ import { performance } from 'perf_hooks';
 import signale from 'signale';
 import ReactDOMServer from 'react-dom/server';
 import Index from '../components/Index';
-import { getBackgroundImage } from '../services/reddit-images';
-import { getTasks } from '../services/tasks';
-import { getUpcomingEvents } from '../services/upcoming-events';
-import { getPudeukoData } from '../services/pudeuko';
-import { getCountdownsData } from '../services/countdowns';
+import getData from '../services/data-service';
 
 function render() {
-  const data = {
-    imageData: getBackgroundImage(),
-    tasks: getTasks(),
-    upcomingEvents: getUpcomingEvents(),
-    pudeuko: getPudeukoData(),
-    countdowns: getCountdownsData(),
-  };
+  const props = getData();
 
   const sheet = new ServerStyleSheet();
   const html = ReactDOMServer.renderToStaticMarkup(
-    sheet.collectStyles(<Index data={data} />),
+    sheet.collectStyles(<Index {...props} />),
   );
 
   return sheet.getStyleTags() + html;
@@ -33,6 +23,7 @@ function indexController(req, res) {
   const html = render();
   const renderTime = (performance.now() - timeStart);
 
+  res.set('Server-Timing', `render;dur=${renderTime};desc="Render"`);
   res.send(html);
 
   signale.info(`Render took ${renderTime} ms`);

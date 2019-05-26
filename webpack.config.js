@@ -14,12 +14,18 @@ module.exports = {
         exclude: /(node_modules)/,
         loader: 'babel-loader',
         options: {
+          babelrc: false,
           presets: [
+            '@babel/preset-react',
             ['@babel/preset-env', {
               targets: {
                 browsers: ['last 1 Chrome versions'],
               },
             }],
+          ],
+          plugins: [
+            'babel-plugin-styled-components',
+            '@babel/plugin-syntax-dynamic-import',
           ],
         },
       },
