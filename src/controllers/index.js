@@ -23,6 +23,7 @@ function indexController(req, res) {
   const html = render();
   const renderTime = (performance.now() - timeStart);
 
+  res.set('Server-Timing', `render;dur=${renderTime};desc="Render"`);
   res.send(html);
 
   signale.info(`Render took ${renderTime} ms`);
