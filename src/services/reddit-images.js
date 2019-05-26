@@ -28,10 +28,9 @@ const getBackgroundImage = registerService({
   name: 'reddit images',
   dataProvider,
   initialData: [],
-  fieldName: 'list',
   getter: (cache, refresh) => {
-    const image = cache.list.pop();
-    if (cache.length === 0) refresh();
+    const image = cache.data.pop();
+    if (cache.data.length === 0) refresh();
     return image;
   },
 });

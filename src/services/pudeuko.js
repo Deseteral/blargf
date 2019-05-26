@@ -12,7 +12,6 @@ const getPudeukoData = registerService({
   refreshInterval: config().pudeuko.refresh_interval_seconds,
   dataProvider: fetchPudeukoData,
   initialData: [],
-  fieldName: 'list',
 });
 
 export { getPudeukoData };

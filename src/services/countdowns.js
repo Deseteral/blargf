@@ -6,7 +6,6 @@ const getCountdownsData = registerService({
   refreshInterval: config().countdowns.refresh_interval_seconds,
   dataProvider: async () => config().countdowns.list,
   initialData: [],
-  fieldName: 'list',
 });
 
 export { getCountdownsData };

@@ -5,7 +5,6 @@ function registerService({
   refreshInterval,
   dataProvider,
   initialData,
-  fieldName,
   getter,
 }) {
   const loggerMessages = {
@@ -15,7 +14,7 @@ function registerService({
   };
 
   const cache = {
-    [fieldName]: initialData,
+    data: initialData,
     lastUpdateFailed: false,
   };
 
@@ -23,7 +22,7 @@ function registerService({
     signale.pending(loggerMessages.onPending);
 
     try {
-      cache[fieldName] = await dataProvider();
+      cache.data = await dataProvider();
 
       cache.lastUpdateFailed = false;
       signale.success(loggerMessages.onSuccess);

@@ -5,12 +5,12 @@ import Caption from './atomic/Caption';
 import EventList from './EventList';
 
 function EventsSection({ upcomingEvents }) {
-  const { events, lastUpdateFailed } = upcomingEvents;
+  const { data, lastUpdateFailed } = upcomingEvents;
 
   return (
     <Card>
       <CardHeader>Upcoming events</CardHeader>
-      {events.map((event, idx) => (
+      {data.map((event, idx) => (
         <EventList name={event.name} list={event.eventList} key={idx} />
       ))}
       {lastUpdateFailed && (

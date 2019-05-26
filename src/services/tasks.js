@@ -22,7 +22,6 @@ const getTasks = registerService({
   refreshInterval: config().tasks.refresh_interval_seconds,
   dataProvider: fetchTasksDueToday,
   initialData: [],
-  fieldName: 'list',
 });
 
 export { getTasks };

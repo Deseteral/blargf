@@ -96,7 +96,6 @@ const getUpcomingEvents = registerService({
   refreshInterval: config().tasks.refresh_interval_seconds,
   dataProvider,
   initialData: [],
-  fieldName: 'events',
 });
 
 export { getUpcomingEvents };
