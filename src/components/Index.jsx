@@ -11,23 +11,23 @@ import TasksSection from './TasksSection';
 import PudeukoSection from './PudeukoSection';
 import CountdownsSection from './CountdownsSection';
 
-function Index({ data }) {
+function Index({ imageData, upcomingEvents, tasks, pudeuko, countdowns }) {
   return (
     <ApplicationWrapper title="New Tab">
-      <BackgroundImage imageData={data.imageData} />
+      <BackgroundImage imageData={imageData} />
       <ColumnWrapper>
         <Column>
           <DateTimeSection />
-          <EventsSection upcomingEvents={data.upcomingEvents} />
+          <EventsSection upcomingEvents={upcomingEvents} />
         </Column>
         <Column>
-          <TasksSection tasks={data.tasks} />
-          <PudeukoSection data={data.pudeuko} />
-          <CountdownsSection data={data.countdowns} />
+          <TasksSection tasks={tasks} />
+          <PudeukoSection pudeuko={pudeuko} />
+          <CountdownsSection countdowns={countdowns} />
         </Column>
       </ColumnWrapper>
       <Tray>
-        <TrayIconLink href={data.imageData.link} icon="photo_camera" />
+        <TrayIconLink href={imageData.link} icon="photo_camera" />
       </Tray>
     </ApplicationWrapper>
   );

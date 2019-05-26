@@ -3,8 +3,8 @@ import Card from './atomic/Card';
 import CardHeader from './atomic/CardHeader';
 import Countdown from './Countdown';
 
-function CountdownsSection({ data }) {
-  const { list } = data;
+function CountdownsSection({ countdowns }) {
+  const { list } = countdowns;
 
   if (list.length === 0) return null;
 

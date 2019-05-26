@@ -8,11 +8,11 @@ import Index from '../components/Index';
 import getData from '../services/data-service';
 
 function render() {
-  const data = getData();
+  const props = getData();
 
   const sheet = new ServerStyleSheet();
   const html = ReactDOMServer.renderToStaticMarkup(
-    sheet.collectStyles(<Index data={data} />),
+    sheet.collectStyles(<Index {...props} />),
   );
 
   return sheet.getStyleTags() + html;

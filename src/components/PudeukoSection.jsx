@@ -4,8 +4,8 @@ import CardHeader from './atomic/CardHeader';
 import Caption from './atomic/Caption';
 import PudeukoItem from './PudeukoItem';
 
-function PudeukoSection({ data }) {
-  const { list, lastUpdateFailed } = data;
+function PudeukoSection({ pudeuko }) {
+  const { list, lastUpdateFailed } = pudeuko;
 
   if (list.length === 0) return null;
 

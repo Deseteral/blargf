@@ -1,9 +1,7 @@
 /* eslint-disable import/first */
 import signale from 'signale';
 
-signale.config({
-  displayTimestamp: true,
-});
+signale.config({ displayTimestamp: true });
 
 import path from 'path';
 import express from 'express';

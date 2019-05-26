@@ -3,10 +3,10 @@ import React from 'react';
 import Index from '../components/Index';
 
 async function hydrate() {
-  const data = await (await fetch('/data')).json();
+  const props = await (await fetch('/data')).json();
 
   ReactDOM.hydrate(
-    <Index data={data} />, // eslint-disable-line react/jsx-filename-extension
+    <Index {...props} />, // eslint-disable-line react/jsx-filename-extension
     document.getElementById('app'),
   );
 }
