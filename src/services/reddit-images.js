@@ -25,11 +25,7 @@ async function dataProvider() {
 }
 
 const getBackgroundImage = registerService({
-  loggerMessages: {
-    onPending: 'Updating reddit image cache...',
-    onSuccess: 'Updated reddit image cache',
-    onError: 'Could not update reddit image cache',
-  },
+  name: 'reddit images',
   dataProvider,
   initialData: [],
   fieldName: 'list',

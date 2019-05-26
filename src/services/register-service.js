@@ -1,13 +1,19 @@
 import signale from 'signale';
 
 function registerService({
+  name,
   refreshInterval,
-  loggerMessages,
   dataProvider,
   initialData,
   fieldName,
   getter,
 }) {
+  const loggerMessages = {
+    onPending: `Updating ${name} cache...`,
+    onSuccess: `Updated ${name} cache`,
+    onError: `Could not update ${name} cache`,
+  };
+
   const cache = {
     [fieldName]: initialData,
     lastUpdateFailed: false,

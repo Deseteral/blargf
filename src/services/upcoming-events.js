@@ -92,12 +92,8 @@ async function dataProvider() {
 }
 
 const getUpcomingEvents = registerService({
+  name: 'upcoming events',
   refreshInterval: config().tasks.refresh_interval_seconds,
-  loggerMessages: {
-    onPending: 'Updating upcoming events cache...',
-    onSuccess: 'Updated upcoming events cache',
-    onError: 'Could not update upcoming events cache',
-  },
   dataProvider,
   initialData: [],
   fieldName: 'events',

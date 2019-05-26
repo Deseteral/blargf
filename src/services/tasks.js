@@ -18,12 +18,8 @@ async function fetchTasksDueToday() {
 }
 
 const getTasks = registerService({
+  name: 'tasks',
   refreshInterval: config().tasks.refresh_interval_seconds,
-  loggerMessages: {
-    onPending: 'Updating tasks cache...',
-    onSuccess: 'Updated tasks cache',
-    onError: 'Could not update tasks cache',
-  },
   dataProvider: fetchTasksDueToday,
   initialData: [],
   fieldName: 'list',
