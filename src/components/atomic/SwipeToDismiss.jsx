@@ -18,6 +18,7 @@ const Content = styled.div`
   background: white;
   height: 100%;
   border-bottom: 1px solid rgba(0,0,0,.12);
+  box-sizing: border-box;
 
   overflow: hidden;
   will-change: transform;
