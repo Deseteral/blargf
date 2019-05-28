@@ -25,7 +25,15 @@ const Content = styled.div`
   ${props => (props.animated && css`transition: transform 0.3s ease-in-out;`)}
 `;
 
-function SwipeToDismiss({ id, children, onDismiss }) {
+const UNSWIPE_TIMEOUT_MS = 1000;
+
+function SwipeToDismiss({
+  id,
+  children,
+  dismissTimeoutMs = 1000,
+  onSwipedOut = (() => {}),
+  onDismiss = (() => {}),
+}) {
   const [currentTranslation, setCurrentTranslation] = useState(0);
   const [animated, setAnimated] = useState(true);
   const [hidden, setHidden] = useState(false);
@@ -40,10 +48,15 @@ function SwipeToDismiss({ id, children, onDismiss }) {
     setTimeout(() => {
       setHidden(true);
 
-      setTimeout(() => {
-        // this.containerElement.remove(); // TOOD: This, but in react??
-        if (onDismiss) onDismiss(id);
-      }, 1000);
+      const dismissTimeoutId = setTimeout(() => {
+        onDismiss(id); // TODO: This callback should remove this element from the DOM
+      }, dismissTimeoutMs);
+
+      const cancelDismissFn = () => {
+        clearTimeout(dismissTimeoutId);
+        setHidden(false);
+      };
+      onSwipedOut(cancelDismissFn);
     }, 300);
   };
   const setX = (xValue) => {
@@ -62,7 +75,7 @@ function SwipeToDismiss({ id, children, onDismiss }) {
       onMouseEnter={() => setAnimated(false)}
       onMouseLeave={() => {
         setAnimated(true);
-        setTimeout(() => setX(0), 1000);
+        setTimeout(() => setX(0), UNSWIPE_TIMEOUT_MS);
       }}
       ref={containerElement}
     >
