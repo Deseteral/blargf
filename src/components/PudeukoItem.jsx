@@ -17,7 +17,7 @@ function PudeukoItem({ item }) {
   return (
     <SwipeToDismiss
       id={item.id}
-      onSwipedOut={cancel => setTimeout(() => cancel(), 500)}
+      onSwipedOut={cancel => setTimeout(cancel, 500)}
       onDismiss={id => console.log(`removed ${id}`)}
     >
       <Link href={url}>

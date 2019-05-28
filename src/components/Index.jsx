@@ -1,4 +1,5 @@
 import React from 'react';
+import Snackbar from './atomic/Snackbar';
 import Tray from './atomic/Tray';
 import TrayIconLink from './atomic/TrayIconLink';
 import ApplicationWrapper from './ApplicationWrapper';
@@ -29,6 +30,7 @@ function Index({ imageData, upcomingEvents, tasks, pudeuko, countdowns }) {
       <Tray>
         <TrayIconLink href={imageData.link} icon="photo_camera" />
       </Tray>
+      <Snackbar text="Test notification" action={() => {}} actionText="undo" />
     </ApplicationWrapper>
   );
 }
