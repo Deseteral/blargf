@@ -4,9 +4,9 @@ import { Store } from './Store';
 import Snackbar from './atomic/Snackbar';
 
 const Container = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
+  position: fixed;
+  bottom: 16px;
+  left: 16px;
 `;
 
 function SnackbarContainer() {

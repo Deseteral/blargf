@@ -9,6 +9,12 @@ const Link = styled.a`
   text-decoration: none;
 `;
 
+const DISMISS_TIMEOUT_MS = 2500;
+
+function deleteItem(id) {
+  fetch(`/pudeuko/${id}`, { method: 'DELETE' }).catch(console.error);
+}
+
 function PudeukoItem({ item }) {
   const { text, link } = item;
   const url = link && link.url;
@@ -17,8 +23,9 @@ function PudeukoItem({ item }) {
   return (
     <SwipeToDismiss
       id={item.id}
-      onSwipedOut={cancel => makeSnackbar(`Removed ${item.id}`, 'UNDO', 2500, cancel)}
-      onDismiss={id => console.log(`removed ${id}`)}
+      dismissTimeoutMs={DISMISS_TIMEOUT_MS}
+      onSwipedOut={cancel => makeSnackbar(`Removed ${item.id}`, 'UNDO', DISMISS_TIMEOUT_MS, cancel)}
+      onDismiss={deleteItem}
     >
       <Link href={url}>
         {text && (<Text>{text}</Text>)}
