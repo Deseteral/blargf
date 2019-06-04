@@ -7,6 +7,13 @@ async function fetchPudeukoData() {
   return response.json();
 }
 
+async function deletePudeukoItem(itemId) {
+  await fetch(
+    `${config().pudeuko.service_url}/items/${itemId}`,
+    { method: 'DELETE' },
+  );
+}
+
 const getPudeukoData = registerService({
   name: 'pudeuko',
   refreshInterval: config().pudeuko.refresh_interval_seconds,
@@ -14,4 +21,4 @@ const getPudeukoData = registerService({
   initialData: [],
 });
 
-export { getPudeukoData };
+export { getPudeukoData, deletePudeukoItem };
