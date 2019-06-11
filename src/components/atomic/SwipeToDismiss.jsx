@@ -3,8 +3,8 @@ import styled, { css } from 'styled-components';
 
 const Container = styled.div`
   height: 48px;
-  white-space: nowrap;
 
+  white-space: nowrap;
   background-color: #F44336;
   overflow: hidden;
   transition: height 0.3s ease-out;
@@ -12,14 +12,14 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
+  font-size: 16px;
+  border-bottom: 1px solid rgba(0,0,0,.12);
+
+  height: 100%;
   display: flex;
   align-items: center;
-  font-size: 16px;
-  background: white;
-  height: 100%;
-  border-bottom: 1px solid rgba(0,0,0,.12);
   box-sizing: border-box;
-
+  background: white;
   overflow: hidden;
   will-change: transform;
   ${props => (props.animated && css`transition: transform 0.3s ease-in-out;`)}

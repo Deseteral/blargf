@@ -91,7 +91,7 @@ async function dataProvider() {
   ];
 }
 
-const getUpcomingEvents = registerService({
+const [getUpcomingEvents] = registerService({
   name: 'upcoming events',
   refreshInterval: config().tasks.refresh_interval_seconds,
   dataProvider,
