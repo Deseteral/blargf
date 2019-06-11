@@ -20,11 +20,13 @@ function PudeukoItem({ item }) {
   const url = link && link.url;
   const { makeSnackbar } = useContext(Store);
 
+  const shortText = `"${text.slice(0, 24)}${text.length >= 24 ? '…' : ''}"`;
+
   return (
     <SwipeToDismiss
       id={item.id}
       dismissTimeoutMs={DISMISS_TIMEOUT_MS}
-      onSwipedOut={cancel => makeSnackbar(`Removed ${item.id}`, 'UNDO', DISMISS_TIMEOUT_MS, cancel)}
+      onSwipedOut={cancel => makeSnackbar(`Removed ${shortText}`, DISMISS_TIMEOUT_MS, 'UNDO', cancel)}
       onDismiss={deleteItem}
     >
       <Link href={url}>

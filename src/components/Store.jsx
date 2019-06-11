@@ -20,7 +20,7 @@ function reducer(state, action) {
 function StoreProvider({ children }) {
   const [state, dispatch] = React.useReducer(reducer, initialState);
 
-  const makeSnackbar = (text, actionText, clearTimeoutMs, action) => {
+  const makeSnackbar = (text, clearTimeoutMs, actionText, action) => {
     if (state.snackbar) clearTimeout(state.snackbar.timeoutId);
     const timeoutId = setTimeout(() => dispatch({ type: 'CLEAR_SNACKBAR' }), clearTimeoutMs);
 
