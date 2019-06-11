@@ -39,7 +39,10 @@ function registerService({
   }
   setImmediate(refreshCache);
 
-  return getter ? (() => getter(cache, refreshCache)) : (() => cache);
+  return [
+    getter ? (() => getter(cache, refreshCache)) : (() => cache),
+    refreshCache,
+  ];
 }
 
 export default registerService;

@@ -1,4 +1,5 @@
 import React from 'react';
+import SnackbarContainer from './SnackbarContainer';
 import Tray from './atomic/Tray';
 import TrayIconLink from './atomic/TrayIconLink';
 import ApplicationWrapper from './ApplicationWrapper';
@@ -10,26 +11,30 @@ import EventsSection from './EventsSection';
 import TasksSection from './TasksSection';
 import PudeukoSection from './PudeukoSection';
 import CountdownsSection from './CountdownsSection';
+import { StoreProvider } from './Store';
 
 function Index({ imageData, upcomingEvents, tasks, pudeuko, countdowns }) {
   return (
-    <ApplicationWrapper title="New Tab">
-      <BackgroundImage imageData={imageData} />
-      <ColumnWrapper>
-        <Column>
-          <DateTimeSection />
-          <EventsSection upcomingEvents={upcomingEvents} />
-        </Column>
-        <Column>
-          <TasksSection tasks={tasks} />
-          <PudeukoSection pudeuko={pudeuko} />
-          <CountdownsSection countdowns={countdowns} />
-        </Column>
-      </ColumnWrapper>
-      <Tray>
-        <TrayIconLink href={imageData.link} icon="photo_camera" />
-      </Tray>
-    </ApplicationWrapper>
+    <StoreProvider>
+      <ApplicationWrapper title="New Tab">
+        <BackgroundImage imageData={imageData} />
+        <ColumnWrapper>
+          <Column>
+            <DateTimeSection />
+            <EventsSection upcomingEvents={upcomingEvents} />
+          </Column>
+          <Column>
+            <TasksSection tasks={tasks} />
+            <PudeukoSection pudeuko={pudeuko} />
+            <CountdownsSection countdowns={countdowns} />
+          </Column>
+        </ColumnWrapper>
+        <Tray>
+          <TrayIconLink href={imageData.link} icon="photo_camera" />
+        </Tray>
+        <SnackbarContainer />
+      </ApplicationWrapper>
+    </StoreProvider>
   );
 }
 

@@ -1,41 +1,42 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import styled from 'styled-components';
 import Text from './atomic/Text';
+import SwipeToDismiss from './atomic/SwipeToDismiss';
+import { Store } from './Store';
 
 const Link = styled.a`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 4px 0;
-  height: 48px;
-  color: #000000;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.56);
+  color: black;
   text-decoration: none;
-  white-space: nowrap;
-  overflow: hidden;
-
-  &:last-of-type {
-    border: none;
-  }
 `;
 
-const Image = styled.img`
-  width: 64px;
-  height: 64px;
-  margin-right: 8px;
-`;
+const DISMISS_TIMEOUT_MS = 2500;
+
+function deleteItem(id, onError) {
+  fetch(`/pudeuko/${id}`, { method: 'DELETE' }).catch(onError);
+}
 
 function PudeukoItem({ item }) {
-  const { text, link, image } = item;
-
+  const { text, link } = item;
   const url = link && link.url;
-  const imageUrl = image && image.url;
+  const { makeSnackbar } = useContext(Store);
+
+  const shortText = `"${text.slice(0, 24)}${text.length >= 24 ? '…' : ''}"`;
+  const onDismissError = (err) => {
+    makeSnackbar('An error has occured', 2500);
+    console.error(err);
+  };
 
   return (
-    <Link href={url}>
-      {imageUrl && <Image src={imageUrl} />}
-      {text && (<Text>{text}</Text>)}
-    </Link>
+    <SwipeToDismiss
+      id={item.id}
+      dismissTimeoutMs={DISMISS_TIMEOUT_MS}
+      onSwipedOut={cancel => makeSnackbar(`Removed ${shortText}`, DISMISS_TIMEOUT_MS, 'UNDO', cancel)}
+      onDismiss={id => deleteItem(id, onDismissError)}
+    >
+      <Link href={url}>
+        {text && (<Text>{text}</Text>)}
+      </Link>
+    </SwipeToDismiss>
   );
 }
 

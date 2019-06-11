@@ -24,7 +24,7 @@ async function dataProvider() {
     .then(images => shuffle(images));
 }
 
-const getBackgroundImage = registerService({
+const [getBackgroundImage] = registerService({
   name: 'reddit images',
   dataProvider,
   initialData: [],

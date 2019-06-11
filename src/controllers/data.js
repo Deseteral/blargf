@@ -1,8 +1,11 @@
+import express from 'express';
 import getData from '../services/data-service';
 
-function dataController(req, res) {
+const dataController = express.Router();
+
+dataController.get('/', (req, res) => {
   const data = getData();
   res.send(data);
-}
+});
 
 export default dataController;

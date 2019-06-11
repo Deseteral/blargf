@@ -17,7 +17,7 @@ async function fetchTasksDueToday() {
   return tasks.filter(task => task.due && task.due.date === currentDate);
 }
 
-const getTasks = registerService({
+const [getTasks] = registerService({
   name: 'tasks',
   refreshInterval: config().tasks.refresh_interval_seconds,
   dataProvider: fetchTasksDueToday,
