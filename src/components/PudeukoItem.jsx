@@ -11,8 +11,8 @@ const Link = styled.a`
 
 const DISMISS_TIMEOUT_MS = 2500;
 
-function deleteItem(id) {
-  fetch(`/pudeuko/${id}`, { method: 'DELETE' }).catch(console.error);
+function deleteItem(id, onError) {
+  fetch(`/pudeuko/${id}`, { method: 'DELETE' }).catch(onError);
 }
 
 function PudeukoItem({ item }) {
@@ -21,13 +21,17 @@ function PudeukoItem({ item }) {
   const { makeSnackbar } = useContext(Store);
 
   const shortText = `"${text.slice(0, 24)}${text.length >= 24 ? '…' : ''}"`;
+  const onDismissError = (err) => {
+    makeSnackbar('An error has occured', 2500);
+    console.error(err);
+  };
 
   return (
     <SwipeToDismiss
       id={item.id}
       dismissTimeoutMs={DISMISS_TIMEOUT_MS}
       onSwipedOut={cancel => makeSnackbar(`Removed ${shortText}`, DISMISS_TIMEOUT_MS, 'UNDO', cancel)}
-      onDismiss={deleteItem}
+      onDismiss={id => deleteItem(id, onDismissError)}
     >
       <Link href={url}>
         {text && (<Text>{text}</Text>)}
