@@ -14,14 +14,23 @@ async function fetchTasksDueToday() {
   };
 
   const tasks = await (await fetch(TASKS_URL, fetchOptions)).json();
-  return tasks.filter(task => task.due && task.due.date === currentDate);
+
+  const todaysTasks = tasks.filter(task => task.due && task.due.date === currentDate);
+  const overdueTasks = tasks
+    .filter(task => task.due && new Date(task.due.date).getTime() <= new Date().getTime())
+    .filter(task => !todaysTasks.map(t => t.id).includes(task.id));
+
+  return {
+    today: todaysTasks,
+    overdue: overdueTasks,
+  };
 }
 
 const [getTasks] = registerService({
   name: 'tasks',
   refreshInterval: config().tasks.refresh_interval_seconds,
   dataProvider: fetchTasksDueToday,
-  initialData: [],
+  initialData: { today: [], overdue: [] },
 });
 
 export { getTasks };

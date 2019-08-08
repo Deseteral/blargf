@@ -36,6 +36,10 @@ const TaskListElement = styled.li`
   }
 `;
 
+const DateAggregationSection = styled.section`
+  margin-bottom: 8px;
+`;
+
 const IncompleteTaskIcon = styled(Icon).attrs({
   type: 'radio_button_unchecked',
 })`
@@ -44,7 +48,7 @@ const IncompleteTaskIcon = styled(Icon).attrs({
 
 function TasksSection({ tasks }) {
   const { data, lastUpdateFailed } = tasks;
-  const isEmpty = data.length === 0;
+  const isEmpty = data.today.length === 0 && data.overdue.length === 0;
 
   return (
     <Card>
@@ -57,14 +61,21 @@ function TasksSection({ tasks }) {
       )}
       {!isEmpty && (
         <Fragment>
-          <TaskCountLabel count={data.length} />
-          <TaskList>
-            {data.map((t, idx) => (
-              <TaskListElement key={idx}>
-                <IncompleteTaskIcon /> {t.content}
-              </TaskListElement>
-            ))}
-          </TaskList>
+          {[
+            { list: data.today, dueLabel: 'due today' },
+            { list: data.overdue, dueLabel: 'overdue' },
+          ].filter(({ list }) => list.length > 0).map(({ list, dueLabel }) => (
+            <DateAggregationSection>
+              <TaskCountLabel count={list.length} dueLabel={dueLabel} />
+              <TaskList>
+                {list.map((t, idx) => (
+                  <TaskListElement key={idx}>
+                    <IncompleteTaskIcon /> {t.content}
+                  </TaskListElement>
+                ))}
+              </TaskList>
+            </DateAggregationSection>
+          ))}
         </Fragment>
       )}
       {lastUpdateFailed && (
