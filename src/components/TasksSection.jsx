@@ -65,7 +65,7 @@ function TasksSection({ tasks }) {
             { list: data.today, dueLabel: 'due today' },
             { list: data.overdue, dueLabel: 'overdue' },
           ].filter(({ list }) => list.length > 0).map(({ list, dueLabel }) => (
-            <DateAggregationSection>
+            <DateAggregationSection key={list}>
               <TaskCountLabel count={list.length} dueLabel={dueLabel} />
               <TaskList>
                 {list.map((t, idx) => (

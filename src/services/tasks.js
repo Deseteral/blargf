@@ -2,7 +2,7 @@ import fetch from 'node-fetch';
 import registerService from './register-service';
 import config from '../application/config';
 
-const TASKS_URL = 'https://beta.todoist.com/API/v8/tasks';
+const TASKS_URL = 'https://api.todoist.com/rest/v1/tasks';
 
 async function fetchTasksDueToday() {
   const currentDate = new Date().toISOString().split('T')[0];
