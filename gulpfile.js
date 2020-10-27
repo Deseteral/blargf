@@ -22,9 +22,14 @@ gulp.task('static-js', () => (
     .pipe(gulp.dest('./build/static'))
 ));
 
+gulp.task('applescript', () => (
+  gulp.src('src/**/*.applescript')
+    .pipe(gulp.dest('./build'))
+));
+
 gulp.task('default', gulp.series(
   'clean',
-  gulp.parallel('js', 'static-js'),
+  gulp.parallel('js', 'static-js', 'applescript'),
 ));
 
 let node = null;
