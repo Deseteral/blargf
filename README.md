@@ -1,5 +1,5 @@
 # blargf
-[![Build Status](https://travis-ci.org/Deseteral/blargf.svg?branch=master)](https://travis-ci.org/Deseteral/blargf)
+![Build Status](https://github.com/Deseteral/blargf/workflows/Build/badge.svg)
 
 Personal new tab page for Chrome.
 
