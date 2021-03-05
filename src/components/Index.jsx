@@ -22,10 +22,10 @@ function Index({ imageData, upcomingEvents, tasks, pudeuko, countdowns }) {
           <Column>
             <DateTimeSection />
             <EventsSection upcomingEvents={upcomingEvents} />
+            <PudeukoSection pudeuko={pudeuko} />
           </Column>
           <Column>
             <TasksSection tasks={tasks} />
-            <PudeukoSection pudeuko={pudeuko} />
             <CountdownsSection countdowns={countdowns} />
           </Column>
         </ColumnWrapper>
