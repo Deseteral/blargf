@@ -6,6 +6,12 @@ const Container = styled.div`
 
   white-space: nowrap;
   background-color: #F44336;
+
+  border-top: 1px solid #E0E0E0;
+  :last-of-type {
+      border-bottom: 1px solid #E0E0E0;
+  }
+
   overflow: hidden;
   transition: height 0.3s ease-out;
   ${props => props.noHeight && css`height: 0;`}
@@ -13,8 +19,6 @@ const Container = styled.div`
 
 const Content = styled.div`
   font-size: 16px;
-  border-bottom: 1px solid rgba(0,0,0,.12);
-
   height: 100%;
   display: flex;
   align-items: center;
