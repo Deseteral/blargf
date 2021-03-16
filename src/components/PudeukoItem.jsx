@@ -13,6 +13,8 @@ const Link = styled.a`
 
 const Icon = styled.img`
   margin-right: 8px;
+  width: 36px;
+  height: 36px;
 `;
 
 const DISMISS_TIMEOUT_MS = 2500;
