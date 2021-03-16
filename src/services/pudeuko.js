@@ -3,7 +3,7 @@ import registerService from './register-service';
 import config from '../application/config';
 
 async function fetchPudeukoData() {
-  const response = await fetch(`${config().pudeuko.service_url}/items`);
+  const response = await fetch(`${config().pudeuko.service_url}/pudeuko`);
   return response.json();
 }
 
@@ -16,7 +16,7 @@ const [getPudeukoData, refreshCache] = registerService({
 
 async function deletePudeukoItem(itemId) {
   await fetch(
-    `${config().pudeuko.service_url}/items/${itemId}`,
+    `${config().pudeuko.service_url}/pudeuko/${itemId}`,
     { method: 'DELETE' },
   );
 

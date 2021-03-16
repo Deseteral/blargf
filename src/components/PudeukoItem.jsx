@@ -7,6 +7,12 @@ import { Store } from './Store';
 const Link = styled.a`
   color: black;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+`;
+
+const Icon = styled.img`
+  margin-right: 8px;
 `;
 
 const DISMISS_TIMEOUT_MS = 2500;
@@ -16,8 +22,9 @@ function deleteItem(id, onError) {
 }
 
 function PudeukoItem({ item }) {
-  const { text, link } = item;
+  const { text, link, icon } = item;
   const url = link && link.url;
+  const iconSrc = icon && icon.src;
   const { makeSnackbar } = useContext(Store);
 
   const shortText = `"${text.slice(0, 24)}${text.length >= 24 ? '…' : ''}"`;
@@ -34,6 +41,7 @@ function PudeukoItem({ item }) {
       onDismiss={id => deleteItem(id, onDismissError)}
     >
       <Link href={url}>
+        {iconSrc && <Icon src={iconSrc} />}
         {text && (<Text>{text}</Text>)}
       </Link>
     </SwipeToDismiss>
