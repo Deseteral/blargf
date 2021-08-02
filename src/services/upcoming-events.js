@@ -19,8 +19,8 @@ function fetchICalFromUrl(url) {
       }
 
       const events = Object.keys(data)
-        .map(key => data[key])
-        .filter(event => !!event.summary);
+        .map((key) => data[key])
+        .filter((event) => !!event.summary);
 
       resolve(events);
     });
@@ -39,7 +39,7 @@ function shortDurationFormat(dateA, dateB) {
   const dateFormattingOptions = isHourEvent
     ? { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false } // eslint-disable-line object-curly-newline
     : { month: 'long', day: 'numeric' };
-  const formatDate = date => date.toLocaleDateString('en-US', dateFormattingOptions);
+  const formatDate = (date) => date.toLocaleDateString('en-US', dateFormattingOptions);
 
   return (isSingleFullDayEvent || isHourEvent)
     ? `${formatDate(dateA)}, ${formatAsDuration(dateA)}`
@@ -75,7 +75,7 @@ async function dataProvider() {
   const events = (await fetchEvents())
     .map(mapICalEvent)
     .sort((e1, e2) => compareDates(e1.startDate, e2.startDate))
-    .filter(e => isToday(e.startDate) || isFuture(e.startDate));
+    .filter((e) => isToday(e.startDate) || isFuture(e.startDate));
 
   return [
     {

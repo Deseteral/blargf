@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Card from './atomic/Card';
 import CardHeader from './atomic/CardHeader';
@@ -60,7 +60,7 @@ function TasksSection({ tasks }) {
         </EmptyTaskListContainer>
       )}
       {!isEmpty && (
-        <Fragment>
+        <>
           {[
             { list: data.today, dueLabel: 'due today' },
             { list: data.overdue, dueLabel: 'overdue' },
@@ -76,7 +76,7 @@ function TasksSection({ tasks }) {
               </TaskList>
             </DateAggregationSection>
           ))}
-        </Fragment>
+        </>
       )}
       {lastUpdateFailed && (
         <Caption error>

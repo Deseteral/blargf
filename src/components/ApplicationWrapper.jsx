@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const Body = styled.body`
@@ -10,7 +10,7 @@ const Body = styled.body`
 `;
 
 function ApplicationWrapper({ title, children }) {
-  if (typeof window !== 'undefined') return <Fragment>{children}</Fragment>;
+  if (typeof window !== 'undefined') return <>{children}</>;
 
   return (
     <html lang="en">

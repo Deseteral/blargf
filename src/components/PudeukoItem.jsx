@@ -39,8 +39,8 @@ function PudeukoItem({ item }) {
     <SwipeToDismiss
       id={item.id}
       dismissTimeoutMs={DISMISS_TIMEOUT_MS}
-      onSwipedOut={cancel => makeSnackbar(`Removed ${shortText}`, DISMISS_TIMEOUT_MS, 'UNDO', cancel)}
-      onDismiss={id => deleteItem(id, onDismissError)}
+      onSwipedOut={(cancel) => makeSnackbar(`Removed ${shortText}`, DISMISS_TIMEOUT_MS, 'UNDO', cancel)}
+      onDismiss={(id) => deleteItem(id, onDismissError)}
     >
       <Link href={url}>
         {iconSrc && <Icon src={iconSrc} />}

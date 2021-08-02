@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
 const BackgroundImageCanvas = styled.div`
@@ -24,11 +24,11 @@ function BackgroundImage({ imageData }) {
   const rehydrationScript = `window.backgroundImage=${JSON.stringify(imageData)}`;
 
   return (
-    <Fragment>
+    <>
       <BackgroundImageCanvas id="background-image" />
       {/* eslint-disable-next-line react/no-danger */}
       <script dangerouslySetInnerHTML={({ __html: rehydrationScript })} />
-    </Fragment>
+    </>
   );
 }
 

@@ -14,7 +14,7 @@ const Container = styled.div`
 
   overflow: hidden;
   transition: height 0.3s ease-out;
-  ${props => props.noHeight && css`height: 0;`}
+  ${(props) => props.noHeight && css`height: 0;`}
 `;
 
 const Content = styled.div`
@@ -26,7 +26,7 @@ const Content = styled.div`
   background: white;
   overflow: hidden;
   will-change: transform;
-  ${props => (props.animated && css`transition: transform 0.3s ease-in-out;`)}
+  ${(props) => (props.animated && css`transition: transform 0.3s ease-in-out;`)}
 `;
 
 const UNSWIPE_TIMEOUT_MS = 1000;
@@ -75,7 +75,7 @@ function SwipeToDismiss({
   return (
     <Container
       noHeight={hidden}
-      onWheel={event => setX(currentTranslation - event.deltaX)}
+      onWheel={(event) => setX(currentTranslation - event.deltaX)}
       onMouseEnter={() => setAnimated(false)}
       onMouseLeave={() => {
         setAnimated(true);

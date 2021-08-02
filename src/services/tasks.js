@@ -17,10 +17,10 @@ async function fetchTodoistTasksDueToday() { // eslint-disable-line no-unused-va
 
   const tasks = await (await fetch(TASKS_URL, fetchOptions)).json();
 
-  const todaysTasks = tasks.filter(task => task.due && task.due.date === currentDate);
+  const todaysTasks = tasks.filter((task) => task.due && task.due.date === currentDate);
   const overdueTasks = tasks
-    .filter(task => task.due && new Date(task.due.date).getTime() <= new Date().getTime())
-    .filter(task => !todaysTasks.map(t => t.id).includes(task.id));
+    .filter((task) => task.due && new Date(task.due.date).getTime() <= new Date().getTime())
+    .filter((task) => !todaysTasks.map((t) => t.id).includes(task.id));
 
   return {
     today: todaysTasks,
@@ -46,8 +46,8 @@ async function readTodayTasksFromThings() {
 
   const today = stdout
     .split('\n')
-    .filter(s => (s.length > 0))
-    .map(s => ({ content: s }));
+    .filter((s) => (s.length > 0))
+    .map((s) => ({ content: s }));
 
   return {
     today,
