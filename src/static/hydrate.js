@@ -7,7 +7,7 @@ async function hydrate() {
   const props = await (await fetch('/data')).json();
 
   ReactDOM.hydrate(
-    <Index {...props} />,
+    <Index {...props} />, // eslint-disable-line react/jsx-props-no-spreading
     document.getElementById('app'),
   );
 }

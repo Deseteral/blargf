@@ -11,9 +11,10 @@ import EventsSection from './EventsSection';
 import TasksSection from './TasksSection';
 import PudeukoSection from './PudeukoSection';
 import CountdownsSection from './CountdownsSection';
+import AlertBannerSection from './AlertBannerSection';
 import { StoreProvider } from './Store';
 
-function Index({ imageData, upcomingEvents, tasks, pudeuko, countdowns }) {
+function Index({ imageData, upcomingEvents, tasks, pudeuko, countdowns, alertBanner }) {
   return (
     <StoreProvider>
       <ApplicationWrapper title="New Tab">
@@ -25,6 +26,7 @@ function Index({ imageData, upcomingEvents, tasks, pudeuko, countdowns }) {
             <PudeukoSection pudeuko={pudeuko} />
           </Column>
           <Column>
+            <AlertBannerSection alertBanner={alertBanner} />
             <TasksSection tasks={tasks} />
             <CountdownsSection countdowns={countdowns} />
           </Column>
