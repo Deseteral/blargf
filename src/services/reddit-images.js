@@ -18,7 +18,8 @@ async function dataProvider() {
     .map((subreddit) => `https://www.reddit.com/r/${subreddit}.json`);
 
   return Promise.all(urls.map(fetch))
-    .then((res) => Promise.all(res.map((data) => data.json())))
+    .then((responses) => responses.filter((response) => response.status === 200))
+    .then((responses) => Promise.all(responses.map((response) => response.json())))
     .then((listings) => listings.map(mapListingData))
     .then((nestedImages) => nestedImages.reduce((acc, val) => acc.concat(val), []))
     .then((images) => shuffle(images));
