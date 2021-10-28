@@ -1,8 +1,8 @@
 import React from 'react';
-import css from 'classnames';
+import clsx from 'clsx';
 
 function Icon({ className, size, type }) {
-  const iconClassName = css(className, 'material-icons');
+  const iconClassName = clsx(className, 'material-icons');
   const style = size ? { fontSize: size } : {};
 
   return (

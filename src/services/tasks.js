@@ -1,8 +1,9 @@
 import fetch from 'node-fetch';
-import path from 'path';
+// import path from 'path';
 import { exec } from 'child_process';
 import registerService from './register-service';
 import config from '../application/config';
+import readTodayTasksScript from '../scripts/read_today_tasks.applescript';
 
 async function fetchTodoistTasksDueToday() { // eslint-disable-line no-unused-vars
   const TASKS_URL = 'https://api.todoist.com/rest/v1/tasks';
@@ -41,7 +42,7 @@ function execAppleScript(scriptPath) {
 }
 
 async function readTodayTasksFromThings() {
-  const scriptPath = path.join(__dirname, '../scripts/read_today_tasks.applescript');
+  const scriptPath = new URL(readTodayTasksScript).pathname;
   const stdout = await execAppleScript(scriptPath);
 
   const today = stdout

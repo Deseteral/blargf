@@ -23,7 +23,7 @@ async function setBackgroundImage() {
 }
 
 async function render() {
-  const hydrate = (await import(/* webpackChunkName: "hydrate" */ './hydrate')).default;
+  const hydrate = (await import('./hydrate')).default;
   hydrate();
 }
 

@@ -1,7 +1,7 @@
 import path from 'path';
 import signale from 'signale';
 
-const configPath = path.join(__dirname, '..', '..', 'config.json');
+const configPath = path.join(__dirname, '..', 'config.json');
 let configData;
 
 function reloadConfiguration() {

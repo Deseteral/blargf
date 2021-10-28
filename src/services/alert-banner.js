@@ -7,7 +7,7 @@ const [getAlertBannerData] = registerService({
   name: 'alert banner',
   refreshInterval: config().alert_banner.refresh_interval_seconds,
   dataProvider: async () => {
-    const filePath = path.join(__dirname, '..', '..', 'alert-banner.md');
+    const filePath = path.join(__dirname, '..', 'alert-banner.md');
     const text = (await fsp.readFile(filePath, { encoding: 'utf8' })).trim();
     return text.length > 0 ? text : null;
   },
