@@ -7,7 +7,7 @@ import PudeukoItem from './PudeukoItem';
 function PudeukoSection({ pudeuko }) {
   const { data, lastUpdateFailed } = pudeuko;
 
-  if (data.items.length === 0) return null;
+  if (!data || !data.items || data.items.length === 0) return null;
 
   return (
     <Card>
