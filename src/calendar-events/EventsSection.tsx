@@ -1,7 +1,7 @@
 import React from 'react';
-import Card from '../components/atomic/Card';
-import CardHeader from '../components/atomic/CardHeader';
-import Caption from '../components/atomic/Caption';
+import Card from '../components/Card';
+import CardHeader from '../components/CardHeader';
+import Caption from '../components/Caption';
 import EventList from './EventList';
 import { EventListViewModel } from './model';
 import { DataCache } from '../services/register-service';

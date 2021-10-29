@@ -1,6 +1,6 @@
 import React from 'react';
-import Card from '../components/atomic/Card';
-import CardHeader from '../components/atomic/CardHeader';
+import Card from '../components/Card';
+import CardHeader from '../components/CardHeader';
 import CountdownView from './CountdownView';
 import { Countdown } from './model';
 

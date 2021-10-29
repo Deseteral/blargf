@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import Card from '../components/atomic/Card';
-import CardHeader from '../components/atomic/CardHeader';
-import Caption from '../components/atomic/Caption';
-import Icon from '../components/atomic/Icon';
+import Card from '../components/Card';
+import CardHeader from '../components/CardHeader';
+import Caption from '../components/Caption';
+import Icon from '../components/Icon';
 import TaskCountLabel from './TaskCountLabel';
 import { TaskList } from './model';
 import { DataCache } from '../services/register-service';

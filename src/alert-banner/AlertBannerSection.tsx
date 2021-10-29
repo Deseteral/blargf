@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Card from '../components/atomic/Card';
+import Card from '../components/Card';
 import { AlertBannerContent } from './model';
 
 const Banner = styled(Card)`

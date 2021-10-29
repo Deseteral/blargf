@@ -1,9 +1,9 @@
 import React from 'react';
 import { BackgroundImageData } from '../../background/model';
-import Tray from '../../components/atomic/Tray';
-import TrayIconLink from '../../components/atomic/TrayIconLink';
+import Tray from '../../components/Tray';
+import TrayIconLink from '../../components/TrayIconLink';
 import ApplicationWrapper from './ApplicationWrapper';
-import Column from '../../components/atomic/Column';
+import Column from '../../components/Column';
 import ColumnWrapper from './ColumnWrapper';
 import BackgroundImage from '../../background/BackgroundImage';
 import DateTimeSection from '../../clock/DateTimeSection';
