@@ -27,7 +27,7 @@ async function render(): Promise<void> {
   hydrate();
 }
 
-window.addEventListener('load', () => {
+window.addEventListener('DOMContentLoaded', () => {
   unhide();
   setBackgroundImage();
   render();
