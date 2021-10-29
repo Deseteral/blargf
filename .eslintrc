@@ -1,7 +1,10 @@
 {
-  "extends": "@deseteral/eslint-config",
+  "extends": "@deseteral/eslint-config/typescript",
   "rules": {
+    "max-len": "off",
     "react/no-array-index-key": "off",
-    "react/jsx-props-no-spreading": "off"
+    "react/jsx-props-no-spreading": "off",
+    "react/require-default-props": "off",
+    "@typescript-eslint/explicit-function-return-type": "error"
   }
 }
