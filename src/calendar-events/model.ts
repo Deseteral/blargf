@@ -5,9 +5,7 @@ export interface CalendarEvent {
   date: string,
 }
 
-export interface EventListSectionViewModel {
+export interface EventGroup {
   name: string,
   eventList: CalendarEvent[],
 }
-
-export type EventListViewModel = EventListSectionViewModel[];

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import CardHeader from '../components/CardHeader';
 import Text from '../components/Text';
 import Caption from '../components/Caption';
-import { EventListSectionViewModel } from './model';
+import { EventGroup } from './model';
 
 const Container = styled.div`
   margin-bottom: 8px;
@@ -23,7 +23,7 @@ const ListElement = styled.li`
   margin-bottom: 4px;
 `;
 
-export type EventListProps = EventListSectionViewModel;
+export type EventListProps = EventGroup;
 
 function EventList({ name, eventList }: EventListProps): (JSX.Element | null) {
   if (eventList.length === 0) return null;

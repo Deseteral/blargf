@@ -9,15 +9,15 @@ import { TaskList } from '../../tasks/model';
 import { DataCache } from './register-service';
 import { Pudeuko } from '../../pudeuko/model';
 import { AlertBannerContent } from '../../alert-banner/model';
-import { EventListViewModel } from '../../calendar-events/model';
 import { Countdown } from '../../countdowns/model';
+import { EventGroup } from '../../calendar-events/model';
 
 export interface BlargfData {
   imageData: BackgroundImageData,
   tasks: DataCache<TaskList>,
   pudeuko: DataCache<Pudeuko>,
   alertBanner: AlertBannerContent,
-  upcomingEvents: DataCache<EventListViewModel>,
+  upcomingEvents: DataCache<EventGroup[]>,
   countdowns: Countdown[],
 }
 

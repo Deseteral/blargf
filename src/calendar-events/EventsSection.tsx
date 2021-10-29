@@ -3,11 +3,11 @@ import Card from '../components/Card';
 import CardHeader from '../components/CardHeader';
 import Caption from '../components/Caption';
 import EventList from './EventList';
-import { EventListViewModel } from './model';
 import { DataCache } from '../application/services/register-service';
+import { EventGroup } from './model';
 
 export interface EventsSectionProps {
-  upcomingEvents: DataCache<EventListViewModel>,
+  upcomingEvents: DataCache<EventGroup[]>,
 }
 
 function EventsSection({ upcomingEvents }: EventsSectionProps): JSX.Element {

@@ -9,7 +9,7 @@ import ical from 'node-ical';
 import registerService, { DataCache } from '../application/services/register-service';
 import config from '../application/config';
 import { formatAsDuration } from '../helpers/date-time-formatter';
-import { CalendarEvent, EventListViewModel } from './model';
+import { CalendarEvent, EventGroup } from './model';
 
 export function isVEvent(value: ical.CalendarComponent): value is ical.VEvent {
   return value.type === 'VEVENT';
@@ -76,7 +76,7 @@ function isEventLater(e: CalendarEvent): boolean {
   return differenceInDays(e.startDate, startOfToday()) <= 30 && !isInPreviousCategory;
 }
 
-async function dataProvider(): Promise<EventListViewModel> {
+async function dataProvider(): Promise<EventGroup[]> {
   const events = (await fetchEvents())
     .filter(isVEvent)
     .map(mapICalEvent)
@@ -97,7 +97,7 @@ async function dataProvider(): Promise<EventListViewModel> {
   ];
 }
 
-const [getUpcomingEvents] = registerService<EventListViewModel, DataCache<EventListViewModel>>({
+const [getUpcomingEvents] = registerService<EventGroup[], DataCache<EventGroup[]>>({
   name: 'upcoming events',
   refreshInterval: config().tasks.refresh_interval_seconds,
   dataProvider,
