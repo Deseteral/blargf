@@ -5,7 +5,7 @@ import ReactDOMServer from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components';
 import { performance } from 'perf_hooks';
 import signale from 'signale';
-import Index from '../components/Index';
+import PageRoot from '../application/components/PageRoot';
 import getData from '../services/data-service';
 
 const indexController = express.Router();
@@ -15,7 +15,7 @@ function render(): string {
 
   const sheet = new ServerStyleSheet();
   const html = ReactDOMServer.renderToStaticMarkup(
-    sheet.collectStyles(<Index {...props} />),
+    sheet.collectStyles(<PageRoot {...props} />),
   );
 
   return sheet.getStyleTags() + html;

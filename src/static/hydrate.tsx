@@ -1,13 +1,13 @@
 /* eslint-disable react/jsx-filename-extension */
 import ReactDOM from 'react-dom';
 import React from 'react';
-import Index from '../components/Index';
+import PageRoot from '../application/components/PageRoot';
 
 async function hydrate(): Promise<void> {
   const props = await (await fetch('/data')).json();
 
   ReactDOM.hydrate(
-    <Index {...props} />, // eslint-disable-line react/jsx-props-no-spreading
+    <PageRoot {...props} />, // eslint-disable-line react/jsx-props-no-spreading
     document.getElementById('app'),
   );
 }
