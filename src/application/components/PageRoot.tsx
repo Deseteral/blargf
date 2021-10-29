@@ -1,5 +1,4 @@
 import React from 'react';
-import { BackgroundImageData } from '../../background/model';
 import Tray from '../../components/Tray';
 import TrayIconLink from '../../components/TrayIconLink';
 import ApplicationWrapper from './ApplicationWrapper';
@@ -9,26 +8,18 @@ import BackgroundImage from '../../background/BackgroundImage';
 import DateTimeSection from '../../clock/DateTimeSection';
 import EventsSection from '../../calendar-events/EventsSection';
 import TasksSection from '../../tasks/TasksSection';
-import { DataCache } from '../../services/register-service';
-import { TaskList } from '../../tasks/model';
 import PudeukoSection from '../../pudeuko/PudeukoSection';
-import { Pudeuko } from '../../pudeuko/model';
-import { AlertBannerContent } from '../../alert-banner/model';
 import CountdownsSection from '../../countdowns/CountdownsSection';
 import AlertBannerSection from '../../alert-banner/AlertBannerSection';
-import { EventListViewModel } from '../../calendar-events/model';
-import { Countdown } from '../../countdowns/model';
+import { BlargfData } from '../../services/data-service';
 
 export interface PageRootProps {
-  imageData: BackgroundImageData,
-  tasks: DataCache<TaskList>,
-  pudeuko: DataCache<Pudeuko>,
-  alertBanner: AlertBannerContent,
-  upcomingEvents: DataCache<EventListViewModel>,
-  countdowns: Countdown[],
+  data: BlargfData,
 }
 
-function PageRoot({ imageData, upcomingEvents, tasks, pudeuko, countdowns, alertBanner }: PageRootProps): JSX.Element {
+function PageRoot({ data }: PageRootProps): JSX.Element {
+  const { imageData, upcomingEvents, tasks, pudeuko, countdowns, alertBanner } = data;
+
   return (
     <ApplicationWrapper title="New Tab">
       <BackgroundImage imageData={imageData} />

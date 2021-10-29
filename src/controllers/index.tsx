@@ -11,11 +11,11 @@ import getData from '../services/data-service';
 const indexController = express.Router();
 
 function render(): string {
-  const props = getData();
+  const data = getData();
 
   const sheet = new ServerStyleSheet();
   const html = ReactDOMServer.renderToStaticMarkup(
-    sheet.collectStyles(<PageRoot {...props} />),
+    sheet.collectStyles(<PageRoot data={data} />),
   );
 
   return sheet.getStyleTags() + html;
