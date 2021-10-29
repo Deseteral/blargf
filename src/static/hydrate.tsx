@@ -4,10 +4,10 @@ import React from 'react';
 import PageRoot from '../application/components/PageRoot';
 
 async function hydrate(): Promise<void> {
-  const props = await (await fetch('/data')).json();
+  const data = await (await fetch('/data')).json();
 
   ReactDOM.hydrate(
-    <PageRoot {...props} />, // eslint-disable-line react/jsx-props-no-spreading
+    <PageRoot data={data} />,
     document.getElementById('app'),
   );
 }

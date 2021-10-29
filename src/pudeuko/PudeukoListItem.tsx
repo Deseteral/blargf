@@ -8,7 +8,7 @@ const Link = styled.a`
   text-decoration: none;
   display: flex;
   align-items: center;
-  border-bottom: 1px solid gray; // TODO: Change color to something more interesting
+  border-bottom: 1px solid #717171;
   padding: 4px 0;
   white-space: nowrap;
   overflow: hidden;
