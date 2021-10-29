@@ -1,5 +1,5 @@
 import fetch from 'node-fetch';
-import registerService, { DataCache } from '../services/register-service';
+import registerService, { DataCache } from '../application/services/register-service';
 import config from '../application/config';
 import { Pudeuko } from './model';
 

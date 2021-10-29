@@ -6,7 +6,7 @@ import { ServerStyleSheet } from 'styled-components';
 import { performance } from 'perf_hooks';
 import signale from 'signale';
 import PageRoot from '../application/components/PageRoot';
-import getData from '../services/data-service';
+import getData from '../application/services/data-service';
 
 const indexController = express.Router();
 

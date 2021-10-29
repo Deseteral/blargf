@@ -4,7 +4,7 @@ import CardHeader from '../components/CardHeader';
 import Caption from '../components/Caption';
 import EventList from './EventList';
 import { EventListViewModel } from './model';
-import { DataCache } from '../services/register-service';
+import { DataCache } from '../application/services/register-service';
 
 export interface EventsSectionProps {
   upcomingEvents: DataCache<EventListViewModel>,

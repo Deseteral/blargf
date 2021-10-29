@@ -6,7 +6,7 @@ import differenceInDays from 'date-fns/difference_in_days';
 import startOfToday from 'date-fns/start_of_today';
 import differenceInHours from 'date-fns/difference_in_hours';
 import ical from 'node-ical';
-import registerService, { DataCache } from '../services/register-service';
+import registerService, { DataCache } from '../application/services/register-service';
 import config from '../application/config';
 import { formatAsDuration } from '../helpers/date-time-formatter';
 import { CalendarEvent, EventListViewModel } from './model';

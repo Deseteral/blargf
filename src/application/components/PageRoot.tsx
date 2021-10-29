@@ -11,7 +11,7 @@ import TasksSection from '../../tasks/TasksSection';
 import PudeukoSection from '../../pudeuko/PudeukoSection';
 import CountdownsSection from '../../countdowns/CountdownsSection';
 import AlertBannerSection from '../../alert-banner/AlertBannerSection';
-import { BlargfData } from '../../services/data-service';
+import { BlargfData } from '../services/data-service';
 
 export interface PageRootProps {
   data: BlargfData,

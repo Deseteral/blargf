@@ -1,5 +1,5 @@
 import { exec } from 'child_process';
-import registerService, { DataCache } from '../services/register-service';
+import registerService, { DataCache } from '../application/services/register-service';
 import config from '../application/config';
 import { TaskList } from './model';
 // @ts-ignore

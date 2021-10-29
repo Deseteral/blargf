@@ -6,7 +6,7 @@ import Caption from '../components/Caption';
 import Icon from '../components/Icon';
 import TaskCountLabel from './TaskCountLabel';
 import { TaskList } from './model';
-import { DataCache } from '../services/register-service';
+import { DataCache } from '../application/services/register-service';
 
 const List = styled.ul`
   margin: 0;

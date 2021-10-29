@@ -1,5 +1,5 @@
 import express from 'express';
-import getData from '../services/data-service';
+import getData from '../application/services/data-service';
 
 const dataController = express.Router();
 
