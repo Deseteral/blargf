@@ -73,9 +73,9 @@ function TasksSection({ tasks }: TasksSectionProps): JSX.Element {
             <DateAggregationSection key={dueLabel}>
               <TaskCountLabel count={list.length} dueLabel={dueLabel} />
               <List>
-                {list.map((t, idx) => (
-                  <ListElement key={idx}>
-                    <IncompleteTaskIcon /> {t.content}
+                {list.map((task) => (
+                  <ListElement key={task.id}>
+                    <IncompleteTaskIcon /> {task.content}
                   </ListElement>
                 ))}
               </List>

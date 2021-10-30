@@ -1,4 +1,5 @@
 import { exec } from 'child_process';
+import { nanoid } from 'nanoid';
 import registerService, { DataCache } from '../../services/register-service';
 import config from '../../config';
 import { TaskList } from './model';
@@ -24,7 +25,10 @@ async function readTodayTasksFromThings(): Promise<TaskList> {
   const today = stdout
     .split('\n')
     .filter((s) => (s.length > 0))
-    .map((s) => ({ content: s }));
+    .map((s) => ({
+      id: nanoid(),
+      content: s,
+    }));
 
   return {
     today,

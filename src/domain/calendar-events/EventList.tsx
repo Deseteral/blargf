@@ -32,8 +32,8 @@ function EventList({ name, eventList }: EventListProps): (JSX.Element | null) {
     <Container>
       <CardHeader subheader>{name}</CardHeader>
       <List>
-        {eventList.map((e, idx) => (
-          <ListElement key={idx}>
+        {eventList.map((e) => (
+          <ListElement key={`${e.title}-${e.date}`}>
             <Text>{e.title}</Text>
             <Caption>{e.date}</Caption>
           </ListElement>

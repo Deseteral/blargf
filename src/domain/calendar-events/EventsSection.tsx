@@ -16,8 +16,8 @@ function EventsSection({ upcomingEvents }: EventsSectionProps): JSX.Element {
   return (
     <Card>
       <CardHeader>Upcoming events</CardHeader>
-      {data.map((event, idx) => (
-        <EventList name={event.name} eventList={event.eventList} key={idx} />
+      {data.map((eventGroup) => (
+        <EventList name={eventGroup.name} eventList={eventGroup.eventList} key={eventGroup.name} />
       ))}
       {lastUpdateFailed && (
         <Caption error>
