@@ -4,7 +4,7 @@ import { Countdown } from './model';
 
 const [getCountdownsData] = registerService<Countdown[], Countdown[]>({
   name: 'countdowns',
-  refreshInterval: config().countdowns.refresh_interval_seconds,
+  refreshInterval: config().countdowns.refreshIntervalSeconds,
   dataProvider: async () => config().countdowns.list,
   initialData: [],
   getter: (cache, _) => cache.data,

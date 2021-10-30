@@ -33,7 +33,7 @@ function fetchICalFromUrl(url: string): Promise<ical.CalendarComponent[]> {
 }
 
 async function fetchEvents(): Promise<ical.CalendarComponent[]> {
-  const iCalSourceUrls = config().events.ical_urls;
+  const iCalSourceUrls = config().events.icalUrls;
   return (await Promise.all(iCalSourceUrls.map(fetchICalFromUrl))).flat();
 }
 
@@ -99,7 +99,7 @@ async function dataProvider(): Promise<EventGroup[]> {
 
 const [getUpcomingEvents] = registerService<EventGroup[], DataCache<EventGroup[]>>({
   name: 'upcoming events',
-  refreshInterval: config().tasks.refresh_interval_seconds,
+  refreshInterval: config().tasks.refreshIntervalSeconds,
   dataProvider,
   initialData: [],
   getter: (cache, _) => cache,

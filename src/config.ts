@@ -5,28 +5,26 @@ interface Configuration {
   server: {
     port: number,
   },
-  'backgrounds': {
-    'subreddits': string[],
+  backgrounds: {
+    subreddits: string[],
   },
-  'tasks': {
-    'todoist_token': string,
-    'refresh_interval_seconds': number
+  tasks: {
+    refreshIntervalSeconds: number
   },
-  'events': {
-    'ical_urls': string[],
-    'refresh_interval_seconds': number
+  events: {
+    icalUrls: string[],
+    refreshIntervalSeconds: number
   },
-  'pudeuko': {
-    'dropbox_token': string,
-    'service_url': string,
-    'refresh_interval_seconds': number
+  pudeuko: {
+    serviceUrl: string,
+    refreshIntervalSeconds: number
   },
-  'countdowns': {
-    'list': ({ title: string, date: string })[],
-    'refresh_interval_seconds': number,
+  countdowns: {
+    list: ({ title: string, date: string })[],
+    refreshIntervalSeconds: number,
   },
-  'alert_banner': {
-    'refresh_interval_seconds': number,
+  alertBanner: {
+    refreshIntervalSeconds: number,
   }
 }
 

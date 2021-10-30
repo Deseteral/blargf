@@ -33,7 +33,7 @@ async function readTodayTasksFromThings(): Promise<TaskList> {
 
 const [getTasks] = registerService<TaskList, DataCache<TaskList>>({
   name: 'tasks',
-  refreshInterval: config().tasks.refresh_interval_seconds,
+  refreshInterval: config().tasks.refreshIntervalSeconds,
   dataProvider: readTodayTasksFromThings,
   initialData: { today: [] },
   getter: (cache, _refreshCache) => cache,

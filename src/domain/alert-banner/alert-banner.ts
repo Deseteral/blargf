@@ -12,7 +12,7 @@ async function dataProvider(): Promise<AlertBannerContent> {
 
 const [getAlertBannerData] = registerService<AlertBannerContent, AlertBannerContent>({
   name: 'alert banner',
-  refreshInterval: config().alert_banner.refresh_interval_seconds,
+  refreshInterval: config().alertBanner.refreshIntervalSeconds,
   dataProvider,
   initialData: null,
   getter: (cache, _) => cache.data,
