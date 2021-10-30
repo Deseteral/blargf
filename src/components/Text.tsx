@@ -1,6 +1,6 @@
 import React from 'react';
 
-interface TextProps {
+export interface TextProps {
   children: string,
 }
 

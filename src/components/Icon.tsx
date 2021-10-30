@@ -1,7 +1,7 @@
 import React from 'react';
 import clsx from 'clsx';
 
-interface IconProps {
+export interface IconProps {
   className?: string,
   type: string,
   size?: string,

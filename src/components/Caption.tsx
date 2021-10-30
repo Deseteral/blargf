@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface CaptionProps {
+export interface CaptionProps {
   small?: boolean,
   error?: boolean,
   children: (React.ReactNode | React.ReactNode[]),

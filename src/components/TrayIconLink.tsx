@@ -11,7 +11,7 @@ const TrayLink = styled.a`
   }
 `;
 
-interface TrayIconLinkProps {
+export interface TrayIconLinkProps {
   icon: string,
   href: string,
 }
