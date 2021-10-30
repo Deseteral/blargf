@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import CardHeader from '../components/CardHeader';
-import Text from '../components/Text';
-import Caption from '../components/Caption';
+import CardHeader from '../../components/CardHeader';
+import Text from '../../components/Text';
+import Caption from '../../components/Caption';
 import { EventGroup } from './model';
 
 const Container = styled.div`

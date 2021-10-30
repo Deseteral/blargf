@@ -1,6 +1,6 @@
 import { exec } from 'child_process';
-import registerService, { DataCache } from '../application/services/register-service';
-import config from '../application/config';
+import registerService, { DataCache } from '../../services/register-service';
+import config from '../../config';
 import { TaskList } from './model';
 // @ts-ignore
 import readTodayTasksScript from './read_today_tasks.applescript';

@@ -1,6 +1,6 @@
 import React from 'react';
 import numberToWords from 'number-to-words';
-import Caption from '../components/Caption';
+import Caption from '../../components/Caption';
 
 export interface TaskCountLabelProps {
   count: number,

@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import shuffle from 'shuffle-array';
-import registerService from '../application/services/register-service';
-import config from '../application/config';
+import registerService from '../../services/register-service';
+import config from '../../config';
 import { BackgroundImageData } from './model';
 
 interface RedditListing {

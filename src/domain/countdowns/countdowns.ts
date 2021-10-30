@@ -1,5 +1,5 @@
-import registerService from '../application/services/register-service';
-import config from '../application/config';
+import registerService from '../../services/register-service';
+import config from '../../config';
 import { Countdown } from './model';
 
 const [getCountdownsData] = registerService<Countdown[], Countdown[]>({

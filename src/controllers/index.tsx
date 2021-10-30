@@ -5,8 +5,8 @@ import ReactDOMServer from 'react-dom/server';
 import { ServerStyleSheet } from 'styled-components';
 import { performance } from 'perf_hooks';
 import signale from 'signale';
-import PageRoot from '../application/components/PageRoot';
-import getData from '../application/services/data-service';
+import PageRoot from '../domain/page-root/PageRoot';
+import getData from '../services/data-service';
 
 const indexController = express.Router();
 

@@ -1,6 +1,6 @@
 import fetch from 'node-fetch';
-import registerService, { DataCache } from '../application/services/register-service';
-import config from '../application/config';
+import registerService, { DataCache } from '../../services/register-service';
+import config from '../../config';
 import { Pudeuko } from './model';
 
 async function fetchPudeukoData(): Promise<Pudeuko> {

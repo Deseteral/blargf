@@ -1,9 +1,9 @@
 import React from 'react';
-import Card from '../components/Card';
-import CardHeader from '../components/CardHeader';
-import Caption from '../components/Caption';
+import Card from '../../components/Card';
+import CardHeader from '../../components/CardHeader';
+import Caption from '../../components/Caption';
 import PudeukoListItem from './PudeukoListItem';
-import { DataCache } from '../application/services/register-service';
+import { DataCache } from '../../services/register-service';
 import { Pudeuko } from './model';
 
 export interface PudeukoSectionProps {

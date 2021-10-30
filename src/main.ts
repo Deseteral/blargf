@@ -6,7 +6,7 @@ signale.config({ displayTimestamp: true });
 import path from 'path';
 import express from 'express';
 import compression from 'compression';
-import config from './application/config';
+import config from './config';
 import indexController from './controllers/index';
 import dataController from './controllers/data';
 // import pudeukoController from './controllers/pudeuko';

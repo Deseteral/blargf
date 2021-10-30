@@ -1,7 +1,7 @@
 import { promises as fsp } from 'fs';
 import path from 'path';
-import registerService from '../application/services/register-service';
-import config from '../application/config';
+import registerService from '../../services/register-service';
+import config from '../../config';
 import { AlertBannerContent } from './model';
 
 async function dataProvider(): Promise<AlertBannerContent> {

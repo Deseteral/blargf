@@ -1,12 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import Card from '../components/Card';
-import CardHeader from '../components/CardHeader';
-import Caption from '../components/Caption';
-import Icon from '../components/Icon';
+import Card from '../../components/Card';
+import CardHeader from '../../components/CardHeader';
+import Caption from '../../components/Caption';
+import Icon from '../../components/Icon';
 import TaskCountLabel from './TaskCountLabel';
 import { TaskList } from './model';
-import { DataCache } from '../application/services/register-service';
+import { DataCache } from '../../services/register-service';
 
 const List = styled.ul`
   margin: 0;

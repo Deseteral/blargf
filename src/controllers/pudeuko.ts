@@ -1,5 +1,5 @@
 import express from 'express';
-import { deletePudeukoItem } from '../pudeuko/pudeuko';
+import { deletePudeukoItem } from '../domain/pudeuko/pudeuko';
 
 const pudeukoController = express.Router();
 
