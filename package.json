@@ -32,7 +32,7 @@
     "styled-components": "5.3.3"
   },
   "devDependencies": {
-    "@deseteral/eslint-config": "5.0.1",
+    "@deseteral/eslint-config": "5.1.0",
     "@types/compression": "1.7.2",
     "@types/express": "4.17.13",
     "@types/node-fetch": "2.5.12",
