@@ -5,7 +5,7 @@
   "main": "build/main.js",
   "scripts": {
     "start": "node ./dist/main.js",
-    "watch": "parcel watch",
+    "dev": "npm run build && npm start",
     "build": "parcel build",
     "test": "npm run test:type-check && npm run lint",
     "lint": "eslint src --ext ts,tsx",
