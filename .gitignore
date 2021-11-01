@@ -1,8 +1,10 @@
 node_modules/
 build/
+dist/
+.parcel-cache/
 .env
 
-*config.json
+config.json
 alert-banner.md
 
 .DS_Store
