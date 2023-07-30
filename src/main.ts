@@ -14,7 +14,7 @@ import pudeukoController from './controllers/pudeuko';
 const app = express();
 
 app.use(compression());
-app.use('/', express.static(path.join(__dirname, 'static')));
+app.use('/', express.static(path.join(__dirname, '..', 'dist', 'static')));
 app.use('/', indexController);
 app.use('/data', dataController);
 app.use('/pudeuko', pudeukoController);

@@ -9,7 +9,8 @@ interface Configuration {
     subreddits: string[],
   },
   tasks: {
-    refreshIntervalSeconds: number
+    refreshIntervalSeconds: number,
+    todoistToken: string,
   },
   events: {
     icalUrls: string[],
