@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-filename-extension */
 import express from "express";
 import React from "react";
 import ReactDOMServer from "react-dom/server";

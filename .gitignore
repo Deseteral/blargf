@@ -5,6 +5,5 @@ dist/
 .env
 
 config.json
-alert-banner.md
 
 .DS_Store

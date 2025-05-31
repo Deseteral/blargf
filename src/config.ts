@@ -20,9 +20,6 @@ interface Configuration {
     list: { title: string; date: string }[];
     refreshIntervalSeconds: number;
   };
-  alertBanner: {
-    refreshIntervalSeconds: number;
-  };
 }
 
 const configPath = path.join(__dirname, "..", "config.json");
@@ -30,7 +27,7 @@ let configData: Configuration;
 
 function reloadConfiguration(): void {
   try {
-    // eslint-disable-next-line import/no-dynamic-require
+    // eslint-disable-next-line
     configData = require(configPath);
   } catch (exception) {
     signale.fatal("Could not reload configuration");
