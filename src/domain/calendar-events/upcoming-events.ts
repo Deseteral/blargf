@@ -42,7 +42,13 @@ function shortDurationFormat(dateA: Date, dateB: Date): string {
   const isSingleFullDayEvent = differenceInHours(dateB, dateA) === 24;
 
   const dateFormattingOptions: Intl.DateTimeFormatOptions = isHourEvent
-    ? { month: "long", day: "numeric", hour: "2-digit", minute: "2-digit", hour12: false }
+    ? {
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false,
+      }
     : { month: "long", day: "numeric" };
   const formatDate = (date: Date): string =>
     date.toLocaleDateString("en-US", dateFormattingOptions);
@@ -105,7 +111,7 @@ const [getUpcomingEvents] = registerService<EventGroup[], DataCache<EventGroup[]
   refreshInterval: config().tasks.refreshIntervalSeconds,
   dataProvider,
   initialData: [],
-  getter: (cache, _) => cache,
+  getter: (cache) => cache,
 });
 
 export { getUpcomingEvents };

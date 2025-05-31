@@ -7,7 +7,7 @@ const [getCountdownsData] = registerService<Countdown[], Countdown[]>({
   refreshInterval: config().countdowns.refreshIntervalSeconds,
   dataProvider: async () => config().countdowns.list,
   initialData: [],
-  getter: (cache, _) => cache.data,
+  getter: (cache) => cache.data,
 });
 
 export { getCountdownsData };

@@ -31,7 +31,6 @@ function BackgroundImage({ imageData }: BackgroundImageProps): JSX.Element {
   return (
     <>
       <BackgroundImageCanvas id="background-image" />
-      {/* eslint-disable-next-line react/no-danger */}
       <script dangerouslySetInnerHTML={{ __html: rehydrationScript }} />
     </>
   );
