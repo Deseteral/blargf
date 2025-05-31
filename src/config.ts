@@ -16,10 +16,6 @@ interface Configuration {
     icalUrls: string[];
     refreshIntervalSeconds: number;
   };
-  pudeuko: {
-    serviceUrl: string;
-    refreshIntervalSeconds: number;
-  };
   countdowns: {
     list: { title: string; date: string }[];
     refreshIntervalSeconds: number;

@@ -8,7 +8,6 @@ import BackgroundImage from "../background/BackgroundImage";
 import DateTimeSection from "../clock/DateTimeSection";
 import EventsSection from "../calendar-events/EventsSection";
 import TasksSection from "../tasks/TasksSection";
-import PudeukoSection from "../pudeuko/PudeukoSection";
 import CountdownsSection from "../countdowns/CountdownsSection";
 import AlertBannerSection from "../alert-banner/AlertBannerSection";
 import { BlargfData } from "../../services/data-service";
@@ -18,7 +17,7 @@ export interface PageRootProps {
 }
 
 function PageRoot({ data }: PageRootProps): JSX.Element {
-  const { imageData, upcomingEvents, tasks, pudeuko, countdowns, alertBanner } = data;
+  const { imageData, upcomingEvents, tasks, countdowns, alertBanner } = data;
 
   return (
     <ApplicationWrapper title="New Tab">
@@ -27,7 +26,6 @@ function PageRoot({ data }: PageRootProps): JSX.Element {
         <Column>
           <DateTimeSection />
           <EventsSection upcomingEvents={upcomingEvents} />
-          <PudeukoSection pudeuko={pudeuko} />
         </Column>
         <Column>
           <AlertBannerSection alertBanner={alertBanner} />
