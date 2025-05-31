@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import Icon from './Icon';
+import React from "react";
+import styled from "styled-components";
+import Icon from "./Icon";
 
 const TrayLink = styled.a`
   opacity: 0.56;
@@ -12,8 +12,8 @@ const TrayLink = styled.a`
 `;
 
 export interface TrayIconLinkProps {
-  icon: string,
-  href: string,
+  icon: string;
+  href: string;
 }
 
 function TrayIconLink({ icon, href }: TrayIconLinkProps): JSX.Element {

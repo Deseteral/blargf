@@ -1,26 +1,29 @@
-import signale from 'signale';
+import signale from "signale";
 
 export interface DataCache<DataT> {
-  data: DataT,
-  lastUpdateFailed: boolean,
+  data: DataT;
+  lastUpdateFailed: boolean;
 }
 
 export type DataRefreshFunction = () => void;
 
 export interface RegisterServiceOptions<DataT, ReturnDataT> {
-  name: string,
-  refreshInterval?: number,
-  dataProvider: () => Promise<DataT>,
-  initialData: DataT,
-  getter: (cache: DataCache<DataT>, refreshCache: DataRefreshFunction) => ReturnDataT,
+  name: string;
+  refreshInterval?: number;
+  dataProvider: () => Promise<DataT>;
+  initialData: DataT;
+  getter: (cache: DataCache<DataT>, refreshCache: DataRefreshFunction) => ReturnDataT;
 }
 
-export type RegisterServiceReturnType<ReturnDataT> = [
-  () => ReturnDataT,
-  DataRefreshFunction,
-]
+export type RegisterServiceReturnType<ReturnDataT> = [() => ReturnDataT, DataRefreshFunction];
 
-function registerService<DataT, ReturnDataT>({ name, refreshInterval, dataProvider, initialData, getter }: RegisterServiceOptions<DataT, ReturnDataT>): RegisterServiceReturnType<ReturnDataT> {
+function registerService<DataT, ReturnDataT>({
+  name,
+  refreshInterval,
+  dataProvider,
+  initialData,
+  getter,
+}: RegisterServiceOptions<DataT, ReturnDataT>): RegisterServiceReturnType<ReturnDataT> {
   const loggerMessages = {
     onPending: `Updating ${name} cache...`,
     onSuccess: `Updated ${name} cache`,
@@ -53,10 +56,7 @@ function registerService<DataT, ReturnDataT>({ name, refreshInterval, dataProvid
   }
   setImmediate(refreshCache);
 
-  return [
-    ((): ReturnDataT => getter(cache, refreshCache)),
-    refreshCache,
-  ];
+  return [(): ReturnDataT => getter(cache, refreshCache), refreshCache];
 }
 
 export default registerService;

@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
@@ -14,15 +14,13 @@ const GridContainer = styled.div`
 `;
 
 export interface ColumnWrapperProps {
-  children: (React.ReactNode | React.ReactNode[])
+  children: React.ReactNode | React.ReactNode[];
 }
 
 function ColumnWrapper({ children }: ColumnWrapperProps): JSX.Element {
   return (
     <Container>
-      <GridContainer>
-        {children}
-      </GridContainer>
+      <GridContainer>{children}</GridContainer>
     </Container>
   );
 }

@@ -1,18 +1,18 @@
-import compareDates from 'date-fns/compare_asc';
-import isToday from 'date-fns/is_today';
-import isFuture from 'date-fns/is_future';
-import isSameWeek from 'date-fns/is_same_week';
-import differenceInDays from 'date-fns/difference_in_days';
-import startOfToday from 'date-fns/start_of_today';
-import differenceInHours from 'date-fns/difference_in_hours';
-import ical from 'node-ical';
-import registerService, { DataCache } from '../../services/register-service';
-import config from '../../config';
-import { formatAsDuration } from '../../helpers/date-time-formatter';
-import { CalendarEvent, EventGroup } from './model';
+import compareDates from "date-fns/compare_asc";
+import isToday from "date-fns/is_today";
+import isFuture from "date-fns/is_future";
+import isSameWeek from "date-fns/is_same_week";
+import differenceInDays from "date-fns/difference_in_days";
+import startOfToday from "date-fns/start_of_today";
+import differenceInHours from "date-fns/difference_in_hours";
+import ical from "node-ical";
+import registerService, { DataCache } from "../../services/register-service";
+import config from "../../config";
+import { formatAsDuration } from "../../helpers/date-time-formatter";
+import { CalendarEvent, EventGroup } from "./model";
 
 export function isVEvent(value: ical.CalendarComponent): value is ical.VEvent {
-  return value.type === 'VEVENT';
+  return value.type === "VEVENT";
 }
 
 function fetchICalFromUrl(url: string): Promise<ical.CalendarComponent[]> {
@@ -42,11 +42,12 @@ function shortDurationFormat(dateA: Date, dateB: Date): string {
   const isSingleFullDayEvent = differenceInHours(dateB, dateA) === 24;
 
   const dateFormattingOptions: Intl.DateTimeFormatOptions = isHourEvent
-    ? { month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit', hour12: false }
-    : { month: 'long', day: 'numeric' };
-  const formatDate = (date: Date): string => date.toLocaleDateString('en-US', dateFormattingOptions);
+    ? { month: "long", day: "numeric", hour: "2-digit", minute: "2-digit", hour12: false }
+    : { month: "long", day: "numeric" };
+  const formatDate = (date: Date): string =>
+    date.toLocaleDateString("en-US", dateFormattingOptions);
 
-  return (isSingleFullDayEvent || isHourEvent)
+  return isSingleFullDayEvent || isHourEvent
     ? `${formatDate(dateA)}, ${formatAsDuration(dateA)}`
     : `${formatDate(dateA)} - ${formatDate(dateB)}, ${formatAsDuration(dateA)}`;
 }
@@ -85,20 +86,22 @@ async function dataProvider(): Promise<EventGroup[]> {
 
   return [
     {
-      name: 'Today',
+      name: "Today",
       eventList: events.filter(isEventToday),
-    }, {
-      name: 'This week',
+    },
+    {
+      name: "This week",
       eventList: events.filter(isEventThisWeek),
-    }, {
-      name: 'Later',
+    },
+    {
+      name: "Later",
       eventList: events.filter(isEventLater),
     },
   ];
 }
 
 const [getUpcomingEvents] = registerService<EventGroup[], DataCache<EventGroup[]>>({
-  name: 'upcoming events',
+  name: "upcoming events",
   refreshInterval: config().tasks.refreshIntervalSeconds,
   dataProvider,
   initialData: [],

@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from 'styled-components';
-import { formatAsDuration } from '../../helpers/date-time-formatter';
-import Text from '../../components/Text';
-import Caption from '../../components/Caption';
-import { Countdown } from './model';
+import React from "react";
+import styled from "styled-components";
+import { formatAsDuration } from "../../helpers/date-time-formatter";
+import Text from "../../components/Text";
+import Caption from "../../components/Caption";
+import { Countdown } from "./model";
 
 const TimerContainer = styled.div`
   display: flex;

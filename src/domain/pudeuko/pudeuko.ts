@@ -1,7 +1,7 @@
-import fetch from 'node-fetch';
-import registerService, { DataCache } from '../../services/register-service';
-import config from '../../config';
-import { Pudeuko } from './model';
+import fetch from "node-fetch";
+import registerService, { DataCache } from "../../services/register-service";
+import config from "../../config";
+import { Pudeuko } from "./model";
 
 async function fetchPudeukoData(): Promise<Pudeuko> {
   const response = await fetch(`${config().pudeuko.serviceUrl}/pudeuko`);
@@ -10,7 +10,7 @@ async function fetchPudeukoData(): Promise<Pudeuko> {
 }
 
 const [getPudeukoData, refreshCache] = registerService<Pudeuko, DataCache<Pudeuko>>({
-  name: 'pudeuko',
+  name: "pudeuko",
   refreshInterval: config().pudeuko.refreshIntervalSeconds,
   dataProvider: fetchPudeukoData,
   initialData: { items: [] },
@@ -18,10 +18,7 @@ const [getPudeukoData, refreshCache] = registerService<Pudeuko, DataCache<Pudeuk
 });
 
 async function deletePudeukoItem(itemId: string): Promise<void> {
-  await fetch(
-    `${config().pudeuko.serviceUrl}/pudeuko/${itemId}`,
-    { method: 'DELETE' },
-  );
+  await fetch(`${config().pudeuko.serviceUrl}/pudeuko/${itemId}`, { method: "DELETE" });
 
   refreshCache();
 }

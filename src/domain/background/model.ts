@@ -1,4 +1,4 @@
 export interface BackgroundImageData {
-  imageUrl: string,
-  link: string,
+  imageUrl: string;
+  link: string;
 }

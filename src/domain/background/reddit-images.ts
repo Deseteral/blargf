@@ -1,20 +1,20 @@
-import fetch from 'node-fetch';
-import shuffle from 'shuffle-array';
-import registerService from '../../services/register-service';
-import config from '../../config';
-import { BackgroundImageData } from './model';
+import fetch from "node-fetch";
+import shuffle from "shuffle-array";
+import registerService from "../../services/register-service";
+import config from "../../config";
+import { BackgroundImageData } from "./model";
 
 interface RedditListing {
   data: {
     children: [
       {
         data: {
-          url: string,
-          permalink: string,
-        }
-      }
-    ]
-  }
+          url: string;
+          permalink: string;
+        };
+      },
+    ];
+  };
 }
 
 function mapListingData(listing: RedditListing): BackgroundImageData[] {
@@ -24,12 +24,13 @@ function mapListingData(listing: RedditListing): BackgroundImageData[] {
       link: `https://reddit.com${child.data.permalink}`,
     }))
     .filter((image) => !!image.imageUrl)
-    .filter((image) => image.imageUrl.endsWith('.jpg') || image.imageUrl.endsWith('.jpeg'));
+    .filter((image) => image.imageUrl.endsWith(".jpg") || image.imageUrl.endsWith(".jpeg"));
 }
 
 async function dataProvider(): Promise<BackgroundImageData[]> {
-  const urls = config().backgrounds.subreddits
-    .map((subreddit) => `https://www.reddit.com/r/${subreddit}.json`);
+  const urls = config().backgrounds.subreddits.map(
+    (subreddit) => `https://www.reddit.com/r/${subreddit}.json`,
+  );
 
   return Promise.all(urls.map((url) => fetch(url)))
     .then((responses) => responses.filter((response) => response.status === 200))
@@ -40,7 +41,7 @@ async function dataProvider(): Promise<BackgroundImageData[]> {
 }
 
 const [getBackgroundImage] = registerService<BackgroundImageData[], BackgroundImageData>({
-  name: 'reddit images',
+  name: "reddit images",
   dataProvider,
   initialData: [],
   getter: (cache, refreshCache) => {

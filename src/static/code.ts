@@ -1,5 +1,5 @@
 function unhide(): void {
-  document.body.classList.remove('hidden');
+  document.body.classList.remove("hidden");
 }
 
 function preloadImage(imageUrl: string): Promise<void> {
@@ -11,23 +11,25 @@ function preloadImage(imageUrl: string): Promise<void> {
 }
 
 async function setBackgroundImage(): Promise<void> {
-  const { backgroundImage: { imageUrl } } = window;
+  const {
+    backgroundImage: { imageUrl },
+  } = window;
 
   if (imageUrl) {
     await preloadImage(imageUrl);
 
-    const element = document.querySelector('#background-image') as HTMLElement;
+    const element = document.querySelector("#background-image") as HTMLElement;
     element.style.backgroundImage = `url("${imageUrl}")`;
-    element.classList.add('show');
+    element.classList.add("show");
   }
 }
 
 async function render(): Promise<void> {
-  const hydrate = (await import('./hydrate')).default;
+  const hydrate = (await import("./hydrate")).default;
   hydrate();
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+window.addEventListener("DOMContentLoaded", () => {
   unhide();
   setBackgroundImage();
   render();

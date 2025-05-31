@@ -1,12 +1,12 @@
-import React from 'react';
-import styled from 'styled-components';
-import Card from '../../components/Card';
-import CardHeader from '../../components/CardHeader';
-import Caption from '../../components/Caption';
-import Icon from '../../components/Icon';
-import TaskCountLabel from './TaskCountLabel';
-import { TaskList } from './model';
-import { DataCache } from '../../services/register-service';
+import React from "react";
+import styled from "styled-components";
+import Card from "../../components/Card";
+import CardHeader from "../../components/CardHeader";
+import Caption from "../../components/Caption";
+import Icon from "../../components/Icon";
+import TaskCountLabel from "./TaskCountLabel";
+import { TaskList } from "./model";
+import { DataCache } from "../../services/register-service";
 
 const List = styled.ul`
   margin: 0;
@@ -20,8 +20,8 @@ const EmptyListContainer = styled.div`
 `;
 
 const EmptyListFlag = styled(Icon).attrs({
-  type: 'outlined_flag',
-  size: '48px',
+  type: "outlined_flag",
+  size: "48px",
 })`
   margin-bottom: 8px;
   opacity: 0.56;
@@ -43,13 +43,13 @@ const DateAggregationSection = styled.section`
 `;
 
 const IncompleteTaskIcon = styled(Icon).attrs({
-  type: 'radio_button_unchecked',
+  type: "radio_button_unchecked",
 })`
   margin-right: 8px;
 `;
 
 export interface TasksSectionProps {
-  tasks: DataCache<TaskList>
+  tasks: DataCache<TaskList>;
 }
 
 function TasksSection({ tasks }: TasksSectionProps): JSX.Element {
@@ -67,26 +67,24 @@ function TasksSection({ tasks }: TasksSectionProps): JSX.Element {
       )}
       {!isEmpty && (
         <>
-          {[
-            { list: data.today, dueLabel: 'due today' },
-          ].filter(({ list }) => list.length > 0).map(({ list, dueLabel }) => (
-            <DateAggregationSection key={dueLabel}>
-              <TaskCountLabel count={list.length} dueLabel={dueLabel} />
-              <List>
-                {list.map((task) => (
-                  <ListElement key={task.id}>
-                    <IncompleteTaskIcon /> {task.content}
-                  </ListElement>
-                ))}
-              </List>
-            </DateAggregationSection>
-          ))}
+          {[{ list: data.today, dueLabel: "due today" }]
+            .filter(({ list }) => list.length > 0)
+            .map(({ list, dueLabel }) => (
+              <DateAggregationSection key={dueLabel}>
+                <TaskCountLabel count={list.length} dueLabel={dueLabel} />
+                <List>
+                  {list.map((task) => (
+                    <ListElement key={task.id}>
+                      <IncompleteTaskIcon /> {task.content}
+                    </ListElement>
+                  ))}
+                </List>
+              </DateAggregationSection>
+            ))}
         </>
       )}
       {lastUpdateFailed && (
-        <Caption error>
-          List might be outdated because of failed update.
-        </Caption>
+        <Caption error>List might be outdated because of failed update.</Caption>
       )}
     </Card>
   );

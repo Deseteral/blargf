@@ -9,6 +9,7 @@
     "build": "parcel build",
     "test": "npm run test:type-check && npm run lint",
     "lint": "eslint src --ext ts,tsx",
+    "format": "prettier --write src",
     "test:type-check": "tsc --noEmit",
     "test:type-check:watch": "npm run test:type-check -- --watch"
   },
@@ -43,7 +44,9 @@
     "@types/signale": "1.4.2",
     "@types/styled-components": "5.1.15",
     "eslint": "9.28.0",
+    "eslint-config-prettier": "10.1.5",
     "parcel": "2.0.0",
+    "prettier": "3.5.3",
     "process": "0.11.10",
     "typescript": "5.8.3",
     "typescript-eslint": "8.33.0"

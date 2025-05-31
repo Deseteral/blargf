@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { BackgroundImageData } from './model';
+import React from "react";
+import styled from "styled-components";
+import { BackgroundImageData } from "./model";
 
 const BackgroundImageCanvas = styled.div`
   height: 100vh;
@@ -22,7 +22,7 @@ const BackgroundImageCanvas = styled.div`
 `;
 
 export interface BackgroundImageProps {
-  imageData: BackgroundImageData,
+  imageData: BackgroundImageData;
 }
 
 function BackgroundImage({ imageData }: BackgroundImageProps): JSX.Element {
@@ -32,7 +32,7 @@ function BackgroundImage({ imageData }: BackgroundImageProps): JSX.Element {
     <>
       <BackgroundImageCanvas id="background-image" />
       {/* eslint-disable-next-line react/no-danger */}
-      <script dangerouslySetInnerHTML={({ __html: rehydrationScript })} />
+      <script dangerouslySetInnerHTML={{ __html: rehydrationScript }} />
     </>
   );
 }

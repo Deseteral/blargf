@@ -1,9 +1,9 @@
-import registerService from '../../services/register-service';
-import config from '../../config';
-import { Countdown } from './model';
+import registerService from "../../services/register-service";
+import config from "../../config";
+import { Countdown } from "./model";
 
 const [getCountdownsData] = registerService<Countdown[], Countdown[]>({
-  name: 'countdowns',
+  name: "countdowns",
   refreshInterval: config().countdowns.refreshIntervalSeconds,
   dataProvider: async () => config().countdowns.list,
   initialData: [],

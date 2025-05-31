@@ -1,1 +1,1 @@
-export type AlertBannerContent = (string | null);
+export type AlertBannerContent = string | null;

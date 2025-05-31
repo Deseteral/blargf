@@ -1,4 +1,4 @@
 export interface Countdown {
-  title: string,
-  date: string,
+  title: string;
+  date: string;
 }

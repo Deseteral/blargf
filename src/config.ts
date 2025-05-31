@@ -1,48 +1,48 @@
-import path from 'path';
-import signale from 'signale';
+import path from "path";
+import signale from "signale";
 
 interface Configuration {
   server: {
-    port: number,
-  },
+    port: number;
+  };
   backgrounds: {
-    subreddits: string[],
-  },
+    subreddits: string[];
+  };
   tasks: {
-    refreshIntervalSeconds: number,
-    todoistToken: string,
-  },
+    refreshIntervalSeconds: number;
+    todoistToken: string;
+  };
   events: {
-    icalUrls: string[],
-    refreshIntervalSeconds: number
-  },
+    icalUrls: string[];
+    refreshIntervalSeconds: number;
+  };
   pudeuko: {
-    serviceUrl: string,
-    refreshIntervalSeconds: number
-  },
+    serviceUrl: string;
+    refreshIntervalSeconds: number;
+  };
   countdowns: {
-    list: ({ title: string, date: string })[],
-    refreshIntervalSeconds: number,
-  },
+    list: { title: string; date: string }[];
+    refreshIntervalSeconds: number;
+  };
   alertBanner: {
-    refreshIntervalSeconds: number,
-  }
+    refreshIntervalSeconds: number;
+  };
 }
 
-const configPath = path.join(__dirname, '..', 'config.json');
+const configPath = path.join(__dirname, "..", "config.json");
 let configData: Configuration;
 
 function reloadConfiguration(): void {
   try {
-    // eslint-disable-next-line import/no-dynamic-require, global-require
+    // eslint-disable-next-line import/no-dynamic-require
     configData = require(configPath);
   } catch (exception) {
-    signale.fatal('Could not reload configuration');
+    signale.fatal("Could not reload configuration");
     signale.fatal(exception);
     process.exit(1);
   }
 
-  signale.success('Reloaded configuration');
+  signale.success("Reloaded configuration");
 }
 
 function config(): Configuration {
@@ -52,6 +52,6 @@ function config(): Configuration {
 (function initializeConfigSystem(): void {
   setInterval(reloadConfiguration, 60000);
   reloadConfiguration();
-}());
+})();
 
 export default config;

@@ -1,13 +1,11 @@
-import React from 'react';
+import React from "react";
 
 export interface TextProps {
-  children: string,
+  children: string;
 }
 
 function Text({ children }: TextProps): JSX.Element {
-  return (
-    <div>{children}</div>
-  );
+  return <div>{children}</div>;
 }
 
 export default Text;

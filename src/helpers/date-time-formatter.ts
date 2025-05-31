@@ -1,4 +1,4 @@
-import distanceInWordsStrict from 'date-fns/distance_in_words_strict';
+import distanceInWordsStrict from "date-fns/distance_in_words_strict";
 
 function getFormattedTime(): string {
   const date = new Date();
@@ -8,9 +8,12 @@ function getFormattedTime(): string {
 function getFormattedDate(): string {
   const date = new Date();
   const localeOptions: Intl.DateTimeFormatOptions = {
-    weekday: 'long', year: 'numeric', month: 'long', day: 'numeric',
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   };
-  return date.toLocaleDateString('en-US', localeOptions);
+  return date.toLocaleDateString("en-US", localeOptions);
 }
 
 function formatAsDuration(date: Date): string {
