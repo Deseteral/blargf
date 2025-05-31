@@ -24,13 +24,7 @@ async function setBackgroundImage(): Promise<void> {
   }
 }
 
-async function render(): Promise<void> {
-  const hydrate = (await import("./hydrate")).default;
-  hydrate();
-}
-
 window.addEventListener("DOMContentLoaded", () => {
   unhide();
   setBackgroundImage();
-  render();
 });
