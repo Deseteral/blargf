@@ -54,7 +54,7 @@ export interface TasksSectionProps {
 
 function TasksSection({ tasks }: TasksSectionProps): JSX.Element {
   const { data, lastUpdateFailed } = tasks;
-  const isEmpty = data.today.length === 0;
+  const isEmpty = data.today.length === 0 && data.overdue.length === 0;
 
   return (
     <Card>
@@ -67,7 +67,10 @@ function TasksSection({ tasks }: TasksSectionProps): JSX.Element {
       )}
       {!isEmpty && (
         <>
-          {[{ list: data.today, dueLabel: "due today" }]
+          {[
+            { list: data.today, dueLabel: "due today" },
+            { list: data.overdue, dueLabel: "overdue" },
+          ]
             .filter(({ list }) => list.length > 0)
             .map(({ list, dueLabel }) => (
               <DateAggregationSection key={dueLabel}>

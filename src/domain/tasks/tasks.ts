@@ -30,13 +30,13 @@ async function fetchTodoistTasksDueToday(): Promise<TaskList> {
     .filter((task) => task.due && task.due.date === currentDate)
     .map((task) => ({ id: task.id, content: task.content }));
 
-  // const overdueTasks = tasks
-  //   .filter((task) => task.due && new Date(task.due.date).getTime() <= new Date().getTime())
-  //   .filter((task) => !todaysTasks.map(t => t.id).includes(task.id));
+  const overdueTasks = tasks
+    .filter((task) => task.due && new Date(task.due.date).getTime() <= new Date().getTime())
+    .filter((task) => !todaysTasks.map((t) => t.id).includes(task.id));
 
   return {
     today: todaysTasks,
-    // overdue: overdueTasks,
+    overdue: overdueTasks,
   };
 }
 
@@ -44,7 +44,7 @@ const [getTasks] = registerService<TaskList, DataCache<TaskList>>({
   name: "tasks",
   refreshInterval: config().tasks.refreshIntervalSeconds,
   dataProvider: fetchTodoistTasksDueToday,
-  initialData: { today: [] },
+  initialData: { today: [], overdue: [] },
   getter: (cache) => cache,
 });
 

@@ -5,4 +5,5 @@ export interface Task {
 
 export interface TaskList {
   today: Task[];
+  overdue: Task[];
 }
