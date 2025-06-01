@@ -1,12 +1,12 @@
-import { getBackgroundImage } from "../domain/background/reddit-images";
-import { getTasks } from "../domain/tasks/tasks";
-import { getUpcomingEvents } from "../domain/calendar-events/upcoming-events";
-import { getCountdownsData } from "../domain/countdowns/countdowns";
-import { BackgroundImageData } from "../domain/background/model";
-import { TaskList } from "../domain/tasks/model";
+import { getBackgroundImage } from "../data/background/reddit-images";
+import { getTasks } from "../data/tasks/tasks";
+import { getUpcomingEvents } from "../data/calendar-events/upcoming-events";
+import { getCountdownsData } from "../data/countdowns/countdowns";
+import { BackgroundImageData } from "../data/background/model";
+import { TaskList } from "../data/tasks/model";
 import { DataCache } from "./register-service";
-import { Countdown } from "../domain/countdowns/model";
-import { EventGroup } from "../domain/calendar-events/model";
+import { Countdown } from "../data/countdowns/model";
+import { EventGroup } from "../data/calendar-events/model";
 
 export interface BlargfData {
   imageData: BackgroundImageData;

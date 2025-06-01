@@ -1,26 +1,22 @@
 import express from "express";
-import React from "react";
-import ReactDOMServer from "react-dom/server";
-import { ServerStyleSheet } from "styled-components";
 import { performance } from "perf_hooks";
 import signale from "signale";
-import PageRoot from "../domain/page-root/PageRoot";
-import getData from "../services/data-service";
+import getData, { BlargfData } from "../services/data-service";
+import renderLostLove from "../views/lost-love/render";
 
 const indexController = express.Router();
 
-function render(): string {
-  const data = getData();
+const renderers: { [key: string]: (data: BlargfData) => string } = {
+  "lost-love": renderLostLove,
+};
 
-  const sheet = new ServerStyleSheet();
-  const html = ReactDOMServer.renderToStaticMarkup(sheet.collectStyles(<PageRoot data={data} />));
+indexController.get("/", (req, res) => {
+  const viewParam = req.query.view as string;
+  const render = renderers[viewParam] || renderLostLove;
 
-  return sheet.getStyleTags() + html;
-}
-
-indexController.get("/", (_, res) => {
   const timeStart = performance.now();
-  const html = render();
+  const data = getData();
+  const html = render(data);
   const renderTime = performance.now() - timeStart;
 
   res.set("Server-Timing", `render;dur=${renderTime};desc="Render"`);
