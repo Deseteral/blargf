@@ -5,8 +5,8 @@ import CardHeader from "../components/CardHeader";
 import Caption from "../components/Caption";
 import Icon from "../components/Icon";
 import TaskCountLabel from "./TaskCountLabel";
-import { TaskList } from "../../../data/tasks/model";
-import { DataCache } from "../../../services/register-service";
+import { Task, TaskList } from "../../../data/tasks/model";
+import { DataCache } from "../../../data/register-service";
 
 const List = styled.ul`
   margin: 0;
@@ -76,7 +76,7 @@ function TasksSection({ tasks }: TasksSectionProps): JSX.Element {
               <DateAggregationSection key={dueLabel}>
                 <TaskCountLabel count={list.length} dueLabel={dueLabel} />
                 <List>
-                  {list.map((task) => (
+                  {list.map((task: Task) => (
                     <ListElement key={task.id}>
                       <IncompleteTaskIcon /> {task.content}
                     </ListElement>

@@ -1,6 +1,6 @@
 import React from "react";
 import { ServerStyleSheet } from "styled-components";
-import { BlargfData } from "../../services/data-service";
+import { BlargfData } from "../../data/data-service";
 import ReactDOMServer from "react-dom/server";
 import PageRoot from "./page-root/PageRoot";
 

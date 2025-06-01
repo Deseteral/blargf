@@ -3,7 +3,7 @@ import Card from "../components/Card";
 import CardHeader from "../components/CardHeader";
 import Caption from "../components/Caption";
 import EventList from "./EventList";
-import { DataCache } from "../../../services/register-service";
+import { DataCache } from "../../../data/register-service";
 import { EventGroup } from "../../../data/calendar-events/model";
 
 export interface EventsSectionProps {

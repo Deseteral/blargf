@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { BackgroundImageData } from "./model";
+import { BackgroundImageData } from "../../../data/background/model";
 
 const BackgroundImageCanvas = styled.div`
   height: 100vh;
