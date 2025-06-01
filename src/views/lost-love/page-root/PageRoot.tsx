@@ -25,10 +25,10 @@ function PageRoot({ data }: PageRootProps): JSX.Element {
         <Column>
           <DateTimeSection />
           <EventsSection upcomingEvents={upcomingEvents} />
+          <CountdownsSection countdowns={countdowns} />
         </Column>
         <Column>
           <TasksSection tasks={tasks} />
-          <CountdownsSection countdowns={countdowns} />
         </Column>
       </ColumnWrapper>
       <Tray>
