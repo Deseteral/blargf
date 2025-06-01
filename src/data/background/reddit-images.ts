@@ -1,4 +1,4 @@
-import shuffle from "shuffle-array";
+import { shuffleArray } from "../../helpers/shuffle-array";
 import registerService from "../register-service";
 import { getConfig } from "../../config";
 import { type BackgroundImageData } from "./model";
@@ -36,7 +36,7 @@ async function dataProvider(): Promise<BackgroundImageData[]> {
     .then((responses) => Promise.all(responses.map((response) => response.json())))
     .then((listings) => listings.map((listing) => mapListingData(listing as RedditListing)))
     .then((nestedImages) => nestedImages.reduce((acc, val) => acc.concat(val), []))
-    .then((images) => shuffle(images));
+    .then((images) => shuffleArray(images));
 }
 
 const [getBackgroundImage] = registerService<BackgroundImageData[], BackgroundImageData>({

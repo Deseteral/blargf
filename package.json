@@ -23,7 +23,6 @@
     "number-to-words": "1.2.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "shuffle-array": "1.0.1",
     "signale": "1.4.0",
     "styled-components": "5.3.3"
   },
@@ -33,13 +32,11 @@
     "@types/number-to-words": "1.2.1",
     "@types/react": "17.0.33",
     "@types/react-dom": "17.0.10",
-    "@types/shuffle-array": "1.0.2",
     "@types/signale": "1.4.2",
     "@types/styled-components": "5.1.15",
     "eslint": "9.28.0",
     "eslint-config-prettier": "10.1.5",
     "prettier": "3.5.3",
-    "process": "0.11.10",
     "typescript": "5.8.3",
     "typescript-eslint": "8.33.0"
   },
