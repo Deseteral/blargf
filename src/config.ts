@@ -1,5 +1,4 @@
-import path from "path";
-import signale from "signale";
+import config from "../config.toml";
 
 interface Configuration {
   server: {
@@ -22,29 +21,8 @@ interface Configuration {
   };
 }
 
-const configPath = path.join(__dirname, "..", "config.json");
-let configData: Configuration;
-
-function reloadConfiguration(): void {
-  try {
-    // eslint-disable-next-line
-    configData = require(configPath);
-  } catch (exception) {
-    signale.fatal("Could not reload configuration");
-    signale.fatal(exception);
-    process.exit(1);
-  }
-
-  signale.success("Reloaded configuration");
+function getConfig(): Configuration {
+  return config;
 }
 
-function config(): Configuration {
-  return configData;
-}
-
-(function initializeConfigSystem(): void {
-  setInterval(reloadConfiguration, 60000);
-  reloadConfiguration();
-})();
-
-export default config;
+export { getConfig };

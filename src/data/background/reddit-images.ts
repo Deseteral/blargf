@@ -1,6 +1,6 @@
 import shuffle from "shuffle-array";
 import registerService from "../register-service";
-import config from "../../config";
+import { getConfig } from "../../config";
 import { type BackgroundImageData } from "./model";
 
 interface RedditListing {
@@ -27,7 +27,7 @@ function mapListingData(listing: RedditListing): BackgroundImageData[] {
 }
 
 async function dataProvider(): Promise<BackgroundImageData[]> {
-  const urls = config().backgrounds.subreddits.map(
+  const urls = getConfig().backgrounds.subreddits.map(
     (subreddit) => `https://www.reddit.com/r/${subreddit}.json`,
   );
 

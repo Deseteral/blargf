@@ -1,11 +1,11 @@
 import registerService from "../register-service";
-import config from "../../config";
+import { getConfig } from "../../config";
 import { type Countdown } from "./model";
 
 const [getCountdownsData] = registerService<Countdown[], Countdown[]>({
   name: "countdowns",
-  refreshInterval: config().countdowns.refreshIntervalSeconds,
-  dataProvider: async () => config().countdowns.list,
+  refreshInterval: getConfig().countdowns.refreshIntervalSeconds,
+  dataProvider: async () => getConfig().countdowns.list,
   initialData: [],
   getter: (cache) => cache.data,
 });

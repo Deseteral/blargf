@@ -1,5 +1,5 @@
 import registerService, { type DataCache } from "../register-service";
-import config from "../../config";
+import { getConfig } from "../../config";
 import { type TaskList, type Task } from "./model";
 
 type TodoistResponse = TodoistTask[];
@@ -16,7 +16,7 @@ async function fetchTodoistTasksDueToday(): Promise<TaskList> {
   const TASKS_URL = "https://api.todoist.com/rest/v2/tasks";
 
   const currentDate = new Date().toISOString().split("T")[0];
-  const token = config().tasks.todoistToken;
+  const token = getConfig().tasks.todoistToken;
   const fetchOptions = {
     headers: {
       Authorization: `Bearer ${token}`,
@@ -42,7 +42,7 @@ async function fetchTodoistTasksDueToday(): Promise<TaskList> {
 
 const [getTasks] = registerService<TaskList, DataCache<TaskList>>({
   name: "tasks",
-  refreshInterval: config().tasks.refreshIntervalSeconds,
+  refreshInterval: getConfig().tasks.refreshIntervalSeconds,
   dataProvider: fetchTodoistTasksDueToday,
   initialData: { today: [], overdue: [] },
   getter: (cache) => cache,

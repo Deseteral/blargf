@@ -7,7 +7,7 @@ import startOfToday from "date-fns/start_of_today";
 import differenceInHours from "date-fns/difference_in_hours";
 import ical from "node-ical";
 import registerService, { type DataCache } from "../register-service";
-import config from "../../config";
+import { getConfig } from "../../config";
 import { formatAsDuration } from "../../helpers/date-time-formatter";
 import { type CalendarEvent, type EventGroup } from "./model";
 import { hasValue } from "../../helpers/has-value-predicate";
@@ -35,7 +35,7 @@ function fetchICalFromUrl(url: string): Promise<ical.CalendarComponent[]> {
 }
 
 async function fetchEvents(): Promise<ical.CalendarComponent[]> {
-  const iCalSourceUrls = config().events.icalUrls;
+  const iCalSourceUrls = getConfig().events.icalUrls;
   return (await Promise.all(iCalSourceUrls.map(fetchICalFromUrl))).flat();
 }
 
@@ -110,7 +110,7 @@ async function dataProvider(): Promise<EventGroup[]> {
 
 const [getUpcomingEvents] = registerService<EventGroup[], DataCache<EventGroup[]>>({
   name: "upcoming events",
-  refreshInterval: config().tasks.refreshIntervalSeconds,
+  refreshInterval: getConfig().tasks.refreshIntervalSeconds,
   dataProvider,
   initialData: [],
   getter: (cache) => cache,

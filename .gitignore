@@ -1,9 +1,5 @@
 node_modules/
-build/
 dist/
-.parcel-cache/
-.env
-
-config.json
-
 .DS_Store
+
+config.toml
