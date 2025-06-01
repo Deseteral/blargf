@@ -2,7 +2,7 @@ import React from "react";
 import Card from "../components/Card";
 import CardHeader from "../components/CardHeader";
 import CountdownView from "./CountdownView";
-import { Countdown } from "../../../data/countdowns/model";
+import { type Countdown } from "../../../data/countdowns/model";
 
 export interface CountdownsSectionProps {
   countdowns: Countdown[];

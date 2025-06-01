@@ -15,8 +15,6 @@ export interface ApplicationWrapperProps {
 }
 
 function ApplicationWrapper({ title, children }: ApplicationWrapperProps): JSX.Element {
-  if (typeof window !== "undefined") return <>{children}</>;
-
   return (
     <html lang="en">
       <head>
@@ -27,7 +25,7 @@ function ApplicationWrapper({ title, children }: ApplicationWrapperProps): JSX.E
       </head>
       <Body className="hidden">
         <div id="app">{children}</div>
-        <script src="code.js" />
+        <script src="/code.js" />
       </Body>
     </html>
   );

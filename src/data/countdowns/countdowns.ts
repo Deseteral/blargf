@@ -1,6 +1,6 @@
 import registerService from "../register-service";
 import config from "../../config";
-import { Countdown } from "./model";
+import { type Countdown } from "./model";
 
 const [getCountdownsData] = registerService<Countdown[], Countdown[]>({
   name: "countdowns",

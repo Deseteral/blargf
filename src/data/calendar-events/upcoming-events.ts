@@ -6,10 +6,11 @@ import differenceInDays from "date-fns/difference_in_days";
 import startOfToday from "date-fns/start_of_today";
 import differenceInHours from "date-fns/difference_in_hours";
 import ical from "node-ical";
-import registerService, { DataCache } from "../register-service";
+import registerService, { type DataCache } from "../register-service";
 import config from "../../config";
 import { formatAsDuration } from "../../helpers/date-time-formatter";
-import { CalendarEvent, EventGroup } from "./model";
+import { type CalendarEvent, type EventGroup } from "./model";
+import { hasValue } from "../../helpers/has-value-predicate";
 
 export function isVEvent(value: ical.CalendarComponent): value is ical.VEvent {
   return value.type === "VEVENT";
@@ -25,6 +26,7 @@ function fetchICalFromUrl(url: string): Promise<ical.CalendarComponent[]> {
 
       const events = Object.keys(data)
         .map((key) => data[key])
+        .filter(hasValue)
         .filter((event) => !!event.summary);
 
       resolve(events);

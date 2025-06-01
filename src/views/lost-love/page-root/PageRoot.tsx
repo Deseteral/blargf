@@ -9,7 +9,7 @@ import DateTimeSection from "../clock/DateTimeSection";
 import EventsSection from "../calendar-events/EventsSection";
 import TasksSection from "../tasks/TasksSection";
 import CountdownsSection from "../countdowns/CountdownsSection";
-import { BlargfData } from "../../../data/data-service";
+import { type BlargfData } from "../../../data/data-service";
 
 export interface PageRootProps {
   data: BlargfData;

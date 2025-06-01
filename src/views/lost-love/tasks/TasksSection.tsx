@@ -5,8 +5,8 @@ import CardHeader from "../components/CardHeader";
 import Caption from "../components/Caption";
 import Icon from "../components/Icon";
 import TaskCountLabel from "./TaskCountLabel";
-import { Task, TaskList } from "../../../data/tasks/model";
-import { DataCache } from "../../../data/register-service";
+import { type Task, type TaskList } from "../../../data/tasks/model";
+import { type DataCache } from "../../../data/register-service";
 
 const List = styled.ul`
   margin: 0;

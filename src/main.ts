@@ -2,18 +2,15 @@ import signale from "signale";
 
 signale.config({ displayTimestamp: true });
 
-import path from "path";
-import express from "express";
-import compression from "compression";
 import config from "./config";
-import indexEndpoint from "./endpoints/index";
+import { viewsEndpoint } from "./endpoints/views";
 
-const app = express();
+const server = Bun.serve({
+  port: config().server.port,
+  routes: {
+    "/code.js": () => new Response(Bun.file("./dist/code.js")),
+    "/views/:viewName": viewsEndpoint,
+  },
+});
 
-app.use(compression());
-app.use("/", express.static(path.join(__dirname, "..", "dist", "static")));
-app.use("/", indexEndpoint);
-
-app.listen(config().server.port, () =>
-  signale.start(`blargf server started on port ${config().server.port}`),
-);
+signale.start(`blargf server started on port ${server.port}`);

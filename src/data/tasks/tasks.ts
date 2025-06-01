@@ -1,6 +1,6 @@
-import registerService, { DataCache } from "../register-service";
+import registerService, { type DataCache } from "../register-service";
 import config from "../../config";
-import { TaskList, Task } from "./model";
+import { type TaskList, type Task } from "./model";
 
 type TodoistResponse = TodoistTask[];
 
