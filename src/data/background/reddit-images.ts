@@ -1,4 +1,3 @@
-import fetch from "node-fetch";
 import shuffle from "shuffle-array";
 import registerService from "../register-service";
 import config from "../../config";
