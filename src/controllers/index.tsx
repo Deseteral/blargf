@@ -1,7 +1,7 @@
 import express from "express";
 import { performance } from "perf_hooks";
 import signale from "signale";
-import getData, { BlargfData } from "../services/data-service";
+import getData, { BlargfData } from "../data/data-service";
 import renderLostLove from "../views/lost-love/render";
 
 const indexController = express.Router();

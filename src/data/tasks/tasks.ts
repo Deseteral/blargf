@@ -1,4 +1,4 @@
-import registerService, { DataCache } from "../../services/register-service";
+import registerService, { DataCache } from "../register-service";
 import config from "../../config";
 import { TaskList, Task } from "./model";
 

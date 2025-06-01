@@ -1,4 +1,4 @@
-import registerService from "../../services/register-service";
+import registerService from "../register-service";
 import config from "../../config";
 import { Countdown } from "./model";
 

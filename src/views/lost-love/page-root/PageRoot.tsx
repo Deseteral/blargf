@@ -1,15 +1,15 @@
 import React from "react";
-import Tray from "../../../components/Tray";
-import TrayIconLink from "../../../components/TrayIconLink";
+import Tray from "../components/Tray";
+import TrayIconLink from "../components/TrayIconLink";
 import ApplicationWrapper from "./ApplicationWrapper";
-import Column from "../../../components/Column";
+import Column from "../components/Column";
 import ColumnWrapper from "./ColumnWrapper";
 import BackgroundImage from "../background/BackgroundImage";
 import DateTimeSection from "../clock/DateTimeSection";
 import EventsSection from "../calendar-events/EventsSection";
 import TasksSection from "../tasks/TasksSection";
 import CountdownsSection from "../countdowns/CountdownsSection";
-import { BlargfData } from "../../../services/data-service";
+import { BlargfData } from "../../../data/data-service";
 
 export interface PageRootProps {
   data: BlargfData;
