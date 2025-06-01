@@ -4,13 +4,13 @@ import signale from "signale";
 import getData, { BlargfData } from "../data/data-service";
 import renderLostLove from "../views/lost-love/render";
 
-const indexController = express.Router();
+const indexEndpoint = express.Router();
 
 const renderers: { [key: string]: (data: BlargfData) => string } = {
   "lost-love": renderLostLove,
 };
 
-indexController.get("/", (req, res) => {
+indexEndpoint.get("/", (req, res) => {
   const viewParam = req.query.view as string;
   const render = renderers[viewParam] || renderLostLove;
 
@@ -25,4 +25,4 @@ indexController.get("/", (req, res) => {
   signale.info(`Render took ${renderTime} ms`);
 });
 
-export default indexController;
+export default indexEndpoint;
